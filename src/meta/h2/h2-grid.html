@@ -1,0 +1,66 @@
+<link rel="import" href="../behaviors/base-behavior.html">
+<link rel="import" href="h2-action.html">
+<dom-module id="h2-grid">
+    <template>
+        <style>
+            dom-repeat {
+                display: none;
+            }
+        </style>
+        <table border="1" width="100%">
+            <thead>
+            <tr>
+                <template is="dom-repeat" items="{{metadata.grids}}">
+                    <th>[[item.label]]</th>
+                </template>
+            </tr>
+            </thead>
+            <tbody>
+            <template is="dom-repeat" items="[[models]]" as="model">
+                <tr>
+                    <template is="dom-repeat" items="[[metadata.grids]]" as="field">
+                        <td>
+                            <template is="dom-if" if="{{ isOneOf(field.datatype,'text','number','date') }}">
+                                [[ getValueByKey(model,field.name) ]]
+                            </template>
+
+                            <template is="dom-if" if="{{ isEqual(field.datatype,'action') }}">
+                                <template is="dom-repeat" items="[[ model.actions ]]" as="actionId">
+                                    <span>
+                                        <h2-action action="{{ getValueByKey(metadata.actions, actionId ) }}"></h2-action>
+                                    </span>
+                                </template>
+                            </template>
+                        </td>
+                    </template>
+                </tr>
+            </template>
+            </tbody>
+        </table>
+    </template>
+    <script>
+      class H2Grid extends Polymer.mixinBehaviors([BaseBehavior], Polymer.Element) {
+        constructor() {
+          super();
+        }
+
+        static get is() {
+          return "h2-grid";
+        }
+
+        static get properties() {
+          return {
+            models: {
+              type: Array,
+              observable: true
+            },
+            metadata: {
+              type: Object,
+              observable: true
+            }
+          }
+        }
+      }
+      customElements.define(H2Grid.is, H2Grid);
+    </script>
+</dom-module>

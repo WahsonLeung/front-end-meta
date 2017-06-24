@@ -1,0 +1,33 @@
+<script>
+  BaseBehavior = {
+    /**
+     * 判断第一个参数是否与后面的某个参数相等， 使用Object.is() 进行判断
+     * @param args
+     * @returns {boolean}
+     */
+    isOneOf(...args) {
+      if (Array.isArray(args) && args.length > 0) {
+        const target = args[0];
+        return args.slice(1).filter(arg => Object.is(arg, target)).length > 0;
+      }
+
+      return false;
+    },
+
+    isEqual(left, right) {
+      return Object.is(left, right);
+    },
+
+    /**
+     *
+     * @param model
+     * @param key
+     * @param defVal  支持任何符合json格式的字符串
+     * @returns {*}
+     */
+    getValueByKey(model, key, defVal = JSON.stringify("")) {
+      return (model && (key in model)) ? model[key] : JSON.parse(defVal);
+    }
+
+  }
+</script>

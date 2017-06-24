@@ -1,0 +1,9 @@
+{
+  "name": "front-end-meta",
+  "description": "front end meta",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.1",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#1.0.0"
+  }
+}

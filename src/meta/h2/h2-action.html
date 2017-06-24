@@ -1,0 +1,84 @@
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="h2-form.html">
+<dom-module id="h2-action">
+    <template>
+        <paper-button raised on-click="submitOrOpenDialog">[[action.actionName]]</paper-button>
+        <paper-dialog id="dialog" style="width: 80%; height: 70%;">
+            <h2-form id="form" model="{{model}}" form-meta="{{action.formMeta}}"></h2-form>
+        </paper-dialog>
+
+    </template>
+    <script>
+      class H2Action extends Polymer.Element {
+        constructor() {
+          super();
+        }
+
+        static get is() {
+          return "h2-action";
+        }
+
+        static get properties() {
+          return {
+            action: {
+              type: Object
+            },
+            model: {
+              type: Object
+            }
+          }
+        }
+
+
+        submitOrOpenDialog() {
+          if (this.action.operType == 1) {
+            this.$.form.submit();
+          } else if (this.action.operType == 2) {
+            this.$.dialog.open();
+          }
+        }
+
+        ready() {
+          super.ready();
+          this.model = {
+            orderId: "123",
+            orderNo: "K201719191",
+            remark: "asdfasdfafa",
+            products: [
+              {
+                productId: 123,
+                productName: "HH"
+              },
+              {
+                productId: 1223,
+                productName: "HHMM"
+              }
+            ],
+            deliveryTypes: [
+              {
+                id: 1,
+                name: '供应商配送'
+              }, {
+                id: 2,
+                name: '快塑配送'
+              }
+            ]
+          };
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+          this.$.form.addEventListener("form-submitted", this._formSubmittedHandler.bind(this));
+        }
+
+        _formSubmittedHandler(e) {
+          console.log(e);
+          this.$.dialog.close();
+        }
+
+      }
+      customElements.define(H2Action.is, H2Action);
+    </script>
+</dom-module>

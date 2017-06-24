@@ -1,0 +1,209 @@
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../behaviors/base-behavior.html">
+<link rel="import" href="../behaviors/crud-behavior.html">
+<dom-module id="h2-form">
+    <template>
+        <h2>[[formMeta.title]]</h2>
+        <div>
+            <template is="dom-repeat" items="{{formMeta.fields}}">
+                <!--text-->
+                <template is="dom-if" if="[[isEqual(item.datatype,'text')]]">
+                    <div>
+                        <paper-input
+                                id="{{ getEditorId(item.name) }}"
+                                always-float-label
+                                value="{{ getValueByKey(model,item.name) }}"
+                                label={{item.label}}
+                                auto-validate
+                                required={{item.required}}
+                                error-message="{{item.prompt}}"
+                                min="{{item.min}}"
+                                minlength="{{item.minLength}}"
+                                max="{{item.max}}"
+                                maxlength="{{item.maxLength}}"
+                                pattern="{{item.regexp}}"
+                                readonly="{{!item.editable}}"
+                                type="{{item.datatype}}"
+                                style="width:180px;float:left;margin: 12px;">
+                        </paper-input>
+                    </div>
+                </template>
+
+                <!--textarea-->
+                <template is="dom-if" if="[[isEqual(item.datatype,'textarea')]]">
+                    <div>
+                        <paper-textarea
+                                id="{{ getEditorId(item.name) }}"
+                                value="{{ getValueByKey(model, item.name) }}"
+                                always-float-label
+                                label={{item.label}}
+                                auto-validate
+                                required={{item.required}}
+                                error-message="{{item.prompt}}"
+                                min="{{item.min}}"
+                                minlength="{{item.minLength}}"
+                                max="{{item.max}}"
+                                maxlength="{{item.maxLength}}"
+                                pattern="{{item.regexp}}"
+                                readonly="{{!item.editable}}"
+                                type="{{item.datatype}}"
+                                style="width:180px;float:left;margin: 12px;"></paper-textarea>
+                    </div>
+                </template>
+
+                <!--radio-->
+                <template is="dom-if" if="[[ isEqual(item.datatype,'radio') ]]">
+                    <div>
+                        <paper-radio-group id="{{ getEditorId(item.name) }}" aria-labelledby="{{ getEditorId(item.name) }}">
+                            <template is="dom-repeat"
+                                      items="{{ getValueByKey(model, item.itemsField, '[]') }}"
+                                      as="radioItem">
+                                <paper-radio-button name="[[ getValueByKey(radioItem,item.valueField) ]]">
+                                    [[ getValueByKey(radioItem, item.displayField) ]]
+                                </paper-radio-button>
+                            </template>
+                        </paper-radio-group>
+                    </div>
+                </template>
+
+                <!--select-->
+                <template is="dom-if" if="[[ isEqual(item.datatype,'select') ]]">
+                    <div>
+                        <paper-dropdown-menu id="{{ getEditorId(item.name) }}"
+                                             always-float-label
+                                             required="{{item.required}}"
+                                             error-message="{{item.prompt}}"
+                                             label="{{item.label}}"
+                                             style="float:left;margin: 12px;">
+                            <paper-listbox slot="dropdown-content">
+                                <template is="dom-repeat"
+                                          items="{{ getValueByKey(model, item.itemsField, '[]') }}"
+                                          as="selectItem">
+                                    <paper-item>
+                                        [[ getValueByKey(selectItem, item.displayField) ]]
+                                    </paper-item>
+                                </template>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+                    </div>
+                </template>
+
+            </template>
+        </div>
+
+        <div class="buttons">
+            <paper-button raised on-click="submit">保存</paper-button>
+            <paper-button raised dialog-dismiss>关闭</paper-button>
+        </div>
+    </template>
+    <script>
+      class H2Form extends Polymer.mixinBehaviors([BaseBehavior, CrudBehavior], Polymer.Element) {
+        constructor() {
+          super();
+          this.valueAccessors = this._getValueAccessors();
+        }
+
+        static get is() {
+          return "h2-form";
+        }
+
+        getEditorId(fieldName) {
+          return `${this.constructor.is}-${fieldName}-editor`;
+        }
+
+        static get properties() {
+          return {
+            model: {
+              type: Object
+            },
+            formMeta: {
+              type: Object
+            }
+          }
+        }
+
+        submit() {
+          if (!this._validate()) return;
+
+          const _submit = () => {
+            const param = this._requestBody();
+            this.update(this.formMeta.formUrl, param, (data) => {
+              console.log(data);
+              this.dispatchEvent(new CustomEvent("form-submitted"));
+            });
+          };
+
+          if(this.formMeta.confirm) {
+            if (window.confirm(this.formMeta.confirm)) {
+              _submit();
+            }
+          } else {
+            _submit();
+          }
+        }
+
+        _validate() {
+          // return true if there's no field
+          if (!this.formMeta.fields || this.formMeta.fields.length == 0) return true;
+
+          return this.formMeta.fields.every(field => {
+            const editor = this.root.querySelector(`#${this.getEditorId(field.name)}`);
+            // if the editor does not have a validator,return true
+            return editor.validate ? editor.validate() : true;
+          });
+        }
+
+
+        _requestBody() {
+          const requestBody = {};
+          this.formMeta.fields.forEach(field => {
+            requestBody[field.name] = this.valueAccessors(field.datatype)(field);
+          });
+
+          return requestBody;
+        }
+
+        _getEditor(fieldName) {
+          return this.root.querySelector(`#${this.getEditorId(fieldName)}`);
+        }
+        _getValueAccessors() {
+
+          const accessors = {
+
+            ["text"]: (field) => {
+              return this._getEditor(field.name).value;
+            },
+
+            ["textarea"]: (field) => {
+              return this._getEditor(field.name).value;
+            },
+
+            ["radio"]: (field) => {
+              return this._getEditor(field.name).value;
+            },
+
+            ["select"]: (field) => {
+              const value = this._getEditor(field.name).value;
+              const items = this.model[field.itemsField] || [];
+              const displayField = field.displayField;
+              for (let item of items) {
+                if (item[displayField] === value) {
+                  return item[field.valueField];
+                }
+              }
+            }
+          };
+
+          return (datatype) => accessors[datatype];
+        }
+
+      }
+      customElements.define(H2Form.is, H2Form);
+    </script>
+</dom-module>

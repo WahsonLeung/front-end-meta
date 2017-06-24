@@ -1,0 +1,236 @@
+<script>
+
+  (function () {
+    'use strict';
+
+    class SimpleLexer {
+
+      constructor() {
+        this.pos = 0;
+        this.buf = null;
+        this.buflen = 0;
+
+        // Operator table, mapping operator -> token name
+        this.optable = {
+          '+': 'PLUS',
+          '-': 'MINUS',
+          '*': 'MULTIPLY',
+          '/': 'DIVIDE',
+          '.': 'PERIOD',
+          '\\': 'BACKSLASH',
+          ':': 'COLON',
+          '%': 'PERCENT',
+          '|': 'PIPE',
+          '!': 'EXCLAMATION',
+          '?': 'QUESTION',
+          '#': 'POUND',
+          '&': 'AMPERSAND',
+          ';': 'SEMI',
+          ',': 'COMMA',
+          '(': 'L_PAREN',
+          ')': 'R_PAREN',
+          '<': 'L_ANG',
+          '>': 'R_ANG',
+          '{': 'L_BRACE',
+          '}': 'R_BRACE',
+          '[': 'L_BRACKET',
+          ']': 'R_BRACKET',
+          '=': 'EQUALS'
+        };
+      }
+
+      input(buf) {
+        this.pos = 0;
+        this.buf = buf;
+        this.buflen = buf.length;
+      }
+
+      getNextToken() {
+        this._skipNonTokens();
+        if (this.pos >= this.buflen) {
+          return null;
+        }
+
+        // The char at this.pos is part of a real token. Figure out which.
+        let c = this.buf.charAt(this.pos);
+
+        // Look it up in the table of operators
+        let op = this.optable[c];
+        if (op !== undefined) {
+          return {name: op, value: c, pos: this.pos++};
+        } else {
+//             Not an operator - so it's the beginning of another token.
+          if (this._isAlpha(c)) {
+            return this._processIdentifier();
+          } else if (this._isDigit(c)) {
+            return this._processNumber();
+          } else if (c === '"') {
+            return this._processDoubleQuote();
+          } else if (c === "'") {
+            return this._processSingleQuote();
+          } else {
+            throw Error('Token error at ' + this.pos);
+          }
+        }
+      }
+
+      parseInput(buf) {
+        this.input(buf);
+        let tokens = [], token;
+        while ((token = this.getNextToken()) != null) {
+          tokens.push(token);
+        }
+        return tokens;
+      }
+
+      _isNewline(c) {
+        return c === '\r' || c === '\n';
+      }
+
+      _isDigit(c) {
+        return c >= '0' && c <= '9';
+      }
+
+      _isAlpha(c) {
+        return (c >= 'a' && c <= 'z') ||
+            (c >= 'A' && c <= 'Z') ||
+            c === '_' || c === '$';
+      }
+
+      _isAlphanum(c) {
+        return (c >= 'a' && c <= 'z') ||
+            (c >= 'A' && c <= 'Z') ||
+            (c >= '0' && c <= '9') ||
+            c === '_' || c === '$';
+      }
+
+      _isDot(c) {
+        return c === '.';
+      }
+
+      _isLeftParen(c) {
+        return c === '(';
+      }
+
+      /**
+       * process indentifier
+       * @returns {*}
+       * @private
+       */
+      _processIdentifier() {
+        let endpos = this.pos + 1;
+        let lastDotPos = -1;
+        // match foo.bar
+        while (endpos < this.buflen &&
+        this._isAlphanum(this.buf.charAt(endpos))) {
+          endpos++;
+          if (this._isDot(this.buf.charAt(endpos))) {
+            lastDotPos = endpos;
+            endpos++;
+          }
+        }
+
+        let tok;
+        let tryEndpos = this._trySkipNonTokens(endpos);
+        // foo.bar.doSth ()
+        if (tryEndpos < this.buflen && this._isLeftParen(this.buf.charAt(tryEndpos))) {
+          if (lastDotPos == -1) {
+            tok = {
+              name: 'IDENTIFIER_FUNC',
+              value: this.buf.substring(this.pos, endpos),
+              pos: this.pos
+            };
+            this.pos = endpos;
+          } else {
+            tok = {
+              name: 'IDENTIFIER',
+              value: this.buf.substring(this.pos, lastDotPos),
+              pos: this.pos
+            };
+            this.pos = lastDotPos;
+          }
+          return tok;
+        }
+
+        tok = {
+          name: 'IDENTIFIER',
+          value: this.buf.substring(this.pos, endpos),
+          pos: this.pos
+        };
+        this.pos = endpos;
+        return tok;
+      }
+
+      _processNumber() {
+        let endpos = this.pos + 1;
+        while (endpos < this.buflen &&
+        this._isDigit(this.buf.charAt(endpos))) {
+          endpos++;
+        }
+
+        var tok = {
+          name: 'NUMBER',
+          value: this.buf.substring(this.pos, endpos),
+          pos: this.pos
+        };
+        this.pos = endpos;
+        return tok;
+      }
+
+      _processSingleQuote() {
+        // this.pos points at the opening quote. Find the ending quote.
+        let end_index = this.buf.indexOf("'", this.pos + 1);
+
+        if (end_index === -1) {
+          throw Error('Unterminated single quote at ' + this.pos);
+        } else {
+          let tok = {
+            name: 'SINGLE_QUOTE',
+            value: this.buf.substring(this.pos, end_index + 1),
+            pos: this.pos
+          };
+          this.pos = end_index + 1;
+          return tok;
+        }
+      }
+
+      _processDoubleQuote() {
+        // this.pos points at the opening quote. Find the ending quote.
+        let end_index = this.buf.indexOf('"', this.pos + 1);
+
+        if (end_index === -1) {
+          throw Error('Unterminated double quote at ' + this.pos);
+        } else {
+          let tok = {
+            name: 'DOUBLE_QUOTE',
+            value: this.buf.substring(this.pos, end_index + 1),
+            pos: this.pos
+          };
+          this.pos = end_index + 1;
+          return tok;
+        }
+
+      }
+
+      _trySkipNonTokens(from) {
+        while (from < this.buflen) {
+          let c = this.buf.charAt(from);
+          if (c == ' ' || c == '\t' || c == '\r' || c == '\n') {
+            from++;
+          } else {
+            break;
+          }
+        }
+        return from;
+      }
+
+      _skipNonTokens() {
+        this.pos = this._trySkipNonTokens(this.pos);
+      }
+
+    }
+
+    Polymer.SimpleLexer = new SimpleLexer();
+  })();
+
+</script>
