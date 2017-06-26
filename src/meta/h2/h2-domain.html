@@ -3,7 +3,9 @@
 <dom-module id="h2-domain">
     <template>
         <h2-domain-query form-meta="{{metadata.query}}" result="{{result}}"></h2-domain-query>
-        <h2-grid metadata="{{metadata.result}}" models="[[result]]"></h2-grid>
+        <slot name="actions" slot="actions"></slot>
+        <h2-grid metadata="{{metadata.result}}" models="[[result]]">
+        </h2-grid>
     </template>
     <script>
       class H2Domain extends Polymer.Element {
