@@ -1,11 +1,43 @@
 <link rel="import" href="h2-domain-query.html">
 <link rel="import" href="h2-grid.html">
+<link rel="import" href="h2-pagination.html">
+
 <dom-module id="h2-domain">
     <template>
-        <h2-domain-query form-meta="{{metadata.query}}" result="{{result}}"></h2-domain-query>
-        <slot name="actions" slot="actions"></slot>
-        <h2-grid metadata="{{metadata.result}}" models="[[result]]">
-        </h2-grid>
+        <style>
+            :host {
+                --h2-grid-theme: {
+
+                }
+            }
+        </style>
+
+        <div>
+            <div class="domain-query">
+                <h2-domain-query form-meta="{{ metadata.query }}" result="{{ result }}" paging="[[ paging ]]">
+                    <slot name="ex-condition" slot="ex-condition"></slot>
+                </h2-domain-query>
+            </div>
+
+            <div class="domain-actions">
+                <template is="dom-repeat" items="[[ metadata.actions ]]" as="action">
+                    <span>
+                        <h2-action action="[[ action ]]"></h2-action>
+                    </span>
+                </template>
+            </div>
+
+            <div class="domain-grids">
+                <h2-grid metadata="{{ metadata.result }}" models="[[ result.rows ]]" filter="[[ filter ]]">
+                </h2-grid>
+            </div>
+
+            <template is="dom-if" if="{{metadata.query.paging}}">
+                <h2-pagination paging="{{ paging }}" total="[[ result.results ]]"></h2-pagination>
+            </template>
+
+        </div>
+
     </template>
     <script>
       class H2Domain extends Polymer.Element {
@@ -31,16 +63,21 @@
           }
         }
 
+        selectPage(e){
+          console.log(e.detail);
+        }
         init() {
           this.metadata = {
             query: {
               formUrl: "/order/list.do",       // 表单提交的url
               httpMethod: "GET",
+              paging:true,
               fields: [
                 {
                   datatype: "text",
                   name: "orderNo",
-                  label: "订单号",
+                  label: "订单编号",
+                  required:true
                 },
                 {
                   datatype: "select",
@@ -58,9 +95,124 @@
                   displayField: "name",
                   valueField: "id",
                   itemsField: "deliveryTypes",
-                }
+                },
+                {
+                  datatype: "select-tree",
+                  name: "department",
+                  label: "部门",
+                },
+                {
+                  datatype: "o-staff-picker",
+                  name: "staff",
+                  label: "员工",
+                },
               ],
             },
+            actions: [
+              {
+                actionId: "new-order",
+                actionName: "新订单",
+                operType: 2,
+                formMeta: {
+                  formUrl: "/order/saveOrder.do",       // 表单提交的url
+                  httpMethod: "POST",
+                  title: "创建订单",
+                  fields: [
+                    {
+                      datatype: "select",
+                      name: "product",
+                      label: "产品",
+                      required: true,
+                      editable: true,
+                      mutil: false,
+                      displayField: "productName",
+                      valueField: "productId",
+                      itemsField: "products",
+                      prompt: "请选产品"
+                    },
+                    {
+                      datatype: "textarea",
+                      name: "remark",
+                      label: "备注",
+                      editable: true,
+                      required: false,
+                      mutil: false,
+                      validate: true,
+                      "max-length": 100
+                    },
+                    {
+                      datatype: "radio",
+                      name: "deliveryType",
+                      label: "配送方式",
+                      required: true,
+                      editable: true,
+                      mutil: false,
+                      displayField: "name",
+                      valueField: "id",
+                      itemsField: "deliveryTypes",
+                      prompt: "请选产品"
+                    },
+                    {
+                      datatype: "action",
+                      actionMeta: {
+                        actionId: "new-order-item",
+                        actionName: "新子单",
+                        operType: 2,
+                        formMeta: {
+                          formUrl: "/order/saveOrderItem.do",       // 表单提交的url
+                          httpMethod: "POST",
+                          title: "创建新子单",
+                          fields: [
+                            {
+                              datatype: "text",
+                              name: "orderId",
+                              label: "订单Id",
+                              required: true,
+                              editable: false,
+                              mutil: false,
+                            },
+                            {
+                              datatype: "select",
+                              name: "product",
+                              label: "产品",
+                              required: true,
+                              editable: true,
+                              mutil: false,
+                              displayField: "productName",
+                              valueField: "productId",
+                              itemsField: "products",
+                              prompt: "请选产品"
+                            },
+                            {
+                              datatype: "textarea",
+                              name: "remark",
+                              label: "备注",
+                              editable: true,
+                              required: false,
+                              mutil: false,
+                              validate: true,
+                              "max-length": 100
+                            },
+                            {
+                              datatype: "radio",
+                              name: "deliveryType",
+                              label: "配送方式",
+                              required: true,
+                              editable: true,
+                              mutil: false,
+                              displayField: "name",
+                              valueField: "id",
+                              itemsField: "deliveryTypes",
+                              prompt: "请选产品"
+                            }
+                          ],
+                        }
+                      },
+                    }
+                  ],
+                }
+              }
+            ],
             result: {
               grids: [
                 {
@@ -92,7 +244,7 @@
                   formMeta: {
                     formUrl: "/order/cancelOrder.do",
                     httpMethod: "GET",
-                    confirm:"确认取消订单？",
+                    confirm: "确认取消订单？",
                     fields: [
                       {
                         datatype: "text",

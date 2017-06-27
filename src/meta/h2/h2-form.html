@@ -11,61 +11,65 @@
     <template>
         <h2>[[formMeta.title]]</h2>
         <div>
-            <template is="dom-repeat" items="{{formMeta.fields}}">
+            <template is="dom-repeat" items="{{formMeta.fields}}" as="field">
+                <template is="dom-if" if="[[ isEqual(field.datatype,'action') ]]">
+                    <h2-action action="[[ field.actionMeta ]]" model="[[ model ]]"></h2-action>
+                </template>
                 <!--text-->
-                <template is="dom-if" if="[[isEqual(item.datatype,'text')]]">
+                <template is="dom-if" if="[[isEqual(field.datatype,'text')]]">
                     <div>
                         <paper-input
-                                id="{{ getEditorId(item.name) }}"
+                                id="{{ getEditorId(field.name) }}"
                                 always-float-label
-                                value="{{ getValueByKey(model,item.name) }}"
-                                label={{item.label}}
+                                value="{{ getValueByKey(model,field.name) }}"
+                                label={{field.label}}
                                 auto-validate
-                                required={{item.required}}
-                                error-message="{{item.prompt}}"
-                                min="{{item.min}}"
-                                minlength="{{item.minLength}}"
-                                max="{{item.max}}"
-                                maxlength="{{item.maxLength}}"
-                                pattern="{{item.regexp}}"
-                                readonly="{{!item.editable}}"
-                                type="{{item.datatype}}"
+                                required={{field.required}}
+                                error-message="{{field.prompt}}"
+                                min="{{field.min}}"
+                                minlength="{{field.minLength}}"
+                                max="{{field.max}}"
+                                maxlength="{{field.maxLength}}"
+                                pattern="{{field.regexp}}"
+                                readonly="{{!field.editable}}"
+                                type="{{field.datatype}}"
                                 style="width:180px;float:left;margin: 12px;">
                         </paper-input>
                     </div>
                 </template>
 
                 <!--textarea-->
-                <template is="dom-if" if="[[isEqual(item.datatype,'textarea')]]">
+                <template is="dom-if" if="[[isEqual(field.datatype,'textarea')]]">
                     <div>
                         <paper-textarea
-                                id="{{ getEditorId(item.name) }}"
-                                value="{{ getValueByKey(model, item.name) }}"
+                                id="{{ getEditorId(field.name) }}"
+                                value="{{ getValueByKey(model, field.name) }}"
                                 always-float-label
-                                label={{item.label}}
+                                label={{field.label}}
                                 auto-validate
-                                required={{item.required}}
-                                error-message="{{item.prompt}}"
-                                min="{{item.min}}"
-                                minlength="{{item.minLength}}"
-                                max="{{item.max}}"
-                                maxlength="{{item.maxLength}}"
-                                pattern="{{item.regexp}}"
-                                readonly="{{!item.editable}}"
-                                type="{{item.datatype}}"
+                                required={{field.required}}
+                                error-message="{{field.prompt}}"
+                                min="{{field.min}}"
+                                minlength="{{field.minLength}}"
+                                max="{{field.max}}"
+                                maxlength="{{field.maxLength}}"
+                                pattern="{{field.regexp}}"
+                                readonly="{{!field.editable}}"
+                                type="{{field.datatype}}"
                                 style="width:180px;float:left;margin: 12px;"></paper-textarea>
                     </div>
                 </template>
 
                 <!--radio-->
-                <template is="dom-if" if="[[ isEqual(item.datatype,'radio') ]]">
+                <template is="dom-if" if="[[ isEqual(field.datatype,'radio') ]]">
                     <div>
-                        <paper-radio-group id="{{ getEditorId(item.name) }}" aria-labelledby="{{ getEditorId(item.name) }}">
+                        <paper-radio-group id="{{ getEditorId(field.name) }}"
+                                           aria-labelledby="{{ getEditorId(field.name) }}" selected="1">
                             <template is="dom-repeat"
-                                      items="{{ getValueByKey(model, item.itemsField, '[]') }}"
+                                      items="{{ getValueByKey(model, field.itemsField, '[]') }}"
                                       as="radioItem">
-                                <paper-radio-button name="[[ getValueByKey(radioItem,item.valueField) ]]">
-                                    [[ getValueByKey(radioItem, item.displayField) ]]
+                                <paper-radio-button name="[[ getValueByKey(radioItem,field.valueField) ]]">
+                                    [[ getValueByKey(radioItem, field.displayField) ]]
                                 </paper-radio-button>
                             </template>
                         </paper-radio-group>
@@ -73,20 +77,20 @@
                 </template>
 
                 <!--select-->
-                <template is="dom-if" if="[[ isEqual(item.datatype,'select') ]]">
+                <template is="dom-if" if="[[ isEqual(field.datatype,'select') ]]">
                     <div>
-                        <paper-dropdown-menu id="{{ getEditorId(item.name) }}"
+                        <paper-dropdown-menu id="{{ getEditorId(field.name) }}"
                                              always-float-label
-                                             required="{{item.required}}"
-                                             error-message="{{item.prompt}}"
-                                             label="{{item.label}}"
+                                             required="{{field.required}}"
+                                             error-message="{{field.prompt}}"
+                                             label="{{field.label}}"
                                              style="float:left;margin: 12px;">
-                            <paper-listbox slot="dropdown-content">
+                            <paper-listbox slot="dropdown-content" selected="0">
                                 <template is="dom-repeat"
-                                          items="{{ getValueByKey(model, item.itemsField, '[]') }}"
+                                          items="{{ getValueByKey(model, field.itemsField, '[]') }}"
                                           as="selectItem">
                                     <paper-item>
-                                        [[ getValueByKey(selectItem, item.displayField) ]]
+                                        [[ getValueByKey(selectItem, field.displayField) ]]
                                     </paper-item>
                                 </template>
                             </paper-listbox>
@@ -113,6 +117,10 @@
           return "h2-form";
         }
 
+        get ignoreDateTypes() {
+          return ['action'];
+        }
+
         getEditorId(fieldName) {
           return `${this.constructor.is}-${fieldName}-editor`;
         }
@@ -133,13 +141,14 @@
 
           const _submit = () => {
             const param = this._requestBody();
+            console.log(param);
             this.update(this.formMeta.formUrl, param, (data) => {
               console.log(data);
               this.dispatchEvent(new CustomEvent("form-submitted"));
             });
           };
 
-          if(this.formMeta.confirm) {
+          if (this.formMeta.confirm) {
             if (window.confirm(this.formMeta.confirm)) {
               _submit();
             }
@@ -152,19 +161,23 @@
           // return true if there's no field
           if (!this.formMeta.fields || this.formMeta.fields.length == 0) return true;
 
-          return this.formMeta.fields.every(field => {
-            const editor = this.root.querySelector(`#${this.getEditorId(field.name)}`);
-            // if the editor does not have a validator,return true
-            return editor.validate ? editor.validate() : true;
-          });
+          return this.formMeta.fields
+              .filter(field => this.ignoreDateTypes.indexOf(field.datatype) == -1)
+              .every(field => {
+                const editor = this.root.querySelector(`#${this.getEditorId(field.name)}`);
+                // if the editor does not have a validator,return true
+                return editor.validate ? editor.validate() : true;
+              });
         }
 
 
         _requestBody() {
           const requestBody = {};
-          this.formMeta.fields.forEach(field => {
-            requestBody[field.name] = this.valueAccessors(field.datatype)(field);
-          });
+          this.formMeta.fields
+              .filter(field => this.ignoreDateTypes.indexOf(field.datatype) == -1)
+              .forEach(field => {
+                requestBody[field.name] = this.valueAccessors(field.datatype)(field);
+              });
 
           return requestBody;
         }
@@ -172,6 +185,7 @@
         _getEditor(fieldName) {
           return this.root.querySelector(`#${this.getEditorId(fieldName)}`);
         }
+
         _getValueAccessors() {
 
           const accessors = {
@@ -185,7 +199,7 @@
             },
 
             ["radio"]: (field) => {
-              return this._getEditor(field.name).value;
+              return this._getEditor(field.name).selected;
             },
 
             ["select"]: (field) => {
@@ -197,6 +211,12 @@
                   return item[field.valueField];
                 }
               }
+            },
+            ["select-tree"]: (field) => {
+              return "";
+            },
+            ["o-staff-picker"]: (field) => {
+              return this._getEditor(field.name).bindData;
             }
           };
 
