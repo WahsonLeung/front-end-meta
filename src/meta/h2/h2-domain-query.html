@@ -101,30 +101,51 @@
             },
             formMeta: {
               type: Object
+            },
+            extQueryCondition: {
+              type: Object,
+              value: function () {
+                return {};
+              }
+            },
+            queryAfterReset: {
+              type: Boolean,
+              value: false
             }
+          }
+        }
+
+        static get observers() {
+          return [
+            'pagingChange(paging.start)'
+          ];
+        }
+
+        pagingChange() {
+          if (this.formMeta.paging && this.paging) {
+            this.async(this.submit.bind(this), 0);
           }
         }
 
         ready(){
           super.ready();
-          // TODO
-          this.model = {
-            products: [
-              {
-                productId: 123,
-                productName: "HH"
-              },
-              {
-                productId: 1223,
-                productName: "HHMM"
-              }
-            ]
-          }
-
+          this.addEventListener('query-domain', e => {
+            console.log(e.detail);
+            Object.assign(this.extQueryCondition, e.detail);
+            this.submit();
+          });
         }
 
         submit() {
           const param = this._requestBody();
+          Object.assign(param, this.extQueryCondition);
+
+          if (this.formMeta.paging && this.paging) {
+            const {start, limit} = this.paging;
+            param.start = start;
+            param.limit = limit;
+          }
+
           this.update(this.formMeta.formUrl, param, (data) => {
             console.log(data);
             this.result = data;
@@ -132,10 +153,36 @@
         }
 
         reset() {
-//          this.formMeta.fields.forEach(field => {
-//            let editor = this.root.querySelector(`paper-input#${field.fieldName}_editor`);
-//            editor.value = "";
-//          })
+          this.formMeta.fields.forEach(field => {
+            this.resetors(field.datatype)(field);
+          });
+          this.extQueryCondition = {};
+          if (this.queryAfterReset) {
+            this.submit();
+          }
+        }
+
+        _resetors() {
+
+          const resetValueAccessors = {
+
+            ["text"]: (field) => {
+              this._getEditor(field.name).value = "";
+            },
+
+            ["textarea"]: (field) => {
+              this._getEditor(field.name).value = "";
+            },
+
+            ["radio"]: (field) => {
+              this._getEditor(field.name).selected = "";
+            },
+
+            ["select"]: (field) => {
+            }
+          };
+
+          return (datatype) => resetValueAccessors[datatype];
         }
       }
       customElements.define(H2DomainQuery.is, H2DomainQuery);
