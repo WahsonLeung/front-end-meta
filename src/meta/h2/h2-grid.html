@@ -1,13 +1,17 @@
 <link rel="import" href="../behaviors/base-behavior.html">
 <link rel="import" href="h2-action.html">
+<link rel="import" href="h2-crust.html">
 <dom-module id="h2-grid">
     <template>
         <style>
             dom-repeat {
                 display: none;
             }
+            :host {
+                @apply --h2-grid-theme;
+            }
         </style>
-        <slot name="filter" slot="filter"></slot>
+        <slot name="filter"></slot>
         <table border="1" width="100%">
             <thead>
             <tr>
@@ -22,7 +26,7 @@
                     <template is="dom-repeat" items="[[metadata.grids]]" as="field">
                         <td>
                             <template is="dom-if" if="{{ isOneOf(field.datatype,'text','number','date') }}">
-                                [[ getValueByKey(model,field.name) ]]
+                                <h2-crust element="[[ render(model,field) ]]"></h2-crust>
                             </template>
 
                             <template is="dom-if" if="{{ isEqual(field.datatype,'action') }}">
@@ -31,7 +35,7 @@
                                         <h2-action action="{{ getValueByKey(metadata.actions, actionId ) }}" model="[[model]]">
                                             <h2-form slot="form"
                                                      id="form"
-                                                     model="[[ use(model) ]]"
+                                                     model="[[ model ]]"
                                                      form-meta="[[ getMeta(metadata.actions, actionId ) ]]"></h2-form>
                                         </h2-action>
                                     </span>
@@ -48,13 +52,6 @@
       class H2Grid extends Polymer.mixinBehaviors([BaseBehavior], Polymer.Element) {
         constructor() {
           super();
-        }
-
-        use(model) {
-          model.test = function (a) {
-            return a
-          };
-          return model;
         }
 
         static get is() {

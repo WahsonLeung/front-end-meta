@@ -87,6 +87,7 @@
       class H2DomainQuery extends H2Form {
         constructor() {
           super();
+          this.resetters = this._resetters();
         }
 
         static get is() {
@@ -130,7 +131,6 @@
         ready(){
           super.ready();
           this.addEventListener('query-domain', e => {
-            console.log(e.detail);
             Object.assign(this.extQueryCondition, e.detail);
             this.submit();
           });
@@ -154,7 +154,7 @@
 
         reset() {
           this.formMeta.fields.forEach(field => {
-            this.resetors(field.datatype)(field);
+            this.resetters(field.datatype)(field);
           });
           this.extQueryCondition = {};
           if (this.queryAfterReset) {
@@ -162,9 +162,9 @@
           }
         }
 
-        _resetors() {
+        _resetters() {
 
-          const resetValueAccessors = {
+          const _resetter = {
 
             ["text"]: (field) => {
               this._getEditor(field.name).value = "";
@@ -182,7 +182,7 @@
             }
           };
 
-          return (datatype) => resetValueAccessors[datatype];
+          return (datatype) => _resetter[datatype];
         }
       }
       customElements.define(H2DomainQuery.is, H2DomainQuery);

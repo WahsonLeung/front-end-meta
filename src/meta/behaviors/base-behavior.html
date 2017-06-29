@@ -27,7 +27,22 @@
      */
     getValueByKey(model, key, defVal = JSON.stringify("")) {
       return (model && (key in model)) ? model[key] : JSON.parse(defVal);
+    },
+
+    /**
+     *
+     * @param model
+     * @param field
+     * @returns {*}
+     */
+    render(model, field) {
+      const _render = field && field.render;
+      if (Function.prototype.isPrototypeOf(_render)) {
+        return _render(model);
+      }
+      return this.getValueByKey(model, field.name);
     }
+
 
   }
 </script>
