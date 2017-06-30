@@ -1,93 +1,24 @@
-<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../../bower_components/paper-input/paper-textarea.html">
-<link rel="import" href="../../../bower_components/paper-radio-group/paper-radio-group.html">
-<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="h2-form.html">
+<link rel="import" href="h2-widget.html">
 <dom-module id="h2-domain-query">
     <template>
         <div class="container">
-            <template is="dom-repeat" items="{{formMeta.fields}}">
-                <!--text-->
-                <template is="dom-if" if="[[isEqual(item.datatype,'text')]]">
-                    <div>
-                        <paper-input
-                                id="{{ getEditorId(item.name) }}"
-                                always-float-label
-                                label="{{item.label}}"
-                                style="width:180px;float:left;margin: 12px;">
-                        </paper-input>
-                    </div>
-                </template>
-                <!--number-->
-                <template is="dom-if" if="[[isEqual(item.datatype,'number')]]">
-                    <div>
-                        <paper-input
-                                id="{{ getEditorId(item.name) }}"
-                                always-float-label
-                                label="{{item.label}}"
-                                style="width:180px;float:left;margin: 12px;"></paper-input>
-                    </div>
-                </template>
-                <!--date-->
-                <template is="dom-if" if="[[isEqual(item.datatype,'number')]]">
-                    <div>
-                        <paper-input
-                                id="{{ getEditorId(item.name) }}"
-                                always-float-label
-                                label="{{item.label}}"
-                                style="width:180px;float:left;margin: 12px;"></paper-input>
-                    </div>
-                </template>
-                <!--radio-->
-                <template is="dom-if" if="[[ isEqual(item.datatype,'radio') ]]">
-                    <div>
-                        <paper-radio-group id="{{ getEditorId(item.name) }}" aria-labelledby="{{ getEditorId(item.name) }}">
-                            <template is="dom-repeat"
-                                      items="{{ getValueByKey(model, item.itemsField, '[]') }}"
-                                      as="radioItem">
-                                <paper-radio-button name="[[ getValueByKey(radioItem,item.valueField) ]]">
-                                    [[ getValueByKey(radioItem, item.displayField) ]]
-                                </paper-radio-button>
-                            </template>
-                        </paper-radio-group>
-                    </div>
-                </template>
-                <!--select-->
-                <template is="dom-if" if="[[ isEqual(item.datatype,'select') ]]">
-                    <div>
-                        <paper-dropdown-menu id="{{ getEditorId(item.name) }}"
-                                             always-float-label
-                                             required="{{item.required}}"
-                                             error-message="{{item.prompt}}"
-                                             label="{{item.label}}"
-                                             style="float:left;margin: 12px;">
-                            <paper-listbox slot="dropdown-content">
-                                <template is="dom-repeat"
-                                          items="{{ getValueByKey(model, item.itemsField, '[]') }}"
-                                          as="selectItem">
-                                    <paper-item>
-                                        [[ getValueByKey(selectItem, item.displayField) ]]
-                                    </paper-item>
-                                </template>
-                            </paper-listbox>
-                        </paper-dropdown-menu>
-                    </div>
-                </template>
+            <template is="dom-repeat" items="{{formMeta.fields}}" as="field">
+                <div>
+                    <h2-widget id="{{ getEditorId(field.name) }}" element="{{field.element}}" model="{{model}}" field="{{field}}"></h2-widget>
+                </div>
             </template>
         </div>
         <div style="float:left;margin: 12px;">
             <paper-button raised on-click="submit">查询</paper-button>
             <paper-button raised on-click="reset">重置</paper-button>
         </div>
+        <slot id="ext-condition" name="ext-condition"></slot>
     </template>
     <script>
       class H2DomainQuery extends H2Form {
         constructor() {
           super();
-          this.resetters = this._resetters();
         }
 
         static get is() {
@@ -101,6 +32,9 @@
               notify: true
             },
             formMeta: {
+              type: Object
+            },
+            paging: {
               type: Object
             },
             extQueryCondition: {
@@ -128,7 +62,7 @@
           }
         }
 
-        ready(){
+        ready() {
           super.ready();
           this.addEventListener('query-domain', e => {
             Object.assign(this.extQueryCondition, e.detail);
@@ -154,35 +88,13 @@
 
         reset() {
           this.formMeta.fields.forEach(field => {
-            this.resetters(field.datatype)(field);
+            this.root.querySelector(`#${this.getEditorId(field.name)}`).reset();
           });
+
           this.extQueryCondition = {};
           if (this.queryAfterReset) {
             this.submit();
           }
-        }
-
-        _resetters() {
-
-          const _resetter = {
-
-            ["text"]: (field) => {
-              this._getEditor(field.name).value = "";
-            },
-
-            ["textarea"]: (field) => {
-              this._getEditor(field.name).value = "";
-            },
-
-            ["radio"]: (field) => {
-              this._getEditor(field.name).selected = "";
-            },
-
-            ["select"]: (field) => {
-            }
-          };
-
-          return (datatype) => _resetter[datatype];
         }
       }
       customElements.define(H2DomainQuery.is, H2DomainQuery);

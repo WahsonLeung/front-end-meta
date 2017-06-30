@@ -1,0 +1,46 @@
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../behaviors/base-behavior.html">
+<link rel="import" href="h2-widget-base.html">
+<dom-module id="h2-text">
+    <template>
+        <paper-input
+                id="input"
+                always-float-label
+                value="{{ getValueByKey(model,field.name) }}"
+                label={{field.label}}
+                auto-validate
+                required={{field.required}}
+                error-message="{{field.prompt}}"
+                min="{{field.min}}"
+                minlength="{{field.minLength}}"
+                max="{{field.max}}"
+                maxlength="{{field.maxLength}}"
+                pattern="{{field.regexp}}"
+                readonly="{{!field.editable}}"
+                type="{{field.datatype}}"
+                style="width:180px;float:left;margin: 12px;">
+        </paper-input>
+    </template>
+    <script>
+        class H2Text extends Polymer.mixinBehaviors([BaseBehavior],H2WidgetBase) {
+            static get is() {
+              return "h2-text";
+            }
+
+            validate() {
+              return this.$.input.validate();
+            }
+
+            reset() {
+              this.$.input.value = "";
+            }
+
+            getValue() {
+              return this.$.input.value;
+            }
+
+        }
+
+        customElements.define(H2Text.is, H2Text);
+    </script>
+</dom-module>

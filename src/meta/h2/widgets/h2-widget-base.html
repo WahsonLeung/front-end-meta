@@ -1,0 +1,34 @@
+<dom-module id="h2-widget-base">
+    <script>
+      class H2WidgetBase extends Polymer.Element {
+
+        static get is() {
+          return "h2-widget-base";
+        }
+
+        static get properties() {
+          return {
+            model: {
+              type: Object
+            },
+            field: {
+              type: Object
+            }
+          };
+        }
+
+        getValue() {
+
+        }
+
+        validate() {
+
+        }
+
+        reset() {
+
+        }
+      }
+      customElements.define(H2WidgetBase.is, H2WidgetBase);
+    </script>
+</dom-module>

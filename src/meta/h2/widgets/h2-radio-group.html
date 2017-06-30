@@ -1,0 +1,38 @@
+<link rel="import" href="../../../../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../../../../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../behaviors/base-behavior.html">
+<link rel="import" href="h2-widget-base.html">
+<dom-module id="h2-radio-group">
+    <template>
+        <paper-radio-group id="radioGroup"
+                           aria-labelledby="radioGroup" selected="1">
+            <template is="dom-repeat"
+                      items="{{ getValueByKey(model, field.itemsField, '[]') }}"
+                      as="radioItem">
+                <paper-radio-button name="[[ getValueByKey(radioItem,field.valueField) ]]">
+                    [[ getValueByKey(radioItem, field.displayField) ]]
+                </paper-radio-button>
+            </template>
+        </paper-radio-group>
+    </template>
+    <script>
+        class H2RadioGroup extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
+          static get is() {
+            return "h2-radio-group";
+          }
+
+          validate() {
+            return this.$.radioGroup.validate();
+          }
+
+          reset() {
+            this.$.radioGroup.selected = "";
+          }
+
+          getValue() {
+            return this.$.radioGroup.selected;
+          }
+        }
+        customElements.define(H2RadioGroup.is, H2RadioGroup);
+    </script>
+</dom-module>

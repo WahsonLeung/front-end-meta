@@ -7,6 +7,7 @@
             dom-repeat {
                 display: none;
             }
+
             :host {
                 @apply --h2-grid-theme;
             }
@@ -32,11 +33,8 @@
                             <template is="dom-if" if="{{ isEqual(field.datatype,'action') }}">
                                 <template is="dom-repeat" items="[[ model.actions ]]" as="actionId">
                                     <span>
-                                        <h2-action action="{{ getValueByKey(metadata.actions, actionId ) }}" model="[[model]]">
-                                            <h2-form slot="form"
-                                                     id="form"
-                                                     model="[[ model ]]"
-                                                     form-meta="[[ getMeta(metadata.actions, actionId ) ]]"></h2-form>
+                                        <h2-action action="{{ getValueByKey(metadata.actions, actionId ) }}"
+                                                   model="[[model]]">
                                         </h2-action>
                                     </span>
                                 </template>
@@ -58,12 +56,16 @@
           return "h2-grid";
         }
 
-        getMeta(actions,actionId){
+        getMeta(actions, actionId) {
           return this.getValueByKey(actions, actionId).formMeta;
         }
 
         static get properties() {
           return {
+            editable: {
+              type: Boolean,
+              value: false
+            },
             models: {
               type: Array,
               observable: true
@@ -75,6 +77,13 @@
           }
         }
       }
+
+      //      render(){
+      //        <table width={this.width}>
+      //        {if(true) <div>..</div>}
+      //        </table>
+      //      }
+
       customElements.define(H2Grid.is, H2Grid);
     </script>
 </dom-module>

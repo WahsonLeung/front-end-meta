@@ -1,0 +1,50 @@
+<link rel="import" href="./widgets/h2-widget-base.html">
+<dom-module id="h2-widget">
+    <template>
+        <div id="slot"></div>
+    </template>
+    <script>
+      class H2Widget extends H2WidgetBase {
+        static get is() {
+          return "h2-widget";
+        }
+
+        static get properties() {
+          return {
+            element: {
+              type: String
+            }
+          };
+        }
+
+        static get observers() {
+          return [
+            '__elementChange(element)'
+          ];
+        }
+
+        validate() {
+          const ele = this.$.slot.firstChild;
+          return ele && ele.validate && ele.validate();
+        }
+
+        reset() {
+          const ele = this.$.slot.firstChild;
+          return ele && ele.reset &&  ele.reset();
+        }
+
+        getValue() {
+          const ele = this.$.slot.firstChild;
+          return ele && ele.getValue &&  ele.getValue();
+        }
+        __elementChange() {
+          const eleDom = document.createElement(this.element);
+          eleDom.model = this.model;
+          eleDom.field = this.field;
+          this.$.slot.appendChild(eleDom);
+        }
+      }
+
+      customElements.define(H2Widget.is, H2Widget);
+    </script>
+</dom-module>
