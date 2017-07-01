@@ -5,19 +5,19 @@
     <template>
         <paper-textarea
                 id="textArea"
-                value="{{ getValueByKey(model, field.name) }}"
+                value="{{ getValueByKey(model, fieldMeta.name) }}"
                 always-float-label
-                label={{field.label}}
+                label={{fieldMeta.label}}
                 auto-validate
-                required={{field.required}}
-                error-message="{{field.prompt}}"
-                min="{{field.min}}"
-                minlength="{{field.minLength}}"
-                max="{{field.max}}"
-                maxlength="{{field.maxLength}}"
-                pattern="{{field.regexp}}"
-                readonly="{{!field.editable}}"
-                type="{{field.datatype}}"
+                required={{fieldMeta.required}}
+                error-message="{{fieldMeta.prompt}}"
+                min="{{fieldMeta.min}}"
+                minlength="{{fieldMeta.minLength}}"
+                max="{{fieldMeta.max}}"
+                maxlength="{{fieldMeta.maxLength}}"
+                pattern="{{fieldMeta.regexp}}"
+                readonly="{{!fieldMeta.editable}}"
+                type="{{fieldMeta.datatype}}"
                 style="width:180px;float:left;margin: 12px;"></paper-textarea>
     </template>
     <script>

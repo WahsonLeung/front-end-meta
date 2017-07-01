@@ -33,7 +33,7 @@
                             <template is="dom-if" if="{{ isEqual(field.datatype,'action') }}">
                                 <template is="dom-repeat" items="[[ model.actions ]]" as="actionId">
                                     <span>
-                                        <h2-action action="{{ getValueByKey(metadata.actions, actionId ) }}"
+                                        <h2-action action-meta="{{ getValueByKey(metadata.actions, actionId ) }}"
                                                    model="[[model]]">
                                         </h2-action>
                                     </span>

@@ -6,12 +6,16 @@
     <template>
         <h2>[[formMeta.title]]</h2>
         <div>
-            <template is="dom-repeat" items="{{formMeta.fields}}" as="field">
+            <template is="dom-repeat" items="[[ formMeta.fields ]]" as="fieldMeta">
                 <div>
-                    <h2-widget id="{{ getEditorId(field.name) }}" element="{{field.element}}" model="{{model}}" field="{{field}}"></h2-widget>
+                    <h2-widget
+                            id="{{ getEditorId(fieldMeta.name) }}"
+                            model="{{ model }}"
+                            field-meta="{{ fieldMeta }}">
+                    </h2-widget>
                 </div>
-                <template is="dom-if" if="[[ isEqual(field.datatype,'action') ]]">
-                    <h2-action action="[[ field.actionMeta ]]" model="[[ model ]]"></h2-action>
+                <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
+                    <h2-action action-meta="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
                 </template>
             </template>
         </div>
@@ -22,7 +26,7 @@
         </div>
     </template>
     <script>
-      class H2Form extends Polymer.mixinBehaviors([BaseBehavior,CrudBehavior], Polymer.Element) {
+      class H2Form extends Polymer.mixinBehaviors([BaseBehavior, CrudBehavior], Polymer.Element) {
         constructor() {
           super();
         }
@@ -55,10 +59,10 @@
 
           const _submit = () => {
             const param = this._requestBody();
-            console.log(param);
             this.update(this.formMeta.formUrl, param, (data) => {
-              console.log(data);
-              this.dispatchEvent(new CustomEvent("form-submitted"));
+              this.dispatchEvent(new CustomEvent("form-submitted", {
+                bubbles: true, composed: true, detail: data
+              }));
             });
           };
 
@@ -76,9 +80,9 @@
           if (!this.formMeta.fields || this.formMeta.fields.length == 0) return true;
 
           return this.formMeta.fields
-              .filter(field => this.ignoreDateTypes.indexOf(field.datatype) == -1)
-              .every(field => {
-                const editor = this.root.querySelector(`#${this.getEditorId(field.name)}`);
+              .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
+              .every(fieldMeta => {
+                const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
                 // if the editor does not have a validator,return true
                 return editor.validate ? editor.validate() : true;
               });
@@ -87,10 +91,10 @@
         _requestBody() {
           const requestBody = {};
           this.formMeta.fields
-              .filter(field => this.ignoreDateTypes.indexOf(field.datatype) == -1)
-              .forEach(field => {
-                const editor = this.root.querySelector(`#${this.getEditorId(field.name)}`);
-                requestBody[field.name] = editor.getValue();
+              .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
+              .forEach(fieldMeta => {
+                const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
+                requestBody[fieldMeta.name] = editor.getValue();
               });
 
           return requestBody;

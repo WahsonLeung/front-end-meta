@@ -3,9 +3,13 @@
 <dom-module id="h2-domain-query">
     <template>
         <div class="container">
-            <template is="dom-repeat" items="{{formMeta.fields}}" as="field">
+            <template is="dom-repeat" items="{{ formMeta.fields }}" as="fieldMeta">
                 <div>
-                    <h2-widget id="{{ getEditorId(field.name) }}" element="{{field.element}}" model="{{model}}" field="{{field}}"></h2-widget>
+                    <h2-widget
+                            id="{{ getEditorId(fieldMeta.name) }}"
+                            model="{{ model }}"
+                            field-meta="{{ fieldMeta }}">
+                    </h2-widget>
                 </div>
             </template>
         </div>
@@ -81,7 +85,6 @@
           }
 
           this.update(this.formMeta.formUrl, param, (data) => {
-            console.log(data);
             this.result = data;
           });
         }

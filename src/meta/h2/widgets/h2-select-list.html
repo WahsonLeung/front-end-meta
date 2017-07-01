@@ -9,14 +9,14 @@
                              always-float-label
                              required="{{field.required}}"
                              error-message="{{field.prompt}}"
-                             label="{{field.label}}"
+                             label="{{fieldMeta.label}}"
                              style="float:left;margin: 12px;">
             <paper-listbox slot="dropdown-content" selected="0">
                 <template is="dom-repeat"
-                          items="{{ getValueByKey(model, field.itemsField, '[]') }}"
+                          items="{{ getValueByKey(model, fieldMeta.itemsField, '[]') }}"
                           as="selectItem">
                     <paper-item>
-                        [[ getValueByKey(selectItem, field.displayField) ]]
+                        [[ getValueByKey(selectItem, fieldMeta.displayField) ]]
                     </paper-item>
                 </template>
             </paper-listbox>
@@ -38,11 +38,11 @@
 
         getValue() {
           const value = this.$.dropdownMenu.value;
-          const items = this.model[this.field.itemsField] || [];
-          const displayField = this.field.displayField;
+          const items = this.model[this.fieldMeta.itemsField] || [];
+          const displayField = this.fieldMeta.displayField;
           for (let item of items) {
             if (item[displayField] === value) {
-              return item[this.field.valueField];
+              return item[this.fieldMeta.valueField];
             }
           }
         }

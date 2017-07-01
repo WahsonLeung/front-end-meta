@@ -3,11 +3,11 @@
 <link rel="import" href="h2-form.html">
 <dom-module id="h2-action">
     <template>
-        <paper-button raised on-click="submitOrOpenDialog">[[ action.actionName ]]</paper-button>
+        <paper-button raised on-click="submitOrOpenDialog">[[ actionMeta.actionName ]]</paper-button>
         <paper-dialog id="dialog" style="width: 80%; height: 70%;">
             <slot id="formSlot" name="form">
                 <!--default form instance-->
-                <h2-form id="form" model="[[ model ]]" form-meta="[[ action.formMeta ]]"></h2-form>
+                <h2-form id="form" model="[[ model ]]" form-meta="[[ actionMeta.formMeta ]]"></h2-form>
 
             </slot>
         </paper-dialog>
@@ -24,7 +24,7 @@
 
         static get properties() {
           return {
-            action: {
+            actionMeta: {
               type: Object
             },
             model: {
@@ -34,24 +34,25 @@
         }
 
         fetchModel() {
-          if (!this.action.modelSrc) return Promise.resolve();
+          if (!this.actionMeta.modelSrc) return Promise.resolve();
 
           return new Promise((resolve, reject) => {
             // fetch model with modelSrc
-            this.query(this.action.modelSrc, (data) => {
+            this.query(this.actionMeta.modelSrc, (data) => {
               console.log(data);
+              this.model = data;
               resolve();
             });
           });
         }
 
         submitOrOpenDialog() {
-          if (this.action.operType == 1) {
+          if (this.actionMeta.operType == 1) {
             this.$.form.submit();
-          } else if (this.action.operType == 2) {
+          } else if (this.actionMeta.operType == 2) {
             this.fetchModel()
                 .then(() => this.$.dialog.open())
-                .catch(err => console.log(err));
+                .catch(err => console.error(err));
           }
         }
 

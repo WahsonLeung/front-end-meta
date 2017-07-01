@@ -7,10 +7,10 @@
         <paper-radio-group id="radioGroup"
                            aria-labelledby="radioGroup" selected="1">
             <template is="dom-repeat"
-                      items="{{ getValueByKey(model, field.itemsField, '[]') }}"
+                      items="{{ getValueByKey(model, fieldMeta.itemsField, '[]') }}"
                       as="radioItem">
-                <paper-radio-button name="[[ getValueByKey(radioItem,field.valueField) ]]">
-                    [[ getValueByKey(radioItem, field.displayField) ]]
+                <paper-radio-button name="[[ getValueByKey(radioItem,fieldMeta.valueField) ]]">
+                    [[ getValueByKey(radioItem, fieldMeta.displayField) ]]
                 </paper-radio-button>
             </template>
         </paper-radio-group>

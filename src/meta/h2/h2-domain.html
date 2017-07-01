@@ -1,4 +1,4 @@
-<link rel="import" href="widget-resources.html">
+<link rel="import" href="widgets/widget-resources.html">
 <link rel="import" href="h2-domain-query.html">
 <link rel="import" href="h2-grid.html">
 <link rel="import" href="h2-pagination.html">
@@ -16,7 +16,7 @@
             <div class="domain-actions">
                 <template is="dom-repeat" items="[[ metadata.actions ]]" as="action">
                     <span>
-                        <h2-action action="[[ action ]]"></h2-action>
+                        <h2-action action-meta="[[ action ]]"></h2-action>
                     </span>
                 </template>
             </div>
