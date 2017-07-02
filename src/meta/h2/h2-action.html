@@ -1,15 +1,17 @@
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="h2-form.html">
 <dom-module id="h2-action">
     <template>
         <paper-button raised on-click="submitOrOpenDialog">[[ actionMeta.actionName ]]</paper-button>
-        <paper-dialog id="dialog" style="width: 80%; height: 70%;">
-            <slot id="formSlot" name="form">
-                <!--default form instance-->
-                <h2-form id="form" model="[[ model ]]" form-meta="[[ actionMeta.formMeta ]]"></h2-form>
-
-            </slot>
+        <paper-dialog id="dialog" modal>
+            <paper-dialog-scrollable>
+                <slot id="formSlot" name="form">
+                    <!--default form instance-->
+                    <h2-form id="form" model="[[ model ]]" form-meta="[[ actionMeta.formMeta ]]"></h2-form>
+                </slot>
+            </paper-dialog-scrollable>
         </paper-dialog>
     </template>
     <script>
