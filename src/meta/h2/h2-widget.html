@@ -1,12 +1,27 @@
 <link rel="import" href="./widgets/h2-widget-base.html">
+<link rel="import" href="../behaviors/base-behavior.html">
+
 <dom-module id="h2-widget">
     <template>
         <div id="slot"></div>
     </template>
     <script>
-      class H2Widget extends H2WidgetBase {
+      class H2Widget extends Polymer.mixinBehaviors([BaseBehavior],H2WidgetBase) {
         static get is() {
           return "h2-widget";
+        }
+
+        static get properties() {
+          return {
+            editable: {
+              type: Boolean,
+              value: false
+            },
+            readonlyTemplate: {
+              type: String,
+              value: 'h2-crust'
+            }
+          };
         }
 
         static get observers() {
@@ -43,11 +58,18 @@
         }
 
         __fieldMetaChange() {
-          const tagName = this.fieldMeta.element || H2Widget.defaultElements[this.fieldMeta.datatype];
-          const eleDom = document.createElement(tagName);
-          eleDom.model = this.model;
-          eleDom.fieldMeta = this.fieldMeta;
-          this.$.slot.appendChild(eleDom);
+          if(this.editable) {
+            const tagName = this.fieldMeta.element || H2Widget.defaultElements[this.fieldMeta.datatype];
+            const eleDom = document.createElement(tagName);
+            eleDom.model = this.model;
+            eleDom.fieldMeta = this.fieldMeta;
+            this.$.slot.appendChild(eleDom);
+          } else {
+            const eleDom = document.createElement(this.readonlyTemplate);
+            eleDom.element = this.render(this.model, this.fieldMeta);
+            this.$.slot.appendChild(eleDom);
+          }
+
         }
       }
 

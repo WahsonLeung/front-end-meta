@@ -8,15 +8,19 @@
         <div>
             <template is="dom-repeat" items="[[ formMeta.fields ]]" as="fieldMeta">
                 <div>
-                    <h2-widget
-                            id="{{ getEditorId(fieldMeta.name) }}"
-                            model="{{ model }}"
-                            field-meta="{{ fieldMeta }}">
-                    </h2-widget>
+                    <template is="dom-if" if="{{ !isEqual(fieldMeta.datatype, 'action') }}">
+                        <h2-widget
+                                id="{{ getEditorId(fieldMeta.name) }}"
+                                editable
+                                model="{{ model }}"
+                                field-meta="{{ fieldMeta }}">
+                        </h2-widget>
+                    </template>
+                    <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
+                        <h2-action action-meta="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
+                    </template>
                 </div>
-                <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
-                    <h2-action action-meta="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
-                </template>
+
             </template>
         </div>
 
