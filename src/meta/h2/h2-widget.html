@@ -20,13 +20,17 @@
             readonlyTemplate: {
               type: String,
               value: 'h2-crust'
+            },
+            value: {
+              type: Object
             }
           };
         }
 
         static get observers() {
           return [
-            '__fieldMetaChange(fieldMeta)'
+            '__fieldMetaChange(fieldMeta)',
+            '__valueChange(value)'
           ];
         }
 
@@ -40,9 +44,31 @@
           return ele && ele.reset && ele.reset();
         }
 
-        getValue() {
-          const ele = this.$.slot.firstChild;
-          return ele && ele.getValue && ele.getValue();
+        __fieldMetaChange() {
+          if(this.editable) {
+            const tagName = this.fieldMeta.element || H2Widget.defaultElements[this.fieldMeta.datatype];
+            const eleDom = document.createElement(tagName);
+            eleDom.addEventListener("value-change", (e) => {
+              this.value = eleDom.value;
+              this.dispatchEvent(new CustomEvent('value-change', {
+                bubbles: true,
+                composed: true,
+                detail: eleDom.value
+              }));
+            });
+            eleDom.context = this.context;
+            eleDom.fieldMeta = this.fieldMeta;
+            this.$.slot.appendChild(eleDom);
+          } else {
+            const eleDom = document.createElement(this.readonlyTemplate);
+            eleDom.element = this.render(this.model, this.fieldMeta);
+            this.$.slot.appendChild(eleDom);
+          }
+
+        }
+
+        __valueChange() {
+          this.$.slot.firstChild.value = this.value;
         }
 
         static get defaultElements() {
@@ -55,21 +81,6 @@
             'select-tree': 'h2-select-tree',
             'radio-group': 'h2-radio-group'
           };
-        }
-
-        __fieldMetaChange() {
-          if(this.editable) {
-            const tagName = this.fieldMeta.element || H2Widget.defaultElements[this.fieldMeta.datatype];
-            const eleDom = document.createElement(tagName);
-            eleDom.model = this.model;
-            eleDom.fieldMeta = this.fieldMeta;
-            this.$.slot.appendChild(eleDom);
-          } else {
-            const eleDom = document.createElement(this.readonlyTemplate);
-            eleDom.element = this.render(this.model, this.fieldMeta);
-            this.$.slot.appendChild(eleDom);
-          }
-
         }
       }
 

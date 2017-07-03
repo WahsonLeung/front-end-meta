@@ -28,14 +28,18 @@
                         <td>
 
                             <template is="dom-if" if="[[ !isEqual(fieldMeta.datatype, 'action') ]]">
-                                <h2-widget field-meta="[[fieldMeta]]" model="[[model]]"></h2-widget>
+                                <h2-widget field-meta="[[fieldMeta]]"
+                                           context="[[ model ]]"
+                                           value="[[ getValueByKey(model,fieldMeta.name) ]]"
+                                           on-value-change="onValueChange">
+                                </h2-widget>
                             </template>
 
                             <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
                                 <template is="dom-repeat" items="[[ model.actions ]]" as="actionId">
                                     <span>
                                         <h2-action action-meta="[[ getValueByKey(metadata.actions, actionId ) ]]"
-                                                   model="[[model]]">
+                                                   model="[[ model ]]">
                                         </h2-action>
                                     </span>
                                 </template>
@@ -77,13 +81,12 @@
             }
           }
         }
-      }
 
-      //      render(){
-      //        <table width={this.width}>
-      //        {if(true) <div>..</div>}
-      //        </table>
-      //      }
+        onValueChange({model, detail}) {
+          console.log(model);
+          console.log(detail);
+        }
+      }
 
       customElements.define(H2Grid.is, H2Grid);
     </script>

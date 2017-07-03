@@ -12,7 +12,8 @@
                         <h2-widget
                                 id="{{ getEditorId(fieldMeta.name) }}"
                                 editable
-                                model="{{ model }}"
+                                context="{{ model }}"
+                                value="[[ getValueByKey(model,fieldMeta.name) ]]"
                                 field-meta="{{ fieldMeta }}">
                         </h2-widget>
                     </template>
@@ -85,6 +86,7 @@
 
           return this.formMeta.fields
               .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
+              .filter(fieldMeta => !!fieldMeta.validate)
               .every(fieldMeta => {
                 const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
                 // if the editor does not have a validator,return true
@@ -98,7 +100,7 @@
               .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
               .forEach(fieldMeta => {
                 const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
-                requestBody[fieldMeta.name] = editor.getValue();
+                requestBody[fieldMeta.name] = editor.value;
               });
 
           return requestBody;

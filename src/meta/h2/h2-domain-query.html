@@ -33,7 +33,8 @@
                         <h2-widget
                                 id="{{ getEditorId(fieldMeta.name) }}"
                                 editable
-                                model="{{ model }}"
+                                context="{{ model }}"
+                                value="[[ getValueByKey(model,fieldMeta.name) ]]"
                                 field-meta="{{ fieldMeta }}">
                         </h2-widget>
                     </div>
