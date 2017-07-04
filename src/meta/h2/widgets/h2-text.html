@@ -6,7 +6,7 @@
         <paper-input
                 id="input"
                 always-float-label
-                value="{{ getValueByKey(model,fieldMeta.name) }}"
+                value="{{ value }}"
                 label={{fieldMeta.label}}
                 auto-validate
                 required={{fieldMeta.required}}
@@ -17,8 +17,7 @@
                 maxlength="{{fieldMeta.maxLength}}"
                 pattern="{{fieldMeta.regexp}}"
                 readonly="{{!fieldMeta.editable}}"
-                type="{{fieldMeta.datatype}}"
-                style="width:180px;float:left;margin: 12px;">
+                type="{{fieldMeta.datatype}}">
         </paper-input>
     </template>
     <script>
@@ -29,14 +28,6 @@
 
             validate() {
               return this.$.input.validate();
-            }
-
-            reset() {
-              this.$.input.value = "";
-            }
-
-            getValue() {
-              return this.$.input.value;
             }
 
         }

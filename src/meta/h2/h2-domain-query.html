@@ -6,9 +6,11 @@
             dom-repeat {
                 display: none;
             }
+
             .btns {
-                display: grid;
-                grid-row: auto;
+                display: flex;
+                justify-content:flex-end;
+                padding: 8px 8px 8px 10px;
             }
 
             .item {
@@ -121,7 +123,7 @@
 
         reset() {
           this.formMeta.fields.forEach(field => {
-            this.root.querySelector(`#${this.getEditorId(field.name)}`).reset();
+            this.root.querySelector(`#${this.getEditorId(field.name)}`).value = undefined;
           });
 
           this.extQueryCondition = {};

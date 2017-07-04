@@ -4,10 +4,40 @@
 <link rel="import" href="h2-widget.html">
 <dom-module id="h2-form">
     <template>
+        <style>
+            dom-repeat {
+                display: none;
+            }
+
+            dom-if {
+                display: none;
+            }
+
+            .btns {
+                position: relative;
+                padding: 8px 8px 8px 24px;
+                margin: 0;
+                display: flex;
+                justify-content:flex-end;
+            }
+
+            .items {
+                display: grid;
+                grid-template-columns: 30% 30% auto;
+                grid-column-gap: 10px;
+            }
+
+            .container {
+                display: grid;
+                grid-template-rows: auto 10%;
+            }
+        </style>
         <h2>[[formMeta.title]]</h2>
-        <div>
-            <template is="dom-repeat" items="[[ formMeta.fields ]]" as="fieldMeta">
-                <div>
+
+        <div class="container">
+            <div class="items">
+                <template is="dom-repeat" items="[[ formMeta.fields ]]" as="fieldMeta">
+
                     <template is="dom-if" if="{{ !isEqual(fieldMeta.datatype, 'action') }}">
                         <h2-widget
                                 id="{{ getEditorId(fieldMeta.name) }}"
@@ -20,13 +50,14 @@
                     <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
                         <h2-action action-meta="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
                     </template>
-                </div>
-
-            </template>
+                </template>
+            </div>
         </div>
 
-        <div class="buttons">
-            <paper-button raised on-click="submit">保存</paper-button>
+        <div class="btns">
+            <template is="dom-if" if="{{ !formMeta.isSubmitForbidden }}">
+                <paper-button raised on-click="submit">保存</paper-button>
+            </template>
             <paper-button raised dialog-dismiss>关闭</paper-button>
         </div>
     </template>

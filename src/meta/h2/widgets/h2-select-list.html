@@ -7,15 +7,15 @@
     <template>
         <paper-dropdown-menu id="dropdownMenu"
                              always-float-label
+                             dynamic-align
                              required="{{field.required}}"
                              error-message="{{field.prompt}}"
-                             label="{{fieldMeta.label}}"
-                             style="float:left;margin: 12px;">
-            <paper-listbox slot="dropdown-content" selected="0">
+                             label="{{fieldMeta.label}}">
+            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{ value }}">
                 <template is="dom-repeat"
-                          items="{{ getValueByKey(model, fieldMeta.itemsField, '[]') }}"
+                          items="{{ getValueByKey(context, fieldMeta.itemsField, '[]') }}"
                           as="selectItem">
-                    <paper-item>
+                    <paper-item value="[[ getValueByKey(selectItem, fieldMeta.valueField) ]]">
                         [[ getValueByKey(selectItem, fieldMeta.displayField) ]]
                     </paper-item>
                 </template>
@@ -32,20 +32,6 @@
           return this.$.dropdownMenu.validate();
         }
 
-        reset() {
-          this.$.dropdownMenu.querySelector('paper-listbox').selected = -1;
-        }
-
-        getValue() {
-          const value = this.$.dropdownMenu.value;
-          const items = this.model[this.fieldMeta.itemsField] || [];
-          const displayField = this.fieldMeta.displayField;
-          for (let item of items) {
-            if (item[displayField] === value) {
-              return item[this.fieldMeta.valueField];
-            }
-          }
-        }
       }
       customElements.define(H2SelectList.is, H2SelectList);
     </script>

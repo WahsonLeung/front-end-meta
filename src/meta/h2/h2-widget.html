@@ -61,14 +61,15 @@
             this.$.slot.appendChild(eleDom);
           } else {
             const eleDom = document.createElement(this.readonlyTemplate);
-            eleDom.element = this.render(this.model, this.fieldMeta);
+            eleDom.element = this.render(this.context, this.fieldMeta);
             this.$.slot.appendChild(eleDom);
           }
 
         }
 
         __valueChange() {
-          this.$.slot.firstChild.value = this.value;
+          const target = this.$.slot.firstChild;
+          target && (target.value = this.value);
         }
 
         static get defaultElements() {

@@ -8,8 +8,11 @@
 
         static get properties() {
           return {
-            model: {
-              type: Object
+            context: {
+              type:Object
+            },
+            value: {
+              type: Object,
             },
             fieldMeta: {
               type: Object
@@ -17,11 +20,23 @@
           };
         }
 
-        getValue() {}
+        static get observers() {
+          return [
+              '__valueChange(value)'
+          ];
+        }
 
-        validate() {}
+        __valueChange() {
+          this.dispatchEvent(new CustomEvent('value-change', {
+            bubbles: true,
+            composed: true,
+            detail: this.value
+          }));
+        }
 
-        reset() {}
+        validate() {return true;}
+
+        clear() {}
       }
       customElements.define(H2WidgetBase.is, H2WidgetBase);
     </script>

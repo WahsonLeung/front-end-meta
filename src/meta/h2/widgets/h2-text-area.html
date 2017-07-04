@@ -5,7 +5,7 @@
     <template>
         <paper-textarea
                 id="textArea"
-                value="{{ getValueByKey(model, fieldMeta.name) }}"
+                value="{{ value }}"
                 always-float-label
                 label={{fieldMeta.label}}
                 auto-validate
@@ -17,8 +17,8 @@
                 maxlength="{{fieldMeta.maxLength}}"
                 pattern="{{fieldMeta.regexp}}"
                 readonly="{{!fieldMeta.editable}}"
-                type="{{fieldMeta.datatype}}"
-                style="width:180px;float:left;margin: 12px;"></paper-textarea>
+                type="{{fieldMeta.datatype}}">
+        </paper-textarea>
     </template>
     <script>
       class H2TextArea extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
@@ -30,13 +30,6 @@
           return this.$.textArea.validate();
         }
 
-        reset() {
-          this.$.textArea.value = "";
-        }
-
-        getValue() {
-          return this.$.textArea.value;
-        }
       }
       customElements.define(H2TextArea.is, H2TextArea);
     </script>
