@@ -8,9 +8,6 @@
                 display: none;
             }
 
-            :host {
-                @apply --h2-grid-theme;
-            }
             :host thead {
                 background: #595959;
                 color: #fff;
@@ -32,81 +29,7 @@
 
         </style>
         <slot name="filter"></slot>
-        <table width="100%">
-            <thead>
-            <tr>
-                <template is="dom-repeat" items="[[ metadata.grids ]]">
-                    <th>[[item.label]]</th>
-                </template>
-            </tr>
-            </thead>
-            <tbody>
-            <template is="dom-repeat" items="[[models]]" as="model">
-                <tr>
-                    <template is="dom-repeat" items="[[metadata.grids]]" as="fieldMeta">
-                        <td>
-
-                            <template is="dom-if" if="[[ !isEqual(fieldMeta.datatype, 'action') ]]">
-                                <h2-widget field-meta="[[fieldMeta]]"
-                                           context="[[ model ]]"
-                                           value="[[ getValueByKey(model,fieldMeta.name) ]]"
-                                           on-value-change="onValueChange">
-                                </h2-widget>
-                            </template>
-
-                            <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
-                                <template is="dom-repeat" items="[[ model.actions ]]" as="actionId">
-                                    <span>
-                                        <h2-action action-meta="[[ getValueByKey(metadata.actions, actionId ) ]]"
-                                                   model="[[ model ]]">
-                                        </h2-action>
-                                    </span>
-                                </template>
-                            </template>
-                        </td>
-                    </template>
-                </tr>
-            </template>
-            </tbody>
-        </table>
+        <div id="table"></div>
     </template>
-    <script>
-      class H2Grid extends Polymer.mixinBehaviors([BaseBehavior], Polymer.Element) {
-        constructor() {
-          super();
-        }
-
-        static get is() {
-          return "h2-grid";
-        }
-
-        getMeta(actions, actionId) {
-          return this.getValueByKey(actions, actionId).formMeta;
-        }
-
-        static get properties() {
-          return {
-            editable: {
-              type: Boolean,
-              value: false
-            },
-            models: {
-              type: Array,
-              observable: true
-            },
-            metadata: {
-              type: Object,
-              observable: true
-            }
-          }
-        }
-
-        onValueChange({model, detail}) {
-          console.log(model);
-          console.log(detail);
-        }
-      }
-
-      customElements.define(H2Grid.is, H2Grid);
-    </script>
+    <script src="./js/h2-grid.js"></script>
 </dom-module>
