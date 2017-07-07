@@ -4,13 +4,10 @@
 <dom-module id="h2-grid">
     <template>
         <style>
-            dom-repeat {
+            dom-repeat,dom-if {
                 display: none;
             }
 
-            :host {
-                @apply --h2-grid-theme;
-            }
             :host thead {
                 background: #595959;
                 color: #fff;
@@ -36,7 +33,7 @@
             <thead>
             <tr>
                 <template is="dom-repeat" items="[[ metadata.grids ]]">
-                    <th>[[item.label]]</th>
+                    <td>[[item.label]]</td>
                 </template>
             </tr>
             </thead>
@@ -48,6 +45,7 @@
 
                             <template is="dom-if" if="[[ !isEqual(fieldMeta.datatype, 'action') ]]">
                                 <h2-widget field-meta="[[fieldMeta]]"
+                                           editable="[[fieldMeta.editable]]"
                                            context="[[ model ]]"
                                            value="[[ getValueByKey(model,fieldMeta.name) ]]"
                                            on-value-change="onValueChange">
@@ -99,11 +97,6 @@
               observable: true
             }
           }
-        }
-
-        onValueChange({model, detail}) {
-          console.log(model);
-          console.log(detail);
         }
       }
 

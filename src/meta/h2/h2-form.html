@@ -18,40 +18,39 @@
                 padding: 8px 8px 8px 24px;
                 margin: 0;
                 display: flex;
-                justify-content:flex-end;
+                justify-content: flex-end;
             }
 
-            .items {
+            .container {
                 display: grid;
                 grid-template-columns: 30% 30% auto;
                 grid-column-gap: 10px;
             }
 
-            .container {
-                display: grid;
-                grid-template-rows: auto 10%;
+            .item:only-of-type {
+                grid-column: 1 / end;
             }
+
         </style>
         <h2>[[formMeta.title]]</h2>
 
         <div class="container">
-            <div class="items">
-                <template is="dom-repeat" items="[[ formMeta.fields ]]" as="fieldMeta">
+            <template is="dom-repeat" items="[[ formMeta.fields ]]" as="fieldMeta">
 
-                    <template is="dom-if" if="{{ !isEqual(fieldMeta.datatype, 'action') }}">
-                        <h2-widget
-                                id="{{ getEditorId(fieldMeta.name) }}"
-                                editable
-                                context="{{ model }}"
-                                value="[[ getValueByKey(model,fieldMeta.name) ]]"
-                                field-meta="{{ fieldMeta }}">
-                        </h2-widget>
-                    </template>
-                    <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
-                        <h2-action action-meta="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
-                    </template>
+                <template is="dom-if" if="{{ !isEqual(fieldMeta.datatype, 'action') }}">
+                    <h2-widget
+                            class="item"
+                            id="{{ getEditorId(fieldMeta.name) }}"
+                            editable
+                            context="{{ model }}"
+                            value="[[ getValueByKey(model,fieldMeta.name) ]]"
+                            field-meta="{{ fieldMeta }}">
+                    </h2-widget>
                 </template>
-            </div>
+                <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
+                    <h2-action action-meta="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
+                </template>
+            </template>
         </div>
 
         <div class="btns">
@@ -94,7 +93,7 @@
           if (!this._validate()) return;
 
           const _submit = () => {
-            const param = this._requestBody();
+            const param = Object.assign({}, this.model, this._requestBody());
             this.update(this.formMeta.formUrl, param, (data) => {
               this.dispatchEvent(new CustomEvent("form-submitted", {
                 bubbles: true, composed: true, detail: data

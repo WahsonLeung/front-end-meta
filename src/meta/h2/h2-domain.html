@@ -7,7 +7,7 @@
     <template>
         <div>
             <div class="domain-query">
-                <h2-domain-query query-after-reset form-meta="{{ metadata.query }}" result="{{ result }}"
+                <h2-domain-query id="query" query-after-reset form-meta="{{ metadata.query }}" result="{{ result }}"
                                  paging="[[ paging ]]" model="{{model}}">
                     <slot name="ext-condition" slot="ext-condition"></slot>
                 </h2-domain-query>
@@ -56,6 +56,10 @@
               type: Object
             }
           }
+        }
+
+        refresh() {
+          this.$.query.submit();
         }
       }
       customElements.define(H2Domain.is, H2Domain);

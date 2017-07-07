@@ -46,10 +46,9 @@
           return new Promise((resolve, reject) => {
             // fetch model with modelSrc
             this.query(this.actionMeta.modelSrc, (data) => {
-              console.log(data);
               this.model = data;
               resolve();
-            });
+            }, (err) => reject(err));
           });
         }
 
@@ -59,7 +58,7 @@
           } else if (this.actionMeta.operType == 2) {
             this.fetchModel()
                 .then(() => this.$.dialog.open())
-                .catch(err => console.error(err));
+                .catch(err => window.alert(JSON.stringify(err)));
           }
         }
 
@@ -69,7 +68,6 @@
         }
 
         _formSubmittedHandler(e) {
-          console.log(e);
           this.$.dialog.close();
         }
 

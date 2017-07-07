@@ -12,7 +12,8 @@
 
       const req = new Request(window.location.origin + url, {
         method: "POST",
-        body: JSON.stringify(param)
+        body: JSON.stringify(param),
+        credentials: 'same-origin'
       });
 
       fetch(req).then(response => {
