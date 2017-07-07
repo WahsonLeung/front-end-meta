@@ -47,8 +47,7 @@
                                 <h2-widget field-meta="[[fieldMeta]]"
                                            editable="[[fieldMeta.editable]]"
                                            context="[[ model ]]"
-                                           value="[[ getValueByKey(model,fieldMeta.name) ]]"
-                                           on-value-change="onValueChange">
+                                           value="[[ getValueByKey(model,fieldMeta.name) ]]">
                                 </h2-widget>
                             </template>
 
@@ -78,10 +77,6 @@
           return "h2-grid";
         }
 
-        getMeta(actions, actionId) {
-          return this.getValueByKey(actions, actionId).formMeta;
-        }
-
         static get properties() {
           return {
             editable: {
@@ -90,11 +85,9 @@
             },
             models: {
               type: Array,
-              observable: true
             },
             metadata: {
               type: Object,
-              observable: true
             }
           }
         }
