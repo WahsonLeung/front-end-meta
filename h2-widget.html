@@ -1,0 +1,90 @@
+<link rel="import" href="./widgets/h2-widget-base.html">
+<link rel="import" href="./behaviors/base-behavior.html">
+
+<dom-module id="h2-widget">
+    <template>
+        <div id="slot"></div>
+    </template>
+    <script>
+      class H2Widget extends Polymer.mixinBehaviors([BaseBehavior],H2WidgetBase) {
+        static get is() {
+          return "h2-widget";
+        }
+
+        static get properties() {
+          return {
+            editable: {
+              type: Boolean,
+              value: false
+            },
+            readonlyTemplate: {
+              type: String,
+              value: 'h2-crust'
+            },
+            value: {
+              type: Object
+            }
+          };
+        }
+
+        static get observers() {
+          return [
+            '__fieldMetaChange(fieldMeta)',
+            '__valueChange(value)'
+          ];
+        }
+
+        validate() {
+          const ele = this.$.slot.firstChild;
+          return ele && ele.validate && ele.validate();
+        }
+
+        reset() {
+          const ele = this.$.slot.firstChild;
+          return ele && ele.reset && ele.reset();
+        }
+
+        __fieldMetaChange() {
+          if(this.editable) {
+            const tagName = this.fieldMeta.element || H2Widget.defaultElements[this.fieldMeta.datatype];
+            const eleDom = document.createElement(tagName);
+            eleDom.addEventListener("value-change", (e) => {
+              this.value = eleDom.value;
+              this.dispatchEvent(new CustomEvent('value-change', {
+                bubbles: true,
+                composed: true,
+                detail: eleDom.value
+              }));
+            });
+            eleDom.context = this.context;
+            eleDom.fieldMeta = this.fieldMeta;
+            this.$.slot.appendChild(eleDom);
+          } else {
+            const eleDom = document.createElement(this.readonlyTemplate);
+            eleDom.element = this.render(this.context, this.fieldMeta);
+            this.$.slot.appendChild(eleDom);
+          }
+
+        }
+
+        __valueChange() {
+          const target = this.$.slot.firstChild;
+          target && (target.value = this.value);
+        }
+
+        static get defaultElements() {
+          return {
+            'text': 'h2-text',
+            'textarea': 'h2-text-area',
+            'number': 'h2-number',
+            'date': 'h2-date',
+            'select-list': 'h2-select-list',
+            'select-tree': 'h2-select-tree',
+            'radio-group': 'h2-radio-group'
+          };
+        }
+      }
+
+      customElements.define(H2Widget.is, H2Widget);
+    </script>
+</dom-module>
