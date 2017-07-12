@@ -1,17 +1,17 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="widgets/widget-resources.html">
-<link rel="import" href="h2-domain-query.html">
+<link rel="import" href="h2-crud-query.html">
 <link rel="import" href="h2-grid.html">
 <link rel="import" href="h2-pagination.html">
 
-<dom-module id="h2-domain">
+<dom-module id="h2-crud">
     <template>
         <div>
             <div class="domain-query">
-                <h2-domain-query id="query" query-after-reset form-meta="{{ metadata.query }}" result="{{ result }}"
+                <h2-crud-query id="query" query-after-reset form-meta="{{ metadata.query }}" result="{{ result }}"
                                  paging="[[ paging ]]" model="{{model}}">
                     <slot name="ext-condition" slot="ext-condition"></slot>
-                </h2-domain-query>
+                </h2-crud-query>
             </div>
 
             <div class="domain-actions">
@@ -35,13 +35,13 @@
 
     </template>
     <script>
-      class H2Domain extends Polymer.mixinBehaviors([BaseBehavior, CrudBehavior], Polymer.Element) {
+      class H2Crud extends Polymer.mixinBehaviors([BaseBehavior, CrudBehavior], Polymer.Element) {
         constructor() {
           super();
         }
 
         static get is() {
-          return "h2-domain";
+          return "h2-crud";
         }
 
         static get properties() {
@@ -63,6 +63,6 @@
           this.$.query.submit();
         }
       }
-      customElements.define(H2Domain.is, H2Domain);
+      customElements.define(H2Crud.is, H2Crud);
     </script>
 </dom-module>

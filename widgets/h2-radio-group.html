@@ -5,36 +5,50 @@
 <link rel="import" href="h2-widget-base.html">
 <dom-module id="h2-radio-group">
     <template>
-        <label>[[fieldMeta.label]]:</label>
+        <style>
+            paper-radio-group {
+                display: flex;
+                justify-content: center
+            }
+        </style>
+        <div aria-hidden="true" hidden="[[noLabelFloat]]">[[fieldMeta.label]]</div>
         <paper-radio-group id="radioGroup"
                            aria-labelledby="radioGroup"
                            selected="{{ value }}"
                            attr-for-selected="name">
             <template is="dom-repeat"
-                      items="{{ getValueByKey(context, fieldMeta.itemsField, '[]') }}"
+                      items="[[ fieldMeta.candidates ]]"
                       as="radioItem">
-                <paper-radio-button name="[[ getValueByKey(radioItem,fieldMeta.valueField) ]]">
-                    [[ getValueByKey(radioItem, fieldMeta.displayField) ]]
+                <paper-radio-button name="[[ getValueByKey(radioItem, fieldMeta.candidateValue) ]]">
+                    [[ getValueByKey(radioItem, fieldMeta.candidateLabel) ]]
                 </paper-radio-button>
             </template>
         </paper-radio-group>
     </template>
     <script>
-        class H2RadioGroup extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
-          static get is() {
-            return "h2-radio-group";
-          }
-
-          validate() {
-            //return this.$.radioGroup.validate();
-              return true;
-          }
-
-          reset() {
-            this.value = undefined;
-          }
-
+      class H2RadioGroup extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
+        static get is() {
+          return "h2-radio-group";
         }
-        customElements.define(H2RadioGroup.is, H2RadioGroup);
+
+        static get properties() {
+          return {
+            noLabelFloat: {
+              type: Boolean,
+              value: false
+            }
+          };
+        }
+
+        validate() {
+          return this.$.radioGroup.validate();
+        }
+
+        reset() {
+          this.value = undefined;
+        }
+
+      }
+      customElements.define(H2RadioGroup.is, H2RadioGroup);
     </script>
 </dom-module>

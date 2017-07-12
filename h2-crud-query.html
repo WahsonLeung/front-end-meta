@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="h2-form.html">
 <link rel="import" href="h2-widget.html">
-<dom-module id="h2-domain-query">
+<dom-module id="h2-crud-query">
     <template>
         <style>
             dom-repeat {
@@ -53,13 +53,13 @@
         <slot id="ext-condition" name="ext-condition"></slot>
     </template>
     <script>
-      class H2DomainQuery extends H2Form {
+      class H2CrudQuery extends H2Form {
         constructor() {
           super();
         }
 
         static get is() {
-          return "h2-domain-query";
+          return "h2-crud-query";
         }
 
         static get properties() {
@@ -133,6 +133,6 @@
           }
         }
       }
-      customElements.define(H2DomainQuery.is, H2DomainQuery);
+      customElements.define(H2CrudQuery.is, H2CrudQuery);
     </script>
 </dom-module>

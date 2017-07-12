@@ -9,15 +9,15 @@
         <paper-dropdown-menu id="dropdownMenu"
                              always-float-label
                              dynamic-align
-                             required="{{field.required}}"
-                             error-message="{{field.prompt}}"
-                             label="{{fieldMeta.label}}">
-            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{ value }}">
+                             required="[[ field.required ]]"
+                             error-message="[[ field.prompt ]]"
+                             label="[[ fieldMeta.label ]]">
+            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="[[ value ]]">
                 <template is="dom-repeat"
-                          items="{{ getValueByKey(context, fieldMeta.itemsField, '[]') }}"
+                          items="[[ fieldMeta.candidates ]]"
                           as="selectItem">
-                    <paper-item value="[[ getValueByKey(selectItem, fieldMeta.valueField) ]]">
-                        [[ getValueByKey(selectItem, fieldMeta.displayField) ]]
+                    <paper-item value="[[ getValueByKey(selectItem, fieldMeta.candidateValue) ]]">
+                        [[ getValueByKey(selectItem, fieldMeta.candidateLabel) ]]
                     </paper-item>
                 </template>
             </paper-listbox>

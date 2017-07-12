@@ -8,17 +8,16 @@
                 id="textArea"
                 value="{{ value }}"
                 always-float-label
-                label={{fieldMeta.label}}
+                label="[[ fieldMeta.label ]]"
                 auto-validate
-                required={{fieldMeta.required}}
-                error-message="{{fieldMeta.prompt}}"
-                min="{{fieldMeta.min}}"
-                minlength="{{fieldMeta.minLength}}"
-                max="{{fieldMeta.max}}"
-                maxlength="{{fieldMeta.maxLength}}"
-                pattern="{{fieldMeta.regexp}}"
-                readonly="{{!fieldMeta.editable}}"
-                type="{{fieldMeta.datatype}}">
+                required="[[ fieldMeta.required ]]"
+                error-message="[[ fieldMeta.prompt ]]"
+                min="[[ fieldMeta.min ]]"
+                minlength="[[ fieldMeta.minLength ]]"
+                max="[[ fieldMeta.max ]]"
+                maxlength="[[ fieldMeta.maxLength ]]"
+                pattern="[[ fieldMeta.regexp ]]"
+                readonly="[[ !fieldMeta.editable ]]">
         </paper-textarea>
     </template>
     <script>
