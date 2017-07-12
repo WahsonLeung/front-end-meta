@@ -1,4 +1,3 @@
-<link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="./behaviors/crud-behavior.html">
 <link rel="import" href="./behaviors/base-behavior.html">
@@ -33,10 +32,10 @@
             }
 
         </style>
-        <h2>[[formMeta.title]]</h2>
+        <h2>[[metadata.title]]</h2>
 
         <div class="container">
-            <template is="dom-repeat" items="[[ formMeta.fields ]]" as="fieldMeta">
+            <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta">
 
                 <template is="dom-if" if="{{ !isEqual(fieldMeta.datatype, 'action') }}">
                     <h2-widget
@@ -45,17 +44,17 @@
                             editable
                             context="{{ model }}"
                             value="[[ getValueByKey(model,fieldMeta.name) ]]"
-                            field-meta="{{ fieldMeta }}">
+                            metadata="{{ fieldMeta }}">
                     </h2-widget>
                 </template>
                 <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
-                    <h2-action action-meta="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
+                    <h2-action metadata="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
                 </template>
             </template>
         </div>
 
         <div class="btns">
-            <template is="dom-if" if="{{ !formMeta.isSubmitForbidden }}">
+            <template is="dom-if" if="{{ !metadata.isSubmitForbidden }}">
                 <paper-button raised on-click="submit">保存</paper-button>
             </template>
             <paper-button raised dialog-dismiss>关闭</paper-button>
@@ -84,7 +83,7 @@
             model: {
               type: Object
             },
-            formMeta: {
+            metadata: {
               type: Object
             }
           }
@@ -95,15 +94,15 @@
 
           const _submit = () => {
             const param = Object.assign({}, this.model, this._requestBody());
-            this.update(this.formMeta.formUrl, param, (data) => {
+            this.update(this.metadata.formUrl, param, (data) => {
               this.dispatchEvent(new CustomEvent("form-submitted", {
                 bubbles: true, composed: true, detail: data
               }));
             });
           };
 
-          if (this.formMeta.confirm) {
-            if (window.confirm(this.formMeta.confirm)) {
+          if (this.metadata.confirm) {
+            if (window.confirm(this.metadata.confirm)) {
               _submit();
             }
           } else {
@@ -113,9 +112,9 @@
 
         _validate() {
           // return true if there's no field
-          if (!this.formMeta.fields || this.formMeta.fields.length == 0) return true;
+          if (!this.metadata.fields || this.metadata.fields.length == 0) return true;
 
-          return this.formMeta.fields
+          return this.metadata.fields
               .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
               .filter(fieldMeta => !!fieldMeta.validate)
               .every(fieldMeta => {
@@ -127,7 +126,7 @@
 
         _requestBody() {
           const requestBody = {};
-          this.formMeta.fields
+          this.metadata.fields
               .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
               .forEach(fieldMeta => {
                 const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);

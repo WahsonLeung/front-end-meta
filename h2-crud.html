@@ -8,7 +8,7 @@
     <template>
         <div>
             <div class="domain-query">
-                <h2-crud-query id="query" query-after-reset form-meta="{{ metadata.query }}" result="{{ result }}"
+                <h2-crud-query id="query" query-after-reset metadata="{{ metadata.query }}" result="{{ result }}"
                                  paging="[[ paging ]]" model="{{model}}">
                     <slot name="ext-condition" slot="ext-condition"></slot>
                 </h2-crud-query>
@@ -17,7 +17,7 @@
             <div class="domain-actions">
                 <template is="dom-repeat" items="[[ metadata.actions ]]" as="action">
                     <span>
-                        <h2-action action-meta="[[ action ]]"></h2-action>
+                        <h2-action metadata="[[ action ]]"></h2-action>
                     </span>
                 </template>
             </div>

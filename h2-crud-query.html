@@ -31,14 +31,14 @@
         </style>
         <div class="container">
             <div class="items">
-                <template is="dom-repeat" items="{{ formMeta.fields }}" as="fieldMeta">
+                <template is="dom-repeat" items="{{ metadata.fields }}" as="fieldMeta">
                     <div class="item">
                         <h2-widget
                                 id="{{ getEditorId(fieldMeta.name) }}"
                                 editable
                                 context="{{ model }}"
                                 value="[[ getValueByKey(model,fieldMeta.name) ]]"
-                                field-meta="{{ fieldMeta }}">
+                                metadata="{{ fieldMeta }}">
                         </h2-widget>
                     </div>
                 </template>
@@ -68,7 +68,7 @@
               type: Array,
               notify: true
             },
-            formMeta: {
+            metadata: {
               type: Object
             },
             paging: {
@@ -94,7 +94,7 @@
         }
 
         pagingChange() {
-          if (this.formMeta.paging && this.paging) {
+          if (this.metadata.paging && this.paging) {
             this.async(this.submit.bind(this), 0);
           }
         }
@@ -111,19 +111,19 @@
           const param = this._requestBody();
           Object.assign(param, this.extQueryCondition);
 
-          if (this.formMeta.paging && this.paging) {
+          if (this.metadata.paging && this.paging) {
             const {start, limit} = this.paging;
             param.start = start;
             param.limit = limit;
           }
 
-          this.update(this.formMeta.formUrl, param, (data) => {
+          this.update(this.metadata.formUrl, param, (data) => {
             this.result = data;
           });
         }
 
         reset() {
-          this.formMeta.fields.forEach(field => {
+          this.metadata.fields.forEach(field => {
             this.root.querySelector(`#${this.getEditorId(field.name)}`).value = undefined;
           });
 

@@ -11,16 +11,16 @@
                 justify-content: center
             }
         </style>
-        <div aria-hidden="true" hidden="[[noLabelFloat]]">[[fieldMeta.label]]</div>
+        <div aria-hidden="true" hidden="[[noLabelFloat]]">[[metadata.label]]</div>
         <paper-radio-group id="radioGroup"
                            aria-labelledby="radioGroup"
                            selected="{{ value }}"
                            attr-for-selected="name">
             <template is="dom-repeat"
-                      items="[[ fieldMeta.candidates ]]"
+                      items="[[ metadata.candidates ]]"
                       as="radioItem">
-                <paper-radio-button name="[[ getValueByKey(radioItem, fieldMeta.candidateValue) ]]">
-                    [[ getValueByKey(radioItem, fieldMeta.candidateLabel) ]]
+                <paper-radio-button name="[[ getValueByKey(radioItem, metadata.candidateValue) ]]">
+                    [[ getValueByKey(radioItem, metadata.candidateLabel) ]]
                 </paper-radio-button>
             </template>
         </paper-radio-group>

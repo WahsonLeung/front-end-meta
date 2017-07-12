@@ -20,14 +20,14 @@
                 background: #fff;
             }
         </style>
-        <paper-button raised on-click="submitOrOpenDialog">[[ actionMeta.actionName ]]</paper-button>
+        <paper-button raised on-click="submitOrOpenDialog">[[ metadata.actionName ]]</paper-button>
         <paper-dialog id="dialog" style="width:80%;"
                       entry-animation="scale-up-animation"
                       exit-animation="fade-out-animation">
             <paper-dialog-scrollable>
                 <slot id="formSlot" name="form">
                     <!--default form instance-->
-                    <h2-form id="form" model="[[ model ]]" form-meta="[[ actionMeta.formMeta ]]"></h2-form>
+                    <h2-form id="form" model="[[ model ]]" metadata="[[ metadata.formMeta ]]"></h2-form>
                 </slot>
             </paper-dialog-scrollable>
         </paper-dialog>
@@ -44,7 +44,7 @@
 
         static get properties() {
           return {
-            actionMeta: {
+            metadata: {
               type: Object
             },
             model: {
@@ -54,11 +54,11 @@
         }
 
         fetchModel() {
-          if (!this.actionMeta.modelSrc) return Promise.resolve();
+          if (!this.metadata.modelSrc) return Promise.resolve();
 
           return new Promise((resolve, reject) => {
             // fetch model with modelSrc
-            this.query(this.actionMeta.modelSrc, (data) => {
+            this.query(this.metadata.modelSrc, (data) => {
               this.model = data;
               resolve();
             }, (err) => reject(err));
@@ -66,9 +66,9 @@
         }
 
         submitOrOpenDialog() {
-          if (this.actionMeta.operType == 1) {
+          if (this.metadata.operType == 1) {
             this.$.form.submit();
-          } else if (this.actionMeta.operType == 2) {
+          } else if (this.metadata.operType == 2) {
             this.fetchModel()
                 .then(() => this.$.dialog.open())
                 .catch(err => window.alert(JSON.stringify(err)));

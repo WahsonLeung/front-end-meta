@@ -61,7 +61,7 @@
                         <td>
 
                             <template is="dom-if" if="[[ !isEqual(fieldMeta.datatype, 'action') ]]">
-                                <h2-widget field-meta="[[fieldMeta]]"
+                                <h2-widget metadata="[[fieldMeta]]"
                                            editable="[[fieldMeta.editable]]"
                                            context="[[ model ]]"
                                            value="[[ getValueByKey(model,fieldMeta.name) ]]">
@@ -71,7 +71,7 @@
                             <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
                                 <template is="dom-repeat" items="{{noGroupActions(model.actions)}}" as="actionMeta">
                                     <h2-action class="action"
-                                               action-meta="[[ actionMeta ]]"
+                                               metadata="[[ actionMeta ]]"
                                                model="[[ model ]]">
                                     </h2-action>
                                 </template>
@@ -80,7 +80,7 @@
                                             class="action-group"
                                             name="[[ item.group ]]">
                                         <template is="dom-repeat" items="[[ item.actions ]]" as="actionMeta">
-                                            <h2-action action-meta="[[ actionMeta ]]"
+                                            <h2-action metadata="[[ actionMeta ]]"
                                                        model="[[ model ]]">
                                             </h2-action>
                                         </template>

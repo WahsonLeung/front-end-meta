@@ -30,7 +30,7 @@
 
         static get observers() {
           return [
-            '__fieldMetaChange(fieldMeta)',
+            '__metadataChange(metadata)',
             '__valueChange(value)'
           ];
         }
@@ -45,9 +45,9 @@
           return ele && ele.reset && ele.reset();
         }
 
-        __fieldMetaChange() {
+        __metadataChange() {
           if(this.editable) {
-            const tagName = this.fieldMeta.element || H2Widget.defaultElements[this.fieldMeta.datatype];
+            const tagName = this.metadata.element || H2Widget.defaultElements[this.metadata.datatype];
             const eleDom = document.createElement(tagName);
             eleDom.addEventListener("value-change", (e) => {
               this.value = eleDom.value;
@@ -58,11 +58,11 @@
               }));
             });
             eleDom.context = this.context;
-            eleDom.fieldMeta = this.fieldMeta;
+            eleDom.metadata = this.metadata;
             this.$.slot.appendChild(eleDom);
           } else {
             const eleDom = document.createElement(this.readonlyTemplate);
-            eleDom.element = this.render(this.context, this.fieldMeta);
+            eleDom.element = this.render(this.context, this.metadata);
             this.$.slot.appendChild(eleDom);
           }
 
