@@ -7,7 +7,7 @@
             /* Need to specify the same specificity as the styles imported from paper-material. */
             :host {
                 position: relative;
-                font:inherit;
+                font: inherit;
                 display: inline-block;
             }
 
@@ -33,17 +33,19 @@
             }
 
             .trigger {
-                width:inherit;
+                width: inherit;
                 -moz-border-radius: 4px;
                 -webkit-border-radius: 4px;
                 border-radius: 4px;
                 height: inherit;
             }
+
             .trigger > .btn {
                 margin-left: 0px;
                 width: 76%;
                 height: inherit;
             }
+
             .trigger > .icon {
                 min-width: 10px;
                 padding: 0;
@@ -51,6 +53,7 @@
                 width: 16%;
                 height: inherit;
             }
+
             .icon div iron-icon {
                 width: 100%;
                 height: inherit;
@@ -85,8 +88,8 @@
 
         static get properties() {
           return {
-            name:{
-              type:String
+            name: {
+              type: String
             },
             horizontal: {
               type: Boolean,
@@ -116,6 +119,13 @@
 
         static get is() {
           return "h2-action-group";
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+          this.addEventListener('blur', e => {
+            this.close();
+          });
         }
 
         open() {
