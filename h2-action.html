@@ -8,6 +8,18 @@
 <link rel="import" href="h2-form.html">
 <dom-module id="h2-action">
     <template>
+        <style>
+            :host {
+                display: inline-block;
+            }
+
+            paper-button {
+                width:inherit;
+                height: inherit;
+                margin: 0;
+                background: #fff;
+            }
+        </style>
         <paper-button raised on-click="submitOrOpenDialog">[[ actionMeta.actionName ]]</paper-button>
         <paper-dialog id="dialog" style="width:80%;"
                       entry-animation="scale-up-animation"

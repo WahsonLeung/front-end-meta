@@ -1,0 +1,140 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../iron-collapse/iron-collapse.html">
+<link rel="import" href="../../iron-icons/iron-icons.html">
+<dom-module id="h2-action-group">
+    <template strip-whitespace>
+        <style include="paper-material-styles">
+            /* Need to specify the same specificity as the styles imported from paper-material. */
+            :host {
+                position: relative;
+                font:inherit;
+                display: inline-block;
+            }
+
+            iron-collapse {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 1000;
+                float: left;
+                width: inherit;
+                margin: 2px 0 0;
+                list-style: none;
+                font-size: 1em;
+                text-align: center;
+                background-color: #fff;
+                -moz-border-radius: 4px;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+                -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+                -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+                box-shadow: var(--paper-material-elevation-1_-_box-shadow);
+                background-clip: padding-box;
+            }
+
+            .trigger {
+                width:inherit;
+                -moz-border-radius: 4px;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+                height: inherit;
+            }
+            .trigger > .btn {
+                margin-left: 0px;
+                width: 76%;
+                height: inherit;
+            }
+            .trigger > .icon {
+                min-width: 10px;
+                padding: 0;
+                margin-left: -2px;
+                width: 16%;
+                height: inherit;
+            }
+            .icon div iron-icon {
+                width: 100%;
+                height: inherit;
+            }
+
+            paper-button {
+                background: #fff;
+            }
+        </style>
+
+        <div class="trigger" on-click="toggle">
+            <paper-button class="btn" raised>
+                [[ name ]]
+            </paper-button>
+            <paper-button class="icon" raised>
+                <div>
+                    <iron-icon icon="[[ _getIcon(opened) ]]" hidden$="[[noIcons]]"></iron-icon>
+                </div>
+            </paper-button>
+        </div>
+
+        <iron-collapse id="collapse" horizontal="[[horizontal]]" no-animation="[[noAnimation]]" opened="[[opened]]">
+            <slot on-click="close"></slot>
+        </iron-collapse>
+    </template>
+
+    <script>
+      class H2ActionGroup extends Polymer.Element {
+        constructor() {
+          super();
+        }
+
+        static get properties() {
+          return {
+            name:{
+              type:String
+            },
+            horizontal: {
+              type: Boolean,
+              value: false
+            },
+            opened: {
+              type: Boolean,
+              value: false
+            },
+            expandIcon: {
+              type: String,
+              value: 'arrow-drop-up'
+            },
+            /**
+             * The icon when expanded.
+             */
+            collapseIcon: {
+              type: String,
+              value: 'arrow-drop-down'
+            },
+            noIcons: {
+              type: Boolean,
+              value: false
+            },
+          };
+        }
+
+        static get is() {
+          return "h2-action-group";
+        }
+
+        open() {
+          this.opened = true;
+        }
+
+        close() {
+          this.opened = false;
+        }
+
+        toggle() {
+          this.opened = !this.opened;
+        }
+
+        _getIcon(opened) {
+          return opened ? this.expandIcon : this.collapseIcon;
+        }
+      }
+
+      customElements.define(H2ActionGroup.is, H2ActionGroup);
+    </script>
+</dom-module>
