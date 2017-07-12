@@ -1,23 +1,48 @@
 <script>
   CrudBehavior = {
 
-    query(url, param, succCallback,failCallback){
+    query(url, param, succCallback, failCallback){
+      if (param) {
+        url = url + "?";
+      }
+      for (let i in param) {
+        url = url + i + "=" + param[i] + "&"
+      }
+      if (url.substr(url.length - 1, 1) === "&") {
+        url = url.substr(0, url.length - 1);
+      }
       const req = new Request(window.location.origin + url, {
         method: "GET",
-        body: JSON.stringify(param)
-      });
 
-    },
-    update(url, param, succCallback,failCallback) {
-
-      const req = new Request(window.location.origin + url, {
-        method: "POST",
-        body: JSON.stringify(param),
-        credentials: 'same-origin'
       });
 
       fetch(req).then(response => {
-        if(response.ok) {
+        if (response.ok) {
+          response.json().then(data => {
+            succCallback && succCallback(data);
+          });
+        } else {
+          failCallback && failCallback();
+        }
+
+      }).catch(err => {
+        console.error(err);
+      })
+
+    },
+    update(url, param, succCallback, failCallback) {
+
+      const headers = new Headers();
+      headers.append('Access-Control-Allow-Origin', '*');
+      const req = new Request(window.location.origin + url, {
+        headers,
+        method: "POST",
+        credentials: "same-origin",
+        body: JSON.stringify(param),
+      });
+
+      fetch(req).then(response => {
+        if (response.ok) {
           response.json().then(data => {
             succCallback && succCallback(data);
           });
