@@ -6,12 +6,12 @@
      *
      * 例子：
      * 1. 直接传递一个包含url、data内容的对象
-     *  this.get({
+     *  this.query({
      *       url: '/test',
-     *       data: { foo:1, bar:2 },    // 没有请求参数时可不传
-     *       contentType: 'json'        // 可不传，默认
+     *       data: { foo:1, bar:2 }
+     *       contentType: 'json'
      *   },(data) => {
-     *       console.log(JSON.parse(data)); // 注意：data的类型是text，如果data是空值（""）或其他非json格式的数据，JSON.parse(data)就会报错。
+     *       console.log(data);
      *   },(err) => {
      *       console.log(err);
      *   });
@@ -30,9 +30,9 @@
             url = this.__throwUrlNotFoundError(),
             data = {},
             contentType = "json"
-          },
+          } = {},
           succCallback,
-          failCallback){
+          failCallback) {
       if (Request.prototype.isPrototypeOf(arguments[0])) {
         return this.__fetch(contentType, {url, data}, succCallback, failCallback);
       } else {
@@ -52,7 +52,7 @@
     post({
            url = this.__throwUrlNotFoundError(),
            data = {},
-           contentType = "text"
+           contentType = "json"
          } = {},
          succCallback,
          failCallback) {
