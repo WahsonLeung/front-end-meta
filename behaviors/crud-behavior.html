@@ -24,9 +24,9 @@
      * @param failCallback
      */
     query({
-          url = this.__throwUrlNotFoundError(),
-          data = {}
-        },
+            url = this.__throwUrlNotFoundError(),
+            data = {}
+          },
           succCallback,
           failCallback){
       if (Request.prototype.isPrototypeOf(arguments[0])) {
@@ -151,7 +151,7 @@
 
       window.fetch(request).then(response => {
         if (response.ok) {
-          if (response.headers.query('Content-length') > 0) {
+          if (response.headers.get('Content-length') > 0) {
             response[contentType]().then(data => {
               succCallback && succCallback(data);
             });
