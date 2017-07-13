@@ -10,7 +10,7 @@
 
             .btns {
                 display: flex;
-                justify-content:flex-end;
+                justify-content: flex-end;
                 padding: 8px 8px 8px 10px;
             }
 
@@ -117,9 +117,10 @@
             param.limit = limit;
           }
 
-          this.update(this.metadata.formUrl, param, (data) => {
-            this.result = data;
-          });
+          this.query({
+            url: this.metadata.formUrl,
+            data: param
+          }, data => this.result = data);
         }
 
         reset() {

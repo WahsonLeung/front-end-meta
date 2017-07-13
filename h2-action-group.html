@@ -4,10 +4,10 @@
 <dom-module id="h2-action-group">
     <template strip-whitespace>
         <style include="paper-material-styles">
-            /* Need to specify the same specificity as the styles imported from paper-material. */
             :host {
                 position: relative;
                 font: inherit;
+                min-width: 80px;
                 display: inline-block;
             }
 
@@ -61,6 +61,10 @@
 
             paper-button {
                 background: #fff;
+            }
+
+            ::slotted(*) {
+                width: 100%;
             }
         </style>
 

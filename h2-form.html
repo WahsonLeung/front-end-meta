@@ -94,7 +94,10 @@
 
           const _submit = () => {
             const param = Object.assign({}, this.model, this._requestBody());
-            this.update(this.metadata.formUrl, param, (data) => {
+            this.post({
+              url: this.metadata.formUrl,
+              data: param
+            }, (data) => {
               this.dispatchEvent(new CustomEvent("form-submitted", {
                 bubbles: true, composed: true, detail: data
               }));
