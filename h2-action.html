@@ -14,7 +14,7 @@
             }
 
             paper-button {
-                width:inherit;
+                width: inherit;
                 height: inherit;
                 margin: 0;
                 background: #fff;
@@ -33,7 +33,7 @@
         </paper-dialog>
     </template>
     <script>
-      class H2Action extends Polymer.mixinBehaviors([CrudBehavior],Polymer.Element) {
+      class H2Action extends Polymer.mixinBehaviors([CrudBehavior], Polymer.Element) {
         constructor() {
           super();
         }
@@ -58,7 +58,9 @@
 
           return new Promise((resolve, reject) => {
             // fetch model with modelSrc
-            this.query(this.metadata.modelSrc, (data) => {
+            this.get({
+              url: this.metadata.modelSrc
+            }, (data) => {
               this.model = data;
               resolve();
             }, (err) => reject(err));

@@ -1,58 +1,179 @@
 <script>
   CrudBehavior = {
 
-    query(url, param, succCallback, failCallback){
-      if (param) {
-        url = url + "?";
+    /**
+     * get 请求
+     * 例子：
+     * 1. 直接传递一个包含url、data内容的对象
+     *  this.get({
+     *       url: '/test',
+     *       data: { foo:1, bar:2 }    // 没有请求参数时可不传
+     *   },(data) => {
+     *       console.log(JSON.parse(data)); // 注意：data的类型是text，如果data是空值（""）或其他非json格式的数据，JSON.parse(data)就会报错。
+     *   },(err) => {
+     *       console.log(err);
+     *   });
+     *
+     * 2. 直接传递一个Request 实例
+     *  const req = new Request(window.location.origin + '/test?foo=1&bar=2', {method: 'GET'});
+     *  this.get(req, data => console.log(data));
+     *
+     * @param url
+     * @param data
+     * @param succCallback
+     * @param failCallback
+     */
+    get({
+          url = this.__throwUrlNotFoundError(),
+          data = {}
+        },
+        succCallback,
+        failCallback){
+      if (Request.prototype.isPrototypeOf(arguments[0])) {
+        return this.__fetch("json", {url, data}, succCallback, failCallback);
+      } else {
+        return this.__get("json", {url, data}, succCallback, failCallback);
       }
-      for (let i in param) {
-        url = url + i + "=" + param[i] + "&"
+    },
+
+    /**
+     * 请求 Blob类型数据，常见如图片
+     *
+     * @param url
+     * @param data
+     * @param succCallback
+     * @param failCallback
+     * @returns {*}
+     */
+    getBlob({
+              url = this.__throwUrlNotFoundError(),
+              data = {}
+            } = {},
+            succCallback,
+            failCallback) {
+      if (Request.prototype.isPrototypeOf(arguments[0])) {
+        return this.__fetch("blob", {url, data}, succCallback, failCallback);
+      } else {
+        return this.__get("blob", {url, data}, succCallback, failCallback);
       }
-      if (url.substr(url.length - 1, 1) === "&") {
-        url = url.substr(0, url.length - 1);
+    },
+
+    /**
+     * post json
+     * @param url
+     * @param data
+     * @param succCallback
+     * @param failCallback
+     * @returns {*}
+     */
+    post({
+           url = this.__throwUrlNotFoundError(),
+           data = {}
+         } = {},
+         succCallback,
+         failCallback) {
+      if (Request.prototype.isPrototypeOf(arguments[0])) {
+        return this.__fetch("json", {url, data}, succCallback, failCallback);
+      } else {
+        return this.__post("json", {url, data}, succCallback, failCallback);
       }
+    },
+
+    /**
+     *
+     * this.postFormData({
+     *       url: '/test',
+     *       data: new FormData()
+     *   },(data) => {
+     *       console.log(JSON.parse(data));
+     *   },(err) => {
+     *       console.log(err);
+     *   });
+     * post 表单数据
+     * @param url
+     * @param data
+     * @param succCallback
+     * @param failCallback
+     * @returns {*}
+     */
+    postFormData({
+                   url = this.__throwUrlNotFoundError(),
+                   data = {}
+                 } = {},
+                 succCallback,
+                 failCallback) {
+
+      let request = null;
+      if (Request.prototype.isPrototypeOf(arguments[0])) {
+        request = arguments[0];
+      } else {
+        request = new Request(window.location.origin + url, {
+          method: "POST",
+          credentials: "include",
+          body: data,
+        });
+      }
+      return this.__fetch("json", request, succCallback, failCallback);
+    },
+
+
+
+
+
+    __get(contentType, {url, data}, succCallback, failCallback) {
+
+      if (Object.keys(data).length > 0) {
+        url = `${url}?${Object.entries(data).map(entry => entry.join('=')).join('&')}`;
+      }
+
       const req = new Request(window.location.origin + url, {
         method: "GET",
-
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include"
       });
 
-      fetch(req).then(response => {
-        if (response.ok) {
-          response.json().then(data => {
-            succCallback && succCallback(data);
-          });
-        } else {
-          failCallback && failCallback();
-        }
-
-      }).catch(err => {
-        console.error(err);
-      })
-
+      return this.__fetch(contentType, req, succCallback, failCallback);
     },
-    update(url, param, succCallback, failCallback) {
 
-      const headers = new Headers();
-      headers.append('Access-Control-Allow-Origin', '*');
+    __post(contentType, {url, data}, succCallback, failCallback) {
       const req = new Request(window.location.origin + url, {
-        headers,
         method: "POST",
-        credentials: "same-origin",
-        body: JSON.stringify(param),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify(data),
       });
 
-      fetch(req).then(response => {
+      return this.__fetch(contentType, req, succCallback, failCallback);
+    },
+
+    __fetch(contentType, request, succCallback, failCallback) {
+
+      window.fetch(request).then(response => {
         if (response.ok) {
-          response.json().then(data => {
-            succCallback && succCallback(data);
-          });
+          if(response.headers.get('Content-length') > 0) {
+            response[contentType]().then(data => {
+              succCallback && succCallback(data);
+            });
+          } else {
+            succCallback && succCallback();
+          }
+
         } else {
           failCallback && failCallback();
         }
 
       }).catch(err => {
         console.error(err);
-      })
+      });
+    },
+
+    __throwUrlNotFoundError(){
+      throw new Error("url not found");
     }
+
   }
 </script>
