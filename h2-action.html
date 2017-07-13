@@ -58,7 +58,7 @@
 
           return new Promise((resolve, reject) => {
             // fetch model with modelSrc
-            this.get({
+            this.query({
               url: this.metadata.modelSrc
             }, (data) => {
               this.model = data;

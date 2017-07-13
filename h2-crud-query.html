@@ -117,7 +117,7 @@
             param.limit = limit;
           }
 
-          this.get({
+          this.query({
             url: this.metadata.formUrl,
             data: param
           }, data => this.result = data);

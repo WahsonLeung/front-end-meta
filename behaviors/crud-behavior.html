@@ -23,12 +23,12 @@
      * @param succCallback
      * @param failCallback
      */
-    get({
+    query({
           url = this.__throwUrlNotFoundError(),
           data = {}
         },
-        succCallback,
-        failCallback){
+          succCallback,
+          failCallback){
       if (Request.prototype.isPrototypeOf(arguments[0])) {
         return this.__fetch("json", {url, data}, succCallback, failCallback);
       } else {
@@ -117,9 +117,6 @@
     },
 
 
-
-
-
     __get(contentType, {url, data}, succCallback, failCallback) {
 
       if (Object.keys(data).length > 0) {
@@ -154,7 +151,7 @@
 
       window.fetch(request).then(response => {
         if (response.ok) {
-          if(response.headers.get('Content-length') > 0) {
+          if (response.headers.query('Content-length') > 0) {
             response[contentType]().then(data => {
               succCallback && succCallback(data);
             });
