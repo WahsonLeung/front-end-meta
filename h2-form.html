@@ -133,7 +133,7 @@
               .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
               .forEach(fieldMeta => {
                 const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
-                requestBody[fieldMeta.name] = editor.value;
+                requestBody[fieldMeta.alias || fieldMeta.name] = editor.value;
               });
 
           return requestBody;

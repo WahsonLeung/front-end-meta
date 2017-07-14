@@ -26,12 +26,12 @@
             </div>
 
             <div class="domain-grids">
-                <h2-grid metadata="{{ metadata.result }}" models="[[ result.rows ]]" filter="[[ filter ]]">
+                <h2-grid metadata="{{ metadata.result }}" models="[[ getValueByPath(result, keyForItems) ]]" filter="[[ filter ]]">
                 </h2-grid>
             </div>
 
             <template is="dom-if" if="{{metadata.query.paging}}">
-                <h2-pagination paging="{{ paging }}" total="[[ result.results ]]"></h2-pagination>
+                <h2-pagination paging="{{ paging }}" total="[[ getValueByPath(result, keyForPageResult) ]]"></h2-pagination>
             </template>
 
         </div>
@@ -58,6 +58,14 @@
             },
             model: {
               type: Object
+            },
+            keyForItems: {
+              type: String,
+              value: "rows"
+            },
+            keyForPageResult: {
+              type:String,
+              value: "results"
             }
           }
         }

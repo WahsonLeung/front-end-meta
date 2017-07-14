@@ -7,7 +7,7 @@
             :host {
                 position: relative;
                 font: inherit;
-                min-width: 80px;
+                width: auto;
                 display: inline-block;
             }
 
@@ -68,7 +68,7 @@
             }
         </style>
 
-        <div class="trigger" on-click="toggle">
+        <div class="trigger" on-tap="toggle">
             <paper-button class="btn" raised>
                 [[ name ]]
             </paper-button>
@@ -80,7 +80,7 @@
         </div>
 
         <iron-collapse id="collapse" horizontal="[[horizontal]]" no-animation="[[noAnimation]]" opened="[[opened]]">
-            <slot on-click="close"></slot>
+            <slot on-tap="close"></slot>
         </iron-collapse>
     </template>
 
@@ -128,7 +128,7 @@
         connectedCallback() {
           super.connectedCallback();
           this.addEventListener('blur', e => {
-            this.close();
+//            this.close();
           });
         }
 

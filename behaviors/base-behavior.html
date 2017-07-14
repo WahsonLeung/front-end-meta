@@ -29,6 +29,27 @@
       return (model && (key in model)) ? model[key] : JSON.parse(defVal);
     },
 
+
+    /**
+     * 通过路径获取对象字段值
+     * @param model 如： { foo: { bar: 1} }
+     * @param path  如 "foo.bar"
+     * @param defVal  支持任何符合json格式的字符串
+     * @returns {*}
+     */
+    getValueByPath(model, path, defVal = JSON.stringify("")) {
+      if(!model) return JSON.parse(defVal);
+
+      const splits = path.split('.');
+      let copy = model;
+      for(let key of splits) {
+        if(!copy[key]) return JSON.parse(defVal);
+        copy = copy[key];
+      }
+
+      return copy;
+    },
+
     /**
      *
      * @param model
