@@ -12,7 +12,7 @@
                              required="[[ metadata.required ]]"
                              error-message="[[ metadata.prompt ]]"
                              label="[[ metadata.label ]]">
-            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="[[ value ]]">
+            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{ value }}">
                 <template is="dom-repeat"
                           items="[[ metadata.candidates ]]"
                           as="selectItem">

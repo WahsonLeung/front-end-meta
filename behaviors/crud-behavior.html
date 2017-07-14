@@ -108,6 +108,11 @@
         url = `${url}?${Object.entries(data).map(entry => entry.join('=')).join('&')}`;
       }
 
+//      const searchParams = new URLSearchParams();
+//      for (let p in data) {
+//        searchParams.append(p, data[p]);
+//      }
+
       const req = new Request(window.location.origin + url, {
         method: "GET",
         headers: {
@@ -142,15 +147,14 @@
 
             succCallback && succCallback();
           } else {
-            response[contentType]().then(data => {
-              succCallback && succCallback(data);
-            });
+            response[contentType]().then(succCallback);
           }
 
         } else {
-          response.text().then(data => {
-            failCallback && failCallback(data);
-          });
+//          const error = new Error(response.statusText);
+//          error.response = response;
+//          throw error;
+          response.text().then(failCallback);
         }
 
       }).catch(err => {
