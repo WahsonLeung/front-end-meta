@@ -5,62 +5,84 @@
      * GET 请求
      *
      * 例子：
-     * 1. 直接传递一个包含url、data内容的对象
+     *
+     * 1. 直接传递一个Request 实例
+     *  const req = new Request(window.location.origin + '/test?foo=1&bar=2', {method: 'GET'});
+     *  this.query(req, console.log );
+     *
+     * 2. 直接传递一个url
+     *  this.query('/test', console.log);
+     *
+     * 3. 直接传递一个包含url、data内容的对象
      *  this.query({
      *       url: '/test',
      *       data: { foo:1, bar:2 }
      *       contentType: 'json'
-     *   },(data) => {
-     *       console.log(data);
-     *   },(err) => {
-     *       console.log(err);
-     *   });
+     *   }, console.log, console.log );
      *
-     * 2. 直接传递一个Request 实例
-     *  const req = new Request(window.location.origin + '/test?foo=1&bar=2', {method: 'GET'});
-     *  this.get(req, data => console.log(data));
+     * ******************************************************
      *
-     * @param url
-     * @param data 可选
-     * @param contentType  可选，默认值是"json"， 取值范围: text|json|blob|formData|arrayBuffer
+     * @param input  支持3种类型： Request|String|Object
+     *      1. Request实例
+     *      2. String：请求url
+     *      3: Object： 对象结构要求 { url , data, contentType}
+     *          data：可选
+     *          contentType：可选，默认值是"json"， 取值范围: text|json|blob|formData|arrayBuffer
+     *
      * @param succCallback
      * @param failCallback
      */
-    query({
-            url = this.__throwUrlNotFoundError(),
-            data = {},
-            contentType = "json"
-          } = {},
-          succCallback,
-          failCallback) {
+    query(input, succCallback, failCallback) {
+      let url, data = {}, contentType = 'json';
+
       if (Request.prototype.isPrototypeOf(arguments[0])) {
-        return this.__fetch(contentType, {url, data}, succCallback, failCallback);
+
+        return this.__fetch(contentType, arguments[0], succCallback, failCallback);
+
+      } else if (Object.prototype.isPrototypeOf(input)) {
+
+        ({
+          url = this.__throwUrlNotFoundError(),
+          data = {},
+          contentType = "json"
+        } = input);
+
       } else {
-        return this.__get(contentType, {url, data}, succCallback, failCallback);
+        url = String(input);
       }
+
+      return this.__get(contentType, {url, data}, succCallback, failCallback);
+
     },
 
     /**
-     * POST 请求
-     * @param url
-     * @param data 可选
-     * @param contentType  可选，默认值是"text"， 取值范围: text|json|blob|formData|arrayBuffer
+     * POST 请求, 使用方法与query相似
+     * @param input
      * @param succCallback
      * @param failCallback
      * @returns {*}
      */
-    post({
-           url = this.__throwUrlNotFoundError(),
-           data = {},
-           contentType = "json"
-         } = {},
-         succCallback,
-         failCallback) {
+    post(input, succCallback, failCallback) {
+
+      let url, data = {}, contentType = 'json';
+
       if (Request.prototype.isPrototypeOf(arguments[0])) {
-        return this.__fetch(contentType, {url, data}, succCallback, failCallback);
+
+        return this.__fetch(contentType, arguments[0], succCallback, failCallback);
+
+      } else if (Object.prototype.isPrototypeOf(input)) {
+
+        ({
+          url = this.__throwUrlNotFoundError(),
+          data = {},
+          contentType = "json"
+        } = input);
+
       } else {
-        return this.__post(contentType, {url, data}, succCallback, failCallback);
+        url = String(input);
       }
+
+      return this.__post(contentType, {url, data}, succCallback, failCallback);
     },
 
     /**
@@ -104,16 +126,10 @@
 
     __get(contentType, {url, data}, succCallback, failCallback) {
 
-      if (Object.keys(data).length > 0) {
-        url = `${url}?${Object.entries(data).map(entry => entry.join('=')).join('&')}`;
-      }
+      const reqUrl = new URL(window.location.origin + url);
+      Object.keys(data).forEach((key) => reqUrl.searchParams.append(key, data[key]));
 
-//      const searchParams = new URLSearchParams();
-//      for (let p in data) {
-//        searchParams.append(p, data[p]);
-//      }
-
-      const req = new Request(window.location.origin + url, {
+      const req = new Request(reqUrl, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -162,6 +178,20 @@
       });
     },
 
+    __consume(reader) {
+      let total = 0;
+      return pump();
+      function pump() {
+        return reader.read().then(({done, value}) => {
+          if (done) {
+            return;
+          }
+          total += value.byteLength;
+          console.log(`received ${value.byteLength} bytes (${total} bytes in total)`);
+          return pump();
+        });
+      }
+    },
     __throwUrlNotFoundError(){
       throw new Error("url not found");
     }
