@@ -37,13 +37,14 @@
      * @param defVal  支持任何符合json格式的字符串
      * @returns {*}
      */
-    getValueByPath(model, path, defVal = JSON.stringify("")) {
-      if(!model) return JSON.parse(defVal);
+    getValueByPath(model, path, defVal) {
+      // TODO if user wants a defVal equal to '', this won't work.
+      if(!model) return !!defVal ? JSON.parse(defVal) : undefined;
 
       const splits = path.split('.');
       let copy = model;
       for(let key of splits) {
-        if(!copy[key]) return JSON.parse(defVal);
+        if(!copy[key]) return !!defVal ? JSON.parse(defVal) : undefined;
         copy = copy[key];
       }
 
@@ -56,7 +57,7 @@
      * @param field
      * @returns {*}
      */
-    render(model, field) {
+    elementRender(model, field) {
       const _render = field && field.render;
       if (Function.prototype.isPrototypeOf(_render)) {
         return _render(model);

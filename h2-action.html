@@ -11,9 +11,10 @@
         <style>
             :host {
                 display: inline-block;
+                overflow: visible;
             }
 
-            paper-button {
+            :host paper-button {
                 width: inherit;
                 height: inherit;
                 margin: 0;
@@ -21,16 +22,14 @@
             }
         </style>
         <paper-button raised on-click="submitOrOpenDialog">[[ metadata.actionName ]]</paper-button>
-        <paper-dialog id="dialog" style="width:80%;" modal
-                      entry-animation="scale-up-animation"
-                      exit-animation="fade-out-animation">
-            <paper-dialog-scrollable>
-                <slot id="formSlot" name="form">
-                    <!--default form instance-->
-                    <h2-form id="form" model="[[ model ]]" metadata="[[ metadata.formMeta ]]"></h2-form>
-                </slot>
-            </paper-dialog-scrollable>
-        </paper-dialog>
+        <div hidden>
+            <h2-form id="form"
+                     model="[[ model ]]"
+                     metadata="[[ metadata.formMeta ]]"
+                     on-form-submitted="_formSubmittedHandler">
+
+            </h2-form>
+        </div>
     </template>
     <script>
       class H2Action extends Polymer.mixinBehaviors([CrudBehavior], Polymer.Element) {
@@ -49,6 +48,9 @@
             },
             model: {
               type: Object
+            },
+            _dialog: {
+              type: Object
             }
           }
         }
@@ -58,12 +60,10 @@
 
           return new Promise((resolve, reject) => {
             // fetch model with modelSrc
-            this.query({
-              url: this.metadata.modelSrc
-            }, (data) => {
+            this.query(this.metadata.modelSrc, (data) => {
               this.model = data;
               resolve();
-            }, (err) => reject(err));
+            }, reject);
           });
         }
 
@@ -72,18 +72,49 @@
             this.$.form.submit();
           } else if (this.metadata.operType == 2) {
             this.fetchModel()
-                .then(() => this.$.dialog.open())
+                .then(() => this._createDialog())
                 .catch(err => window.alert(JSON.stringify(err)));
           }
         }
 
-        connectedCallback() {
-          super.connectedCallback();
-          this.$.form.addEventListener("form-submitted", this._formSubmittedHandler.bind(this));
+        _createForm() {
+          const form = document.createElement('h2-form');
+          form.metadata = this.metadata.formMeta;
+          form.model = this.model;
+          form.addEventListener('form-submitted', this._formSubmittedHandler.bind(this));
+          return form;
+        }
+
+        _createDialog() {
+          this._dialog = document.createElement('paper-dialog');
+
+          this._dialog.appendChild(this._createForm());
+          this._dialog.entryAnimation = "scale-up-animation";
+          this._dialog.exitAnimation = "fade-out-animation";
+          this._dialog.style.width = "85%";
+          this._dialog.style.height = "80%";
+          this._dialog.addEventListener('iron-overlay-closed', e => {
+            setTimeout(() => {
+              document.body.removeChild(this._dialog);
+              this._dialog = undefined;
+            }, 100);
+          });
+
+          document.body.appendChild(this._dialog);
+          this._dialog.open();
         }
 
         _formSubmittedHandler(e) {
-          this.$.dialog.close();
+
+          e.stopPropagation();
+
+          if (this._dialog) {
+            this._dialog.close();
+          }
+
+          this.dispatchEvent(new CustomEvent("form-submitted", {
+            bubbles: true, composed: true, detail: e.detail
+          }));
         }
 
       }

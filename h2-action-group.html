@@ -80,7 +80,7 @@
         </div>
 
         <iron-collapse id="collapse" horizontal="[[horizontal]]" no-animation="[[noAnimation]]" opened="[[opened]]">
-            <slot on-tap="close"></slot>
+            <slot></slot>
         </iron-collapse>
     </template>
 
@@ -128,7 +128,7 @@
         connectedCallback() {
           super.connectedCallback();
           this.addEventListener('blur', e => {
-//            this.close();
+            this.close();
           });
         }
 

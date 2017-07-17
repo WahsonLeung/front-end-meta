@@ -62,7 +62,7 @@
             this.$.slot.appendChild(eleDom);
           } else {
             const eleDom = document.createElement(this.readonlyTemplate);
-            eleDom.element = this.render(this.context, this.metadata);
+            eleDom.element = this.elementRender(this.context, this.metadata);
             this.$.slot.appendChild(eleDom);
           }
 

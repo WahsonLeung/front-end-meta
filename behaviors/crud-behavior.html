@@ -127,7 +127,7 @@
     __get(contentType, {url, data}, succCallback, failCallback) {
 
       const reqUrl = new URL(window.location.origin + url);
-      Object.keys(data).forEach((key) => reqUrl.searchParams.append(key, data[key]));
+      Object.keys(data).filter(key => data[key]!= undefined || data[key] != null).forEach((key) => reqUrl.searchParams.append(key, data[key]));
 
       const req = new Request(reqUrl, {
         method: "GET",
