@@ -131,9 +131,6 @@
 
       const req = new Request(reqUrl, {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        },
         credentials: "include"
       });
 
@@ -141,13 +138,15 @@
     },
 
     __post(contentType, {url, data}, succCallback, failCallback) {
+      const searchParams = new URLSearchParams();
+      Object.keys(data).forEach((key) => searchParams.append(key, data[key]));
       const req = new Request(window.location.origin + url, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
         },
         credentials: "include",
-        body: JSON.stringify(data),
+        body: searchParams,
       });
 
       return this.__fetch(contentType, req, succCallback, failCallback);
