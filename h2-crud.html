@@ -11,7 +11,7 @@
     <template>
         <div>
             <div class="domain-query">
-                <h2-crud-query id="query" query-after-reset metadata="{{ metadata.query }}" result="{{ result }}"
+                <h2-crud-query id="query" query-after-reset metadata="{{ metadata.query }}" result="{{ rawResult }}"
                                paging="[[ paging ]]" model="{{model}}">
                     <slot name="ext-condition" slot="ext-condition"></slot>
                 </h2-crud-query>
@@ -26,12 +26,14 @@
             </div>
 
             <div class="domain-grids">
-                <h2-grid metadata="{{ metadata.result }}" models="[[ getValueByPath(result, keyForItems) ]]" filter="[[ filter ]]">
+                <h2-grid metadata="{{ metadata.result }}" models="[[ getValueByPath(finalResult, keyForItems) ]]"
+                         filter="[[ filter ]]">
                 </h2-grid>
             </div>
 
             <template is="dom-if" if="{{metadata.query.paging}}">
-                <h2-pagination paging="{{ paging }}" total="[[ getValueByPath(result, keyForPageResult) ]]"></h2-pagination>
+                <h2-pagination paging="{{ paging }}"
+                               total="[[ getValueByPath(finalResult, keyForPageResult) ]]"></h2-pagination>
             </template>
 
         </div>
@@ -49,9 +51,15 @@
 
         static get properties() {
           return {
-            result: {
+            resultDescriptor: {
+              type: Object
+            },
+            rawResult: {
               type: Array,
-              notify: true
+            },
+            finalResult: {
+              type: Array,
+              computed: '_resultDescriptor(rawResult)'
             },
             metadata: {
               type: Object,
@@ -64,10 +72,15 @@
               value: "rows"
             },
             keyForPageResult: {
-              type:String,
+              type: String,
               value: "results"
             }
           }
+        }
+
+        _resultDescriptor(result) {
+          return Function.prototype.isPrototypeOf(this.resultDescriptor) ?
+              this.resultDescriptor(result) : result
         }
 
         refresh() {
