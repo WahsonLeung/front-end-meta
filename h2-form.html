@@ -35,21 +35,15 @@
         <h2>[[metadata.title]]</h2>
 
         <div class="container">
-            <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta">
-
-                <template is="dom-if" if="{{ !isEqual(fieldMeta.datatype, 'action') }}">
-                    <h2-widget
-                            class="item"
-                            id="{{ getEditorId(fieldMeta.name) }}"
-                            editable
-                            context="{{ model }}"
-                            value="[[ getValueByKey(model,fieldMeta.name) ]]"
-                            metadata="{{ fieldMeta }}">
-                    </h2-widget>
-                </template>
-                <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
-                    <h2-action metadata="[[ fieldMeta.actionMeta ]]" model="[[ model ]]"></h2-action>
-                </template>
+            <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta" filter="filterVisible">
+                <h2-widget
+                        class="item"
+                        id="{{ getEditorId(fieldMeta.name) }}"
+                        editable
+                        context="{{ model }}"
+                        value="[[ getValueByKey(model,fieldMeta.name) ]]"
+                        metadata="{{ fieldMeta }}">
+                </h2-widget>
             </template>
         </div>
 
@@ -68,10 +62,6 @@
 
         static get is() {
           return "h2-form";
-        }
-
-        get ignoreDateTypes() {
-          return ['action'];
         }
 
         getEditorId(fieldName) {
@@ -93,7 +83,7 @@
           if (!this._validate()) return;
 
           const _submit = () => {
-            const param = Object.assign({}, this.model, this._requestBody());
+            const param = this._requestBody();
             this.post({
               url: this.metadata.formUrl,
               data: param
@@ -113,13 +103,16 @@
           }
         }
 
+        filterVisible(item) {
+          return !!item.visible;
+        }
+
         _validate() {
           // return true if there's no field
           if (!this.metadata.fields || this.metadata.fields.length == 0) return true;
 
           return this.metadata.fields
-              .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
-              .filter(fieldMeta => !!fieldMeta.validate)
+              .filter(fieldMeta => fieldMeta.visible && (fieldMeta.required || !!fieldMeta.validate))
               .every(fieldMeta => {
                 const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
                 // if the editor does not have a validator,return true
@@ -130,10 +123,10 @@
         _requestBody() {
           const requestBody = {};
           this.metadata.fields
-              .filter(fieldMeta => this.ignoreDateTypes.indexOf(fieldMeta.datatype) == -1)
               .forEach(fieldMeta => {
                 const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
-                requestBody[fieldMeta.alias || fieldMeta.name] = editor.value;
+                requestBody[fieldMeta.alias || fieldMeta.name] =
+                    editor ? editor.value : this.model[fieldMeta.name];
               });
 
           return requestBody;
