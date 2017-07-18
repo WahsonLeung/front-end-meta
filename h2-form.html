@@ -38,11 +38,11 @@
             <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta" filter="filterVisible">
                 <h2-widget
                         class="item"
-                        id="{{ getEditorId(fieldMeta.name) }}"
+                        id="[[ getEditorId(fieldMeta.name) ]]"
                         editable
                         context="{{ model }}"
                         value="[[ getValueByKey(model,fieldMeta.name) ]]"
-                        metadata="{{ fieldMeta }}">
+                        metadata="[[ fieldMeta ]]">
                 </h2-widget>
             </template>
         </div>

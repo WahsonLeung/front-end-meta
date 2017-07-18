@@ -58,7 +58,17 @@
               }));
             });
             eleDom.context = this.context;
-            eleDom.metadata = this.metadata;
+
+            if(this.metadata.dataTypeExtra) {
+              // TODO
+              // fetch metadata with dataTypeExtra,
+              // but the metadata service doesn't work yet,
+              // so currently get metadata from this.metadata instead
+              eleDom.metadata = this.metadata.metadata;
+            } else {
+              eleDom.metadata = this.metadata;
+            }
+
             this.$.slot.appendChild(eleDom);
           } else {
             const eleDom = document.createElement(this.readonlyTemplate);
