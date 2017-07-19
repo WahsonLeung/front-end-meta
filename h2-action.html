@@ -22,14 +22,7 @@
             }
         </style>
         <paper-button raised on-click="submitOrOpenDialog">[[ metadata.actionName ]]</paper-button>
-        <div hidden>
-            <h2-form id="form"
-                     model="[[ model ]]"
-                     metadata="[[ metadata.formMeta ]]"
-                     on-form-submitted="_formSubmittedHandler">
-
-            </h2-form>
-        </div>
+        <div id="form" hidden></div>
     </template>
     <script>
       class H2Action extends Polymer.mixinBehaviors([CrudBehavior], Polymer.Element) {
@@ -51,6 +44,9 @@
             },
             _dialog: {
               type: Object
+            },
+            _form: {
+              type: Object
             }
           }
         }
@@ -69,7 +65,10 @@
 
         submitOrOpenDialog() {
           if (this.metadata.operType == 1) {
-            this.$.form.submit();
+            // If no <h2-form /> exists in #form component, then append one.
+            this._form = this._form || this.$.form.appendChild(this._createForm());
+            this._form.submit();
+
           } else if (this.metadata.operType == 2) {
             this.fetchModel()
                 .then(() => this._createDialog())
