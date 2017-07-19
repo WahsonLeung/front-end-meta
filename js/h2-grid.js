@@ -35,6 +35,11 @@ class H2Grid extends Polymer.mixinBehaviors([BaseBehavior], Polymer.Element) {
       "table",
       { width: "100%" },
       React.createElement(
+        "caption",
+        { className: "table-caption" },
+        this.metadata.title
+      ),
+      React.createElement(
         "thead",
         null,
         React.createElement(

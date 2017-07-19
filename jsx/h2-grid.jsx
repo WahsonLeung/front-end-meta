@@ -22,9 +22,9 @@ class H2Grid extends Polymer.mixinBehaviors([BaseBehavior], Polymer.Element) {
     }
   }
 
-  static get observers(){
+  static get observers() {
     return [
-        '_modelsChange(models, metadata)'
+      '_modelsChange(models, metadata)'
     ];
   }
 
@@ -35,6 +35,7 @@ class H2Grid extends Polymer.mixinBehaviors([BaseBehavior], Polymer.Element) {
   render() {
     ReactDOM.render(
         <table width="100%">
+          <caption className="table-caption">{this.metadata.title}</caption>
           <thead>
           <tr>
             {this.metadata.grids.map((item, ind) => <td key={ind}>{item.label}</td>)}

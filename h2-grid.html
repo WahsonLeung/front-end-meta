@@ -49,11 +49,18 @@
                 height: 30px;
             }
 
+            :host .table-caption {
+                text-align: left;
+                font-size: 1.2em;
+                padding-bottom: 10px;
+            }
+
         </style>
         <slot name="filter"></slot>
         <div id="table">
 
             <table width="100%">
+                <caption class="table-caption">[[ metadata.title ]]</caption>
                 <thead>
                 <tr>
                     <template is="dom-repeat" items="[[ metadata.grids ]]">
