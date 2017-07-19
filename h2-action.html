@@ -1,11 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../paper-dialog/paper-dialog.html">
-<link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
-<link rel="import" href="../neon-animation/web-animations.html">
-<link rel="import" href="../neon-animation/animations/scale-up-animation.html">
-<link rel="import" href="../neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="h2-form.html">
+<link rel="import" href="./h2-dialog.html">
+<link rel="import" href="./h2-form.html">
 <dom-module id="h2-action">
     <template>
         <style>
@@ -42,6 +38,7 @@
             model: {
               type: Object
             },
+
             _dialog: {
               type: Object
             },
@@ -85,22 +82,17 @@
         }
 
         _createDialog() {
-          this._dialog = document.createElement('paper-dialog');
-
-          this._dialog.appendChild(this._createForm());
-          this._dialog.entryAnimation = "scale-up-animation";
-          this._dialog.exitAnimation = "fade-out-animation";
-          this._dialog.style.width = "85%";
-          this._dialog.style.height = "80%";
-          this._dialog.addEventListener('iron-overlay-closed', e => {
-            setTimeout(() => {
-              document.body.removeChild(this._dialog);
-              this._dialog = undefined;
-            }, 100);
-          });
-
+          this._dialog = document.createElement('h2-dialog');
           document.body.appendChild(this._dialog);
           this._dialog.open();
+
+          const form = this._createForm();
+          form.slot = "content";
+          this._dialog.appendChild(form);
+          this._dialog.addEventListener('dialog-closed', e => {
+            this._dialog = undefined;
+          });
+
         }
 
         _formSubmittedHandler(e) {
