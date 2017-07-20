@@ -131,7 +131,7 @@
               url: this.metadata.formUrl,
               data: param
             }, (data) => {
-              this.dispatchEvent(new CustomEvent("form-submitted", {
+              this.dispatchEvent(new CustomEvent("h2-form-submitted", {
                 bubbles: true, composed: true, detail: data
               }));
             });

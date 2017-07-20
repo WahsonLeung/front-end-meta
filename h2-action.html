@@ -77,7 +77,7 @@
           const form = document.createElement('h2-form');
           form.metadata = this.metadata.formMeta;
           form.model = this.model;
-          form.addEventListener('form-submitted', this._formSubmittedHandler.bind(this));
+          form.addEventListener('h2-form-submitted', this._formSubmittedHandler.bind(this));
           return form;
         }
 
@@ -103,6 +103,8 @@
             this._dialog.close();
           }
 
+          // bubble the form-submitted event
+          // this event will be fired to user
           this.dispatchEvent(new CustomEvent("form-submitted", {
             bubbles: true, composed: true, detail: e.detail
           }));
