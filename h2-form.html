@@ -83,7 +83,11 @@
           if (!this._validate()) return;
 
           const _submit = () => {
-            const param = this._requestBody();
+            let param = this._requestBody();
+            // Execute the hook before submit.
+            if (this.metadata.beforeSubmit) {
+              param = this.metadata.beforeSubmit(param);
+            }
             this.post({
               url: this.metadata.formUrl,
               data: param
