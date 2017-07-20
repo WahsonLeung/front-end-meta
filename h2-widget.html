@@ -73,9 +73,9 @@
 
         __valueChange() {
           const target = this.widgetRef;
-          if (target) {
-            this.context[this.metadata.name] = target.value = this.value
-          }
+
+          target && (target.value = this.value);
+          this.context && (this.context[this.metadata.name] = this.value);
 
           if (!this.editable) {
             const element = this.elementRender(this.context, this.metadata);
