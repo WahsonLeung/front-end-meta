@@ -42,13 +42,15 @@
                         editable
                         context="{{ model }}"
                         value="[[ getValueByKey(model,fieldMeta.name) ]]"
+                        on-value-changed="onValueChange"
+                        on-widget-attached="onWidgetAttached"
                         metadata="[[ fieldMeta ]]">
                 </h2-widget>
             </template>
         </div>
 
         <div class="btns">
-            <template is="dom-if" if="{{ !metadata.isSubmitForbidden }}">
+            <template is="dom-if" if="[[ !metadata.isSubmitForbidden ]]">
                 <paper-button raised on-click="submit">保存</paper-button>
             </template>
             <paper-button raised dialog-dismiss>关闭</paper-button>
@@ -56,27 +58,63 @@
     </template>
     <script>
       class H2Form extends Polymer.mixinBehaviors([BaseBehavior, CrudBehavior], Polymer.Element) {
-        constructor() {
-          super();
-        }
 
         static get is() {
           return "h2-form";
         }
 
-        getEditorId(fieldName) {
-          return `${this.constructor.is}-${fieldName}-editor`;
-        }
-
         static get properties() {
           return {
+            _subscriptionTable: {
+              type: Object,
+              value: function () {
+                return {};
+              }
+            },
             model: {
-              type: Object
+              type: Object,
+              notify: true
             },
             metadata: {
               type: Object
+            },
+            onSubmit: {
+              type: Object
             }
           }
+        }
+
+
+        watch(watchFields, callback) {
+          for (let field of watchFields) {
+            this._subscriptionTable[field] = this._subscriptionTable[field] || [];
+            this._subscriptionTable[field].push(callback);
+          }
+        }
+
+        onWidgetAttached(e) {
+          const fieldMeta = e.model.fieldMeta;
+          fieldMeta.onAttached && fieldMeta.onAttached.call(this, e.target);
+        }
+
+        onValueChange(e) {
+
+          const {name: myFieldName} = e.model.fieldMeta;
+
+          // Nothing depends on me！
+          if (!this._subscriptionTable[myFieldName]) return;
+
+          this._subscriptionTable[myFieldName].forEach(fn => {
+            if (Function.prototype.isPrototypeOf(fn)) {
+              fn(this.model);
+            } else {
+              console.warn(`Oops, ${fn} is not a function`);
+            }
+          });
+        }
+
+        getEditorId(fieldName) {
+          return `${this.constructor.is}-${fieldName}-editor`;
         }
 
         submit() {
@@ -88,6 +126,7 @@
             if (this.metadata.beforeSubmit) {
               param = this.metadata.beforeSubmit(param);
             }
+
             this.post({
               url: this.metadata.formUrl,
               data: param
@@ -111,6 +150,10 @@
           return !!item.visible;
         }
 
+        _getEditor(fieldName) {
+          return this.root.querySelector(`#${this.getEditorId(fieldName)}`);
+        }
+
         _validate() {
           // return true if there's no field
           if (!this.metadata.fields || this.metadata.fields.length == 0) return true;
@@ -118,7 +161,7 @@
           return this.metadata.fields
               .filter(fieldMeta => fieldMeta.visible && (fieldMeta.required || !!fieldMeta.validate))
               .every(fieldMeta => {
-                const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
+                const editor = this._getEditor(fieldMeta.name);
                 // if the editor does not have a validator,return true
                 return editor.validate ? editor.validate() : true;
               });
@@ -128,15 +171,15 @@
           const requestBody = {};
           this.metadata.fields
               .forEach(fieldMeta => {
-                const editor = this.root.querySelector(`#${this.getEditorId(fieldMeta.name)}`);
+                const editor = this._getEditor(fieldMeta.name);
                 requestBody[fieldMeta.alias || fieldMeta.name] =
                     editor ? editor.value : this.model[fieldMeta.name];
               });
 
           return requestBody;
         }
-
       }
+
       customElements.define(H2Form.is, H2Form);
     </script>
 </dom-module>

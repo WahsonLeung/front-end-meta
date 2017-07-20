@@ -44,6 +44,8 @@
               this.parentElement.removeChild(this);
             }, 100);
           });
+
+          this.addEventListener('h2-dialog-dismiss', this.close);
         }
 
         open() {

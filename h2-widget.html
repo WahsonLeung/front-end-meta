@@ -70,6 +70,12 @@
 
         }
 
+        connectedCallback() {
+          super.connectedCallback();
+          this.dispatchEvent(new CustomEvent('widget-attached', {
+            composed:true
+          }));
+        }
 
         __valueChange() {
           const target = this.widgetRef;
