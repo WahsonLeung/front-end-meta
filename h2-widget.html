@@ -7,7 +7,7 @@
         <div id="slot"></div>
     </template>
     <script>
-      class H2Widget extends Polymer.mixinBehaviors([BaseBehavior],H2WidgetBase) {
+      class H2Widget extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
         static get is() {
           return "h2-widget";
         }
@@ -22,7 +22,8 @@
               type: String,
               value: 'h2-crust'
             },
-            value: {
+
+            widgetRef: {
               type: Object
             }
           };
@@ -36,30 +37,21 @@
         }
 
         validate() {
-          const ele = this.$.slot.firstChild;
+          const ele = this.widgetRef;
           return ele && ele.validate && ele.validate();
         }
 
-        reset() {
-          const ele = this.$.slot.firstChild;
-          return ele && ele.reset && ele.reset();
-        }
-
         __metadataChange() {
-          if(this.editable) {
+          if (this.editable) {
             const tagName = this.metadata.element || H2Widget.defaultElements[this.metadata.datatype];
             const eleDom = document.createElement(tagName);
-            eleDom.addEventListener("value-change", (e) => {
+            eleDom.addEventListener("value-changed", (e) => {
+              e.stopPropagation();
               this.value = eleDom.value;
-              this.dispatchEvent(new CustomEvent('value-change', {
-                bubbles: true,
-                composed: true,
-                detail: eleDom.value
-              }));
             });
             eleDom.context = this.context;
 
-            if(this.metadata.dataTypeExtra) {
+            if (this.metadata.dataTypeExtra) {
               // TODO
               // fetch metadata with dataTypeExtra,
               // but the metadata service doesn't work yet,
@@ -69,18 +61,26 @@
               eleDom.metadata = this.metadata;
             }
 
-            this.$.slot.appendChild(eleDom);
+            this.widgetRef = this.$.slot.appendChild(eleDom);
           } else {
-            const eleDom = document.createElement(this.readonlyTemplate);
-            eleDom.element = this.elementRender(this.context, this.metadata);
-            this.$.slot.appendChild(eleDom);
+
+            const element = this.elementRender(this.context, this.metadata);
+            this.$.slot.innerHTML = element;
           }
 
         }
 
+
         __valueChange() {
-          const target = this.$.slot.firstChild;
-          target && (target.value = this.value);
+          const target = this.widgetRef;
+          if (target) {
+            this.context[this.metadata.name] = target.value = this.value
+          }
+
+          if (!this.editable) {
+            const element = this.elementRender(this.context, this.metadata);
+            this.$.slot.innerHTML = element;
+          }
         }
 
         static get defaultElements() {

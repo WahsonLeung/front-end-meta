@@ -11,9 +11,9 @@
                 min-width: 85%;
                 min-height: 80%;
             }
-
         </style>
         <paper-dialog id="dialog"
+                      modal
                       entry-animation="scale-up-animation"
                       exit-animation="fade-out-animation">
             <paper-dialog-scrollable>
@@ -33,16 +33,17 @@
           super.connectedCallback();
 
           this.addEventListener('iron-overlay-closed', e => {
+            // ignore 'iron-overlay-closed' event fired by other element
+            if (e.path[0] != this.$.dialog) return;
             e.stopPropagation();
-            this.dispatchEvent(new CustomEvent('dialog-closed'),{
-              composed:true,
-              bubbles:true
+            this.dispatchEvent(new CustomEvent('dialog-closed'), {
+              composed: true,
+              bubbles: true
             });
             setTimeout(() => {
               this.parentElement.removeChild(this);
             }, 100);
           });
-
         }
 
         open() {

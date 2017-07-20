@@ -1,6 +1,3 @@
-<script type="text/javascript" src="../react/react.js"></script>
-<script type="text/javascript" src="../react/react-dom.js"></script>
-
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="./behaviors/base-behavior.html">
 <link rel="import" href="h2-action.html">
@@ -18,7 +15,7 @@
                 color: #fff;
             }
 
-            :host thead tr {
+            :host th {
                 text-align: left;
                 height: 40px;
                 font-size: 1.1em;
@@ -38,7 +35,7 @@
                 background-color: lightgrey;
             }
 
-            :host tbody td:nth-last-of-type(1) {
+            :host td:nth-last-of-type(1) {
                 display: inline;
                 width: 200px;
             }
@@ -49,27 +46,112 @@
                 height: 30px;
             }
 
-            :host .table-caption {
-                text-align: left;
-                font-size: 1.2em;
-                padding-bottom: 10px;
-            }
-
         </style>
         <slot name="filter"></slot>
-        <div id="table">
-
-            <table width="100%">
-                <caption class="table-caption">[[ metadata.title ]]</caption>
-                <thead>
+        <table width="100%">
+            <thead>
+            <tr>
+                <template is="dom-repeat" items="[[ metadata.grids ]]">
+                    <th>[[item.label]]</th>
+                </template>
+            </tr>
+            </thead>
+            <tbody>
+            <template is="dom-repeat" items="[[ models ]]" as="model">
                 <tr>
-                    <template is="dom-repeat" items="[[ metadata.grids ]]">
-                        <th>[[item.label]]</th>
+                    <template is="dom-repeat" items="[[ metadata.grids ]]" as="fieldMeta">
+                        <td>
+                            <template is="dom-if" if="[[ !isEqual(fieldMeta.datatype, 'action') ]]">
+                                <h2-widget metadata="[[ fieldMeta ]]"
+                                           editable="[[ fieldMeta.editable ]]"
+                                           context="[[ model ]]"
+                                           value="[[ getValueByKey(model,fieldMeta.name) ]]">
+                                </h2-widget>
+                            </template>
+
+                            <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
+                                <template is="dom-repeat" items="[[ noGroupActions(model.actions) ]]" as="actionMeta">
+                                    <h2-action class="action"
+                                               metadata="[[ actionMeta ]]"
+                                               model="[[ model ]]">
+                                    </h2-action>
+                                </template>
+                                <template is="dom-repeat" items="[[ groupedActions(model.actions) ]]">
+                                    <h2-action-group
+                                            class="action-group"
+                                            name="[[ item.group ]]">
+                                        <template is="dom-repeat" items="[[ item.actions ]]" as="actionMeta">
+                                            <h2-action metadata="[[ actionMeta ]]"
+                                                       model="[[ model ]]">
+                                            </h2-action>
+                                        </template>
+                                    </h2-action-group>
+                                </template>
+                            </template>
+                        </td>
                     </template>
                 </tr>
-                </thead>
-            </table>
-        </div>
+            </template>
+            </tbody>
+        </table>
     </template>
-    <script src="./js/h2-grid.js"></script>
+    <script>
+      class H2Grid extends Polymer.mixinBehaviors([BaseBehavior], Polymer.Element) {
+        constructor() {
+          super();
+        }
+
+        static get is() {
+          return "h2-grid";
+        }
+
+        static get properties() {
+          return {
+            editable: {
+              type: Boolean,
+              value: false
+            },
+            models: {
+              type: Array
+            },
+            metadata: {
+              type: Object,
+            }
+          }
+        }
+
+        static get observers() {
+          return [
+              'modelsChange(models)'
+          ];
+        }
+
+        groupedActions(actions) {
+          const groupedActions = [];
+          const groupMap = {};
+          actions.map(actionId => {
+            const meta = this.getValueByKey(this.metadata.actions, actionId);
+            const grp = meta.group;
+            if (grp) {
+              groupMap[grp] = groupMap[grp] || [];
+              groupMap[grp].push(meta);
+            }
+          });
+          for (let grp in groupMap) {
+            groupedActions.push({group: grp, actions: groupMap[grp]});
+          }
+          return groupedActions;
+        }
+
+        noGroupActions(actions) {
+          return actions.filter(actionId => {
+            const meta = this.getValueByKey(this.metadata.actions, actionId);
+            const grp = meta.group;
+            return !grp;
+          }).map(actionId => this.getValueByKey(this.metadata.actions, actionId));
+        }
+      }
+
+      customElements.define(H2Grid.is, H2Grid);
+    </script>
 </dom-module>
