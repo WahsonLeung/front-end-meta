@@ -1,8 +1,5 @@
 <script>
-  /**
-   * warn: 此behavior 将要废弃
-   */
-  CrudBehavior = {
+  AjaxBehavior = {
 
     /**
      * GET 请求
@@ -159,7 +156,32 @@
 
     __fetch(handleAs, request, succCallback, failCallback) {
 
-      window.fetch(request).then(response => {
+      const timeoutPromise = new Promise(resolve => setTimeout(resolve,timeout));
+
+      Promise.race([timeoutPromise, window.fetch(request)]).then(res => {
+        if(res instanceof Response) {
+          if (response.ok) {
+            // response content is blank
+            if (response.headers.has('Content-length')
+                && response.headers.get('Content-length') == 0) {
+
+              succCallback && succCallback();
+            } else {
+              response[handleAs]().then(succCallback);
+            }
+
+          } else {
+//          const error = new Error(response.statusText);
+//          error.response = response;
+//          throw error;
+            response.text().then(failCallback);
+          }
+
+        } else {
+
+        }
+      })
+      .then(response => {
         if (response.ok) {
           // response content is blank
           if (response.headers.has('Content-length')

@@ -1,5 +1,5 @@
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="./behaviors/crud-behavior.html">
+<link rel="import" href="./behaviors/ajax-behavior.html">
 <link rel="import" href="./behaviors/base-behavior.html">
 <link rel="import" href="h2-widget.html">
 <dom-module id="h2-form">
@@ -57,7 +57,7 @@
         </div>
     </template>
     <script>
-      class H2Form extends Polymer.mixinBehaviors([BaseBehavior, CrudBehavior], Polymer.Element) {
+      class H2Form extends Polymer.mixinBehaviors([BaseBehavior, AjaxBehavior], Polymer.Element) {
 
         static get is() {
           return "h2-form";
@@ -86,9 +86,15 @@
 
 
         watch(watchFields, callback) {
-          for (let field of watchFields) {
-            this._subscriptionTable[field] = this._subscriptionTable[field] || [];
-            this._subscriptionTable[field].push(callback);
+          if (Function.prototype.isPrototypeOf(callback)) {
+            for (let field of watchFields) {
+              this._subscriptionTable[field] = this._subscriptionTable[field] || [];
+              this._subscriptionTable[field].push(callback);
+            }
+
+            callback(this.model);
+          } else {
+            console.warn(`Oops, ${fn} is not a function`);
           }
         }
 
@@ -105,11 +111,7 @@
           if (!this._subscriptionTable[myFieldName]) return;
 
           this._subscriptionTable[myFieldName].forEach(fn => {
-            if (Function.prototype.isPrototypeOf(fn)) {
-              fn(this.model);
-            } else {
-              console.warn(`Oops, ${fn} is not a function`);
-            }
+            fn(this.model);
           });
         }
 

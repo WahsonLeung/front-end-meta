@@ -1,6 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="widgets/widget-resources.html">
-<link rel="import" href="./behaviors/crud-behavior.html">
+<link rel="import" href="./behaviors/ajax-behavior.html">
 <link rel="import" href="./behaviors/base-behavior.html">
 <link rel="import" href="h2-crud-query.html">
 <link rel="import" href="h2-grid.html">
@@ -43,7 +43,7 @@
 
     </template>
     <script>
-      class H2Crud extends Polymer.mixinBehaviors([BaseBehavior, CrudBehavior], Polymer.Element) {
+      class H2Crud extends Polymer.mixinBehaviors([BaseBehavior, AjaxBehavior], Polymer.Element) {
         constructor() {
           super();
         }

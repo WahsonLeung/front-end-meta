@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="./behaviors/ajax-behavior.html">
 <link rel="import" href="./h2-dialog.html">
 <link rel="import" href="./h2-form.html">
 <dom-module id="h2-action">
@@ -21,7 +22,7 @@
         <div id="form" hidden></div>
     </template>
     <script>
-      class H2Action extends Polymer.mixinBehaviors([CrudBehavior], Polymer.Element) {
+      class H2Action extends Polymer.mixinBehaviors([AjaxBehavior], Polymer.Element) {
         constructor() {
           super();
         }

@@ -45,6 +45,7 @@
           if (this.editable) {
             const tagName = this.metadata.element || H2Widget.defaultElements[this.metadata.datatype];
             const eleDom = document.createElement(tagName);
+
             eleDom.addEventListener("value-changed", (e) => {
               e.stopPropagation();
               this.value = eleDom.value;
