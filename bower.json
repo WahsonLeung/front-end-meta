@@ -28,8 +28,7 @@
   "homepage": "https://github.com/mrLeung/front-end-meta",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.1",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#1.0.0",
-    "react":"reactjs/react-bower"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#1.0.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#1 - 2",

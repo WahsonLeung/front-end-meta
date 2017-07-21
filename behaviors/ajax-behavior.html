@@ -33,11 +33,14 @@
      * @param failCallback
      */
     query(input, succCallback, failCallback) {
-      let url, data = {}, handleAs = 'json', timeout = 60000;
+      let url,
+          data = {},
+          handleAs = 'json',
+          timeout = 60000;
 
-      if (Request.prototype.isPrototypeOf(arguments[0])) {
+      if (Request.prototype.isPrototypeOf(input)) {
 
-        return this.__fetch(handleAs, arguments[0], succCallback, failCallback);
+        return this.__fetch(handleAs, input, succCallback, failCallback);
 
       } else if (Object.prototype.isPrototypeOf(input)) {
 
@@ -65,11 +68,14 @@
      */
     post(input, succCallback, failCallback) {
 
-      let url, data = {}, handleAs = 'json', timeout = 60000;
+      let url,
+          data = {},
+          handleAs = 'json',
+          timeout = 60000;
 
-      if (Request.prototype.isPrototypeOf(arguments[0])) {
+      if (Request.prototype.isPrototypeOf(input)) {
 
-        return this.__fetch(handleAs, arguments[0], succCallback, failCallback);
+        return this.__fetch(handleAs, input, succCallback, failCallback);
 
       } else if (Object.prototype.isPrototypeOf(input)) {
 
@@ -87,44 +93,6 @@
       return this.__post(handleAs, {url, data, timeout}, succCallback, failCallback);
     },
 
-    /**
-     *
-     * this.postFormData({
-     *       url: '/test',
-     *       data: new FormData()
-     *   },(data) => {
-     *       console.log(JSON.parse(data));
-     *   },(err) => {
-     *       console.log(err);
-     *   });
-     * post 表单数据
-     * @param url
-     * @param data
-     * @param succCallback
-     * @param failCallback
-     * @returns {*}
-     */
-    postFormData({
-                   url = this.__throwUrlNotFoundError(),
-                   data = {},
-                   handleAs = 'json'
-                 } = {},
-                 succCallback,
-                 failCallback) {
-
-      let request = null;
-      if (Request.prototype.isPrototypeOf(arguments[0])) {
-        request = arguments[0];
-      } else {
-        request = new Request(window.location.origin + url, {
-          method: "POST",
-          credentials: "include",
-          body: data,
-        });
-      }
-      return this.__fetch(handleAs, request, succCallback, failCallback);
-    },
-
 
     __get(handleAs, {url, data, timeout}, succCallback, failCallback) {
 
@@ -140,15 +108,27 @@
     },
 
     __post(handleAs, {url, data, timeout}, succCallback, failCallback) {
-      const searchParams = new URLSearchParams();
-      Object.keys(data).forEach((key) => searchParams.append(key, data[key]));
+      let body, headers;
+      if (data instanceof FormData) {
+        body = data;
+      } else {
+        const searchParams = new URLSearchParams();
+        Object.keys(data).forEach((key) => searchParams.append(key, data[key]));
+        body = searchParams;
+      }
+
+//      {
+//        headers = {
+//          'content-type': 'application/json;character-set:utf-8'
+//        };
+//        body = JSON.stringify(data);
+//      }
+
       const req = new Request(window.location.origin + url, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
-        },
         credentials: "include",
-        body: searchParams,
+        headers,
+        body
       });
 
       return this.__fetch(handleAs, req, succCallback, failCallback);
@@ -156,32 +136,7 @@
 
     __fetch(handleAs, request, succCallback, failCallback) {
 
-      const timeoutPromise = new Promise(resolve => setTimeout(resolve,timeout));
-
-      Promise.race([timeoutPromise, window.fetch(request)]).then(res => {
-        if(res instanceof Response) {
-          if (response.ok) {
-            // response content is blank
-            if (response.headers.has('Content-length')
-                && response.headers.get('Content-length') == 0) {
-
-              succCallback && succCallback();
-            } else {
-              response[handleAs]().then(succCallback);
-            }
-
-          } else {
-//          const error = new Error(response.statusText);
-//          error.response = response;
-//          throw error;
-            response.text().then(failCallback);
-          }
-
-        } else {
-
-        }
-      })
-      .then(response => {
+      window.fetch(request).then(response => {
         if (response.ok) {
           // response content is blank
           if (response.headers.has('Content-length')

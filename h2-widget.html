@@ -18,12 +18,7 @@
               type: Boolean,
               value: false
             },
-            readonlyTemplate: {
-              type: String,
-              value: 'h2-crust'
-            },
-
-            widgetRef: {
+            ref: {
               type: Object
             }
           };
@@ -37,7 +32,7 @@
         }
 
         validate() {
-          const ele = this.widgetRef;
+          const ele = this.ref;
           return ele && ele.validate && ele.validate();
         }
 
@@ -50,6 +45,7 @@
               e.stopPropagation();
               this.value = eleDom.value;
             });
+
             eleDom.context = this.context;
 
             if (this.metadata.dataTypeExtra) {
@@ -62,7 +58,7 @@
               eleDom.metadata = this.metadata;
             }
 
-            this.widgetRef = this.$.slot.appendChild(eleDom);
+            this.ref = this.$.slot.appendChild(eleDom);
           } else {
 
             const element = this.elementRender(this.context, this.metadata);
@@ -79,10 +75,9 @@
         }
 
         __valueChange() {
-          const target = this.widgetRef;
+          const target = this.ref;
 
           target && (target.value = this.value);
-          this.context && (this.context[this.metadata.name] = this.value);
 
           if (!this.editable) {
             const element = this.elementRender(this.context, this.metadata);
