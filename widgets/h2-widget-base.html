@@ -33,7 +33,9 @@
         }
 
         __baseContextChange(obj) {
-          this.value = this.context[this.metadata.name];
+          if(this.context) {
+            this.value = this.context[this.metadata.name];
+          }
         }
 
         __baseValueChange(val) {

@@ -1,7 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <dom-module id="h2-crust">
     <template>
-        <div id="anchor"></div>
     </template>
     <script>
         class H2Crust extends Polymer.Element {
@@ -22,7 +21,7 @@
             ];
           }
           __elementChange(element) {
-            this.$.anchor.innerHTML = this.element;
+            this.shadowRoot.innerHTML = this.element;
           }
         }
         customElements.define(H2Crust.is, H2Crust);
