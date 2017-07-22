@@ -12,7 +12,7 @@
         <div>
             <div class="domain-query">
                 <h2-crud-query id="query" query-after-reset metadata="{{ metadata.query }}" result="{{ rawResult }}"
-                               paging="[[ paging ]]" model="{{model}}">
+                               paging="[[ paging ]]" context="{{model}}">
                     <slot name="ext-condition" slot="ext-condition"></slot>
                 </h2-crud-query>
             </div>

@@ -31,13 +31,13 @@
         </style>
         <div class="container">
             <div class="items">
-                <template is="dom-repeat" items="{{ metadata.fields }}" as="fieldMeta">
+                <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta">
                     <div class="item">
                         <h2-widget
                                 id="{{ getEditorId(fieldMeta.name) }}"
                                 editable
-                                context="{{ model }}"
-                                value="[[ getValueByKey(model,fieldMeta.name) ]]"
+                                context="{{ context }}"
+                                value="[[ getValueByKey(context,fieldMeta.name) ]]"
                                 metadata="{{ fieldMeta }}">
                         </h2-widget>
                     </div>

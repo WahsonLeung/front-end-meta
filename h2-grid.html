@@ -78,7 +78,7 @@
                                 <template is="dom-repeat" items="[[ noGroupActions(model.actions) ]]" as="actionMeta">
                                     <h2-action class="action"
                                                metadata="[[ actionMeta ]]"
-                                               model="[[ model ]]">
+                                               context="[[ model ]]">
                                     </h2-action>
                                 </template>
                                 <template is="dom-repeat" items="[[ groupedActions(model.actions) ]]">
@@ -87,7 +87,7 @@
                                             name="[[ item.group ]]">
                                         <template is="dom-repeat" items="[[ item.actions ]]" as="actionMeta">
                                             <h2-action metadata="[[ actionMeta ]]"
-                                                       model="[[ model ]]">
+                                                       context="[[ model ]]">
                                             </h2-action>
                                         </template>
                                     </h2-action-group>

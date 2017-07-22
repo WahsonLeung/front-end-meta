@@ -36,7 +36,7 @@
             metadata: {
               type: Object
             },
-            model: {
+            context: {
               type: Object
             },
 
@@ -49,13 +49,13 @@
           }
         }
 
-        fetchModel() {
+        fetchContext() {
           if (!this.metadata.modelSrc) return Promise.resolve();
 
           return new Promise((resolve, reject) => {
             // fetch model with modelSrc
             this.query(this.metadata.modelSrc, (data) => {
-              this.model = data;
+              this.context = data;
               resolve();
             }, reject);
           });
@@ -68,7 +68,7 @@
             this._form.submit();
 
           } else if (this.metadata.operType == 2) {
-            this.fetchModel()
+            this.fetchContext()
                 .then(() => this._createDialog())
                 .catch(err => window.alert(JSON.stringify(err)));
           }
@@ -77,7 +77,7 @@
         _createForm() {
           const form = document.createElement('h2-form');
           form.metadata = this.metadata.formMeta;
-          form.model = this.model;
+          form.context = this.context || {};
           form.addEventListener('h2-form-submitted', this._formSubmittedHandler.bind(this));
           return form;
         }
