@@ -9,36 +9,39 @@
 
 <dom-module id="h2-crud">
     <template>
-        <div>
-            <div class="domain-query">
-                <h2-crud-query id="query" query-after-reset metadata="{{ metadata.query }}" result="{{ rawResult }}"
-                               paging="[[ paging ]]" context="{{model}}">
-                    <slot name="ext-condition" slot="ext-condition"></slot>
-                </h2-crud-query>
-            </div>
+        <div class="crud-query">
+            <h2-crud-query id="query"
+                           query-after-reset
+                           metadata="{{ metadata.query }}"
+                           result="{{ rawResult }}"
+                           paging="[[ paging ]]"
+                           context="{{ context }}">
+                <slot name="ext-condition" slot="ext-condition"></slot>
+            </h2-crud-query>
+        </div>
 
-            <div class="domain-actions">
-                <template is="dom-repeat" items="[[ metadata.actions ]]" as="action">
+        <div class="crud-actions">
+            <template is="dom-repeat" items="[[ metadata.actions ]]" as="action">
                     <span>
                         <h2-action metadata="[[ action ]]"></h2-action>
                     </span>
-                </template>
-            </div>
+            </template>
+        </div>
 
-            <div class="domain-grids">
-                <h2-grid metadata="{{ metadata.result }}"
-                         models="[[ getValueByPath(finalResult, keyForItems) ]]">
+        <div class="crud-result">
+            <h2-grid metadata="{{ metadata.result }}"
+                     models="[[ getValueByPath(finalResult, keyForItems) ]]">
 
-                </h2-grid>
-            </div>
+            </h2-grid>
+        </div>
 
+        <div class="crud-pagination">
             <template is="dom-if" if="{{metadata.query.paging}}">
                 <h2-pagination paging="{{ paging }}"
                                total="[[ getValueByPath(finalResult, keyForPageResult) ]]">
 
                 </h2-pagination>
             </template>
-
         </div>
 
     </template>
@@ -67,8 +70,9 @@
             metadata: {
               type: Object,
             },
-            model: {
-              type: Object
+            context: {
+              type: Object,
+              observable: true
             },
             keyForItems: {
               type: String,

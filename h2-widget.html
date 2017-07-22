@@ -4,7 +4,6 @@
 
 <dom-module id="h2-widget">
     <template>
-        <div id="slot"></div>
     </template>
     <script>
       class H2Widget extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
@@ -20,6 +19,9 @@
             },
             ref: {
               type: Object
+            },
+            context: {
+              type: Object
             }
           };
         }
@@ -27,8 +29,13 @@
         static get observers() {
           return [
             '__metadataChange(metadata)',
-            '__valueChange(value)'
+            '__valueChange(value)',
+            '__contextChange(context.*)'
           ];
+        }
+
+        __contextChange(obj) {
+          this.ref && this.ref.notifyPath(obj.path);
         }
 
         validate() {
@@ -40,11 +47,6 @@
           if (this.editable) {
             const tagName = this.metadata.element || H2Widget.defaultElements[this.metadata.datatype];
             const eleDom = document.createElement(tagName);
-
-            eleDom.addEventListener("value-changed", (e) => {
-              e.stopPropagation();
-              this.value = eleDom.value;
-            });
 
             eleDom.context = this.context;
 
@@ -58,11 +60,11 @@
               eleDom.metadata = this.metadata;
             }
 
-            this.ref = this.$.slot.appendChild(eleDom);
+            this.ref = this.shadowRoot.appendChild(eleDom);
           } else {
 
             const element = this.elementRender(this.context, this.metadata);
-            this.$.slot.innerHTML = element;
+            this.shadowRoot.innerHTML = element;
           }
 
         }
@@ -70,7 +72,7 @@
         connectedCallback() {
           super.connectedCallback();
           this.dispatchEvent(new CustomEvent('widget-attached', {
-            composed:true
+            composed: true
           }));
         }
 
@@ -81,7 +83,7 @@
 
           if (!this.editable) {
             const element = this.elementRender(this.context, this.metadata);
-            this.$.slot.innerHTML = element;
+            this.shadowRoot.innerHTML = element;
           }
         }
 

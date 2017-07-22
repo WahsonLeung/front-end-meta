@@ -10,11 +10,14 @@
         static get properties() {
           return {
             context: {
-              type:Object
+              type: Object,
+              notify: true,
+              value:function() {
+                return {};
+              }
             },
             value: {
-              type: Object,
-              notify: true
+              type: Object
             },
             metadata: {
               type: Object
@@ -22,8 +25,24 @@
           };
         }
 
-        validate() {return true;}
+        static get observers() {
+          return [
+            '__baseValueChange(value)',
+            '__baseContextChange(context.*)'
+          ];
+        }
 
+        __baseContextChange(obj) {
+          this.value = this.context[this.metadata.name];
+        }
+
+        __baseValueChange(val) {
+          this.set(`context.${this.metadata.name}`, this.value);
+        }
+
+        validate() {
+          return true;
+        }
       }
       customElements.define(H2WidgetBase.is, H2WidgetBase);
     </script>
