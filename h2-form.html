@@ -5,6 +5,7 @@
 <dom-module id="h2-form">
     <template>
         <style>
+
             dom-repeat {
                 display: none;
             }
@@ -27,7 +28,10 @@
                 grid-column-gap: 10px;
             }
 
-            .item:only-of-type {
+            .cotainer__item {
+            }
+
+            .container__item:only-of-type {
                 grid-column: 1 / end;
             }
 
@@ -37,7 +41,7 @@
         <div class="container">
             <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta" filter="filterVisible">
                 <h2-widget
-                        class="item"
+                        class="container__item"
                         id="[[ getEditorId(fieldMeta.name) ]]"
                         editable
                         context="{{ context }}"
@@ -80,11 +84,30 @@
               }
             },
             metadata: {
-              type: Object
+              type: Object,
+              observer: '__metadataChange'
             },
             onSubmit: {
               type: Object
+            },
+            onError: {
+              type: Object
+            },
+            onSuccess: {
+              type: Object
             }
+          }
+        }
+
+        __updateStyle({style = {}}) {
+          for (let key in style) {
+            this.shadowRoot.querySelectorAll(`.${key}`).forEach(item => item.style = style[key]);
+          }
+        }
+
+        __metadataChange(metadata) {
+          if (metadata) {
+            return this.__updateStyle(metadata);
           }
         }
 
@@ -104,6 +127,7 @@
         onWidgetAttached(e) {
           const fieldMeta = e.model.fieldMeta;
           fieldMeta.onAttached && fieldMeta.onAttached.call(this, e.target);
+          this.__updateStyle(this.metadata);
         }
 
         onValueChange(e) {
@@ -126,23 +150,26 @@
 
           if (!this._validate()) return;
 
-          const _submit = () => {
-            let param = this._requestBody();
-            // Execute the hook before submit.
-            if (this.metadata.beforeSubmit) {
-              param = this.metadata.beforeSubmit(param);
-            }
+          if (this.isFunction(this.onSubmit)) {
+            return this.onSubmit(this._requestBody());
+          }
 
+          const _submit = () => {
             this.post({
               url: this.metadata.formUrl,
               sendAsJson: this.metadata.sendAsJson,
 
-              data: param
+              data: this._requestBody()
             }, (data) => {
+
               this.dispatchEvent(new CustomEvent("h2-form-submitted", {
                 bubbles: true, composed: true, detail: data
               }));
-            });
+
+              this.isFunction(this.onSuccess) && this.onSuccess(data);
+
+            }, (err) => this.isFunction(this.onError) && this.onError(err));
+
           };
 
           if (this.metadata.confirm) {
@@ -176,11 +203,16 @@
         }
 
         _requestBody() {
-          const requestBody = {};
+          let requestBody = {};
           this.metadata.fields
               .forEach(fieldMeta => {
                 requestBody[fieldMeta.alias || fieldMeta.name] = this.context[fieldMeta.name]
               });
+
+          // Execute the hook before submit.
+          if (this.metadata.beforeSubmit) {
+            requestBody = this.metadata.beforeSubmit(requestBody);
+          }
 
           return requestBody;
         }

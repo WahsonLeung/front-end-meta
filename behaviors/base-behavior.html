@@ -18,6 +18,11 @@
       return Object.is(left, right);
     },
 
+
+    isFunction(fn) {
+      return fn && Function.prototype.isPrototypeOf(fn);
+    },
+
     /**
      *
      * @param model

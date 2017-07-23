@@ -3,113 +3,113 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-  <title>h2-form demo</title>
+    <title>h2-form demo</title>
 
-  <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
 
-  <link rel="import" href="../../h2-form.html">
+    <link rel="import" href="../../h2-form.html">
 
-  <link rel="import" href="../../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../../iron-demo-helpers/demo-pages-shared-styles.html">
 
-  <custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
-    .centered {
-      min-width: 500px;
-    }
+    <custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles">
+            .centered {
+                min-width: 500px;
+            }
 
-    demo-snippet {
-      --demo-snippet-code: {
-        max-height: 250px;
-      }
-    }
-  </style>
-  </custom-style>
+            demo-snippet {
+                --demo-snippet-code: {
+                    max-height: 250px;
+                }
+            }
+        </style>
+    </custom-style>
 
 </head>
 
 <body unresolved class="centered">
-  <h3>Simple Form</h3>
-  <demo-snippet>
+<h3>Simple Form</h3>
+<demo-snippet>
     <template>
-      <h2-form id="form"></h2-form>
-      <script>
-        form.context = {
-          foo: "foo",
-          bar: "bar"
-        };
+        <h2-form id="form"></h2-form>
+        <script>
+          form.context = {
+            foo: "foo",
+            bar: "bar"
+          };
 
-        form.metadata = {
-          formUrl: "/url-to-send-form",
-          title:"Form Title",
-          confirm: "Sure to submit?",
-          fields: [
-            {
-              name: "foo",
-              label: "foo",
-              element: "h2-text",
-              required: true,
-              editable:true,
-              visible:true
-            },
-            {
-              datatype: "text",
-              name: "bar",
-              label: "bar",
-              required: true,
-              editable:true,
-              visible:true
-            },
-          ],
-        }
-      </script>
+          form.metadata = {
+            formUrl: "/url-to-send-form",
+            title: "Form Title",
+            confirm: "Sure to submit?",
+            fields: [
+              {
+                name: "foo",
+                label: "foo",
+                element: "h2-text",
+                required: true,
+                editable: true,
+                visible: true
+              },
+              {
+                datatype: "text",
+                name: "bar",
+                label: "bar",
+                required: true,
+                editable: true,
+                visible: true
+              },
+            ],
+          }
+        </script>
     </template>
-  </demo-snippet>
+</demo-snippet>
 
-  <h3>Custom submit function</h3>
-  <demo-snippet>
+<h3>Custom submit function</h3>
+<demo-snippet>
     <template>
-      <h2-form id="form1"></h2-form>
-      <script>
+        <h2-form id="form1"></h2-form>
+        <script>
 
-        form1.onSubmit = function() {
-          console.log("submit");
-        };
+          form1.onSubmit = (request) => {
+            window.alert(JSON.stringify(request));
+          };
 
-        form1.context = {
-          foo: "foo",
-          bar: "bar"
-        }
-        form1.metadata = {
-          formUrl: "/url-to-send-form",
-          title:"Form Title",
-          confirm: "Sure to submit?",
-          fields: [
-            {
-              element: "h2-text",
-              name: "foo",
-              label: "foo",
-              required: true,
-              editable:true,
-              visible:true
-            },
-            {
-              element: "h2-text",
-              name: "bar",
-              label: "bar",
-              required: true,
-              editable:true,
-              visible:true
-            },
-          ],
-        }
-      </script>
+          form1.context = {
+            foo: "foo",
+            bar: "bar"
+          }
+          form1.metadata = {
+            formUrl: "/url-to-send-form",
+            title: "Form Title",
+            confirm: "Sure to submit?",
+            fields: [
+              {
+                element: "h2-text",
+                name: "foo",
+                label: "foo",
+                required: true,
+                editable: true,
+                visible: true
+              },
+              {
+                element: "h2-text",
+                name: "bar",
+                label: "bar",
+                required: true,
+                editable: true,
+                visible: true
+              },
+            ],
+          }
+        </script>
     </template>
-  </demo-snippet>
+</demo-snippet>
 </body>
 
 </html>
