@@ -83,8 +83,52 @@
           form1.context = {
             foo: "foo",
             bar: "bar"
-          }
+          };
+
           form1.metadata = {
+            formUrl: "/url-to-send-form",
+            title: "Form Title",
+            confirm: "Sure to submit?",
+            fields: [
+              {
+                element: "h2-text",
+                name: "foo",
+                label: "foo",
+                required: true,
+                editable: true,
+                visible: true
+              },
+              {
+                element: "h2-text",
+                name: "bar",
+                label: "bar",
+                required: true,
+                editable: true,
+                visible: true
+              },
+            ],
+          }
+        </script>
+    </template>
+</demo-snippet>
+
+<h3>Custom style</h3>
+<demo-snippet>
+    <template>
+        <h2-form id="form2"></h2-form>
+        <script>
+
+          form2.context = {
+            foo: "foo",
+            bar: "bar"
+          };
+
+          form2.metadata = {
+            style:{
+              container: `grid-column-gap: 4%;
+                            grid-template-columns: 48% 48%;`,
+              container__item: 'border: 1px dashed;'
+            },
             formUrl: "/url-to-send-form",
             title: "Form Title",
             confirm: "Sure to submit?",
