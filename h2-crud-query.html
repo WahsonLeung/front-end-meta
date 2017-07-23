@@ -15,7 +15,7 @@
                 padding: 8px 8px 8px 10px;
             }
 
-            .item {
+            .container__item {
                 grid-row: auto;
             }
 
@@ -35,7 +35,7 @@
                 <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta">
                     <h2-widget
                             id="{{ getEditorId(fieldMeta.name) }}"
-                            class="item"
+                            class="container__item"
                             editable
                             context="{{ context }}"
                             value="[[ getValueByKey(context,fieldMeta.name) ]]"

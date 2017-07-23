@@ -88,7 +88,7 @@
           this._dialog.open();
 
           const form = this._createForm();
-          form.slot = "content";
+          form.slot = "container";
           this._dialog.appendChild(form);
           this._dialog.addEventListener('dialog-closed', e => {
             this._dialog = undefined;
