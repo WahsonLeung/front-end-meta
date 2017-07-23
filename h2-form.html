@@ -115,7 +115,8 @@
               this._subscriptionTable[field].push(callback);
             }
 
-            callback(this.context);
+            setTimeout(() => callback(this.context), 0);
+
           } else {
             console.warn(`Oops, ${callback} is not a function`);
           }

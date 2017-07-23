@@ -44,12 +44,12 @@
      */
     getValueByPath(model, path, defVal) {
       // TODO if user wants a defVal equal to '', this won't work.
-      if(!model) return !!defVal ? JSON.parse(defVal) : undefined;
+      if (!model) return !!defVal ? JSON.parse(defVal) : undefined;
 
       const splits = path.split('.');
       let copy = model;
-      for(let key of splits) {
-        if(!copy[key]) return !!defVal ? JSON.parse(defVal) : undefined;
+      for (let key of splits) {
+        if (!copy[key]) return !!defVal ? JSON.parse(defVal) : undefined;
         copy = copy[key];
       }
 
@@ -68,8 +68,56 @@
         return _render(model);
       }
       return this.getValueByKey(model, field.name);
-    }
+    },
 
+
+    suite(obj) {
+      this.__suite(obj);
+      return obj;
+    },
+
+    __suite(target, parent) {
+      if (!Object.prototype.isPrototypeOf(target))
+        throw new TypeError(`target is not an object`);
+
+      Object.defineProperties(target, {
+        select: {
+          writable: false,
+          enumerable: false,
+          value: (path) => {
+            if (!target[path]) throw new TypeError(`${path} is not a property of target`);
+            if (Object.prototype.isPrototypeOf(target[path]) && !target[path].hasOwnProperty('select')) {
+              this.__suite(target[path], target);
+            }
+            return target[path];
+          }
+        },
+        unselect: {
+          writable: false,
+          enumerable: false,
+          value: function () {
+            return parent || target;
+          }
+        },
+        ext: {
+          writable: false,
+          enumerable: false,
+          value: function (key, value) {
+            target[key] = value;
+            return target;
+          }
+        },
+        batchExt: {
+          writable: false,
+          enumerable: false,
+          value: function (key, handler) {
+            target[key].forEach(handler);
+            return target;
+          }
+        }
+
+      });
+    }
 
   }
 </script>
