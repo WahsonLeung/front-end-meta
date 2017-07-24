@@ -124,11 +124,15 @@
           };
 
           form2.metadata = {
-            style: {
-              container: `grid-column-gap: 4%;
-                            grid-template-columns: 48% 48%;`,
-              container__item: 'border: 1px dashed;'
-            },
+            style:
+                `.container {
+                     grid-column-gap: 4%;
+                     grid-template-columns: 48% 48%;
+                 }
+                 .container__item {
+                     border: 1px dashed
+                 }
+                `,
             formUrl: "/url-to-send-form",
             title: "Form Title",
             confirm: "Sure to submit?",
@@ -167,11 +171,15 @@
           };
 
           form3.metadata = {
-            style: {
-              container: `grid-column-gap: 4%;
-                            grid-template-columns: 48% 48%;`,
-              container__item: 'border: 1px dashed;'
-            },
+            style:
+              `.container {
+                    grid-column-gap: 4%;
+                    grid-template-columns: 48% 48%;
+                }
+               .container__item {
+                    border: 1px dashed
+                }
+              `,
             formUrl: "/url-to-send-form",
             title: "Form Title",
             confirm: "Sure to submit?",
