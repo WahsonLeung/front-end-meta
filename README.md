@@ -5,7 +5,11 @@
 ### Tutorials
 #### Installation
 - Install Polymer
-- Install <h2-*> elements
+- Install front-end-meta
+```
+bower install git://github.com/mrLeung/front-end-meta.git
+```
+
 #### Configure your metadata
 #### Create custom style  
 #### Create custom widgets
