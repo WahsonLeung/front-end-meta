@@ -124,7 +124,7 @@
           };
 
           form2.metadata = {
-            style:{
+            style: {
               container: `grid-column-gap: 4%;
                             grid-template-columns: 48% 48%;`,
               container__item: 'border: 1px dashed;'
@@ -140,6 +140,56 @@
                 required: true,
                 editable: true,
                 visible: true
+              },
+              {
+                element: "h2-text",
+                name: "bar",
+                label: "bar",
+                required: true,
+                editable: true,
+                visible: true
+              },
+            ],
+          }
+        </script>
+    </template>
+</demo-snippet>
+
+<h3>Alternation between widgets</h3>
+<demo-snippet>
+    <template>
+        <h2-form id="form3"></h2-form>
+        <script>
+
+          form3.context = {
+            foo: "foo",
+            bar: "bar"
+          };
+
+          form3.metadata = {
+            style: {
+              container: `grid-column-gap: 4%;
+                            grid-template-columns: 48% 48%;`,
+              container__item: 'border: 1px dashed;'
+            },
+            formUrl: "/url-to-send-form",
+            title: "Form Title",
+            confirm: "Sure to submit?",
+            fields: [
+              {
+                element: "h2-text",
+                name: "foo",
+                label: "foo",
+                required: true,
+                editable: true,
+                visible: true,
+                onAttached: function (element) {
+                  this.watch(['bar'], ({bar}) => {
+                      bar.length > 4 ?
+                          element.style = 'background:red;' : element.style = 'background:green;'
+
+                  });
+                }
               },
               {
                 element: "h2-text",
