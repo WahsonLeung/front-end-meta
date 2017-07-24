@@ -4,7 +4,7 @@
 <link rel="import" href="h2-widget.html">
 <dom-module id="h2-form">
     <template>
-        <style>
+        <style id="localStyle">
 
             dom-repeat {
                 display: none;
@@ -96,10 +96,19 @@
           }
         }
 
-        __updateStyle({style = {}}) {
-          for (let key in style) {
-            this.shadowRoot.querySelectorAll(`.${key}`).forEach(item => item.style = style[key]);
+        __updateStyle({style}) {
+          if (!style) return;
+
+          let styleEle = this.shadowRoot.querySelector('style#customStyle');
+
+          if (!styleEle) {
+            styleEle = document.createElement('style');
+            styleEle.id = 'customStyle';
+            styleEle.setAttribute('scope', this.constructor.is);
+            this.shadowRoot.appendChild(styleEle);
           }
+
+          styleEle.appendChild(document.createTextNode(style));
         }
 
         __metadataChange(metadata) {
@@ -125,7 +134,6 @@
         onWidgetAttached(e) {
           const fieldMeta = e.model.fieldMeta;
           fieldMeta.onAttached && fieldMeta.onAttached.call(this, e.target);
-          this.__updateStyle(this.metadata);
         }
 
         onValueChange(e) {
