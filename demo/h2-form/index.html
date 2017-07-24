@@ -191,10 +191,10 @@
                 required: true,
                 editable: true,
                 visible: true,
-                onAttached: function (element) {
-                  this.watch(['bar'], ({bar}) => {
-                      bar.length > 4 ?
-                          element.style = 'background:red;' : element.style = 'background:green;'
+                onAttached: function (element, root) {
+                  root.watch(['bar'], ({bar}) => {
+                    element.style = bar.length > 4 ?
+                           'background:red;' : 'background:green;'
 
                   });
                 }
