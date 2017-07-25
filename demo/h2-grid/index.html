@@ -33,13 +33,112 @@
 </head>
 
 <body unresolved class="centered">
-  <h3>123</h3>
+  <h3>Simple Grid</h3>
   <demo-snippet>
     <template>
       <style is="custom-style">
       </style>
-
+      <h2-grid id="grid"></h2-grid>
       <script>
+        grid.metadata = {
+          title: "I am the title!",
+          grids: [
+            {
+              name: "col1",
+              label: "Col1"
+            },
+            {
+              name: "col2",
+              label: "Col2"
+            },
+            {
+              name: "col3",
+              label: "Col3"
+            },
+            {
+              datatype: "action",
+              name: "actions",
+              label: "Actions",
+            }
+          ],
+          actions: {
+            "action-1": {
+              actionId: "action-1",
+              actionName: "Action1",
+              operType: 1,
+              formMeta: {
+                formUrl: "/url-to-send-form",
+                confirm: "Sure to submit?",
+                fields: [
+                  {
+                    element: "h2-text",
+                    name: "name",
+                    label:"Name"
+                  },
+                  {
+                    element: "h2-text",
+                    name: "phone",
+                    label:"Phone"
+                  },
+                ],
+              }
+            },
+            "action-2": {
+              actionId: "action-2",
+              actionName: "Action2",
+              operType: 2,
+              formMeta: {
+                title: "Dialog Title",
+                formUrl: "/url-to-send-form",
+                confirm: "Sure to submit?",
+                fields: [
+                  {
+                    element: "h2-text",
+                    name: "name",
+                    label:"Name",
+                    visible:true,
+                    editable:true
+                  },
+                  {
+                    element: "h2-text",
+                    name: "phone",
+                    label:"Phone",
+                    visible:true,
+                    editable:true
+                  },
+                ],
+              }
+            }
+          }
+        };
+
+        grid.models = [
+          {
+            col1: "foo",
+            col2: "bar",
+            col3: "foobar",
+            actions:["action-1","action-2"]
+          },
+          {
+            col1: "foo",
+            col2: "bar",
+            col3: "foobar",
+            actions:["action-1"]
+          },
+          {
+            col1: "foo",
+            col2: "bar",
+            col3: "foobar",
+            actions:["action-2"]
+          },
+          {
+            col1: "foo",
+            col2: "bar",
+            col3: "foobar",
+            actions:["action-1","action-2"]
+          }
+        ];
+
       </script>
     </template>
   </demo-snippet>
