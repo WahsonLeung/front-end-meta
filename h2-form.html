@@ -74,7 +74,6 @@
             },
             context: {
               type: Object,
-              notify: true,
               value: function () {
                 return {};
               }
@@ -173,7 +172,10 @@
 
               this.isFunction(this.onSuccess) && this.onSuccess(data);
 
-            }, (err) => this.isFunction(this.onError) && this.onError(err));
+            }, (err) => {
+              window.alert(JSON.stringify(err));
+              this.isFunction(this.onError) && this.onError(err)
+            });
 
           };
 
