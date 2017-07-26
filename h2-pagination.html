@@ -208,7 +208,7 @@
         }
 
         _pageSize(results) {
-          return Math.ceil(results / this.paging.limit);
+          return Math.ceil((results || 0 )/ this.paging.limit);
         }
 
         first() {
