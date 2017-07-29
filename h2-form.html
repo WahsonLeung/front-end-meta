@@ -99,24 +99,9 @@
           };
         }
 
-        __updateStyle({style}) {
-          if (!style) return;
-
-          let styleEle = this.shadowRoot.querySelector('style#customStyle');
-
-          if (!styleEle) {
-            styleEle = document.createElement('style');
-            styleEle.id = 'customStyle';
-            styleEle.setAttribute('scope', this.constructor.is);
-            this.shadowRoot.appendChild(styleEle);
-          }
-
-          styleEle.appendChild(document.createTextNode(style));
-        }
-
         __metadataChange(metadata) {
           if (metadata) {
-            return this.__updateStyle(metadata);
+            return this.updateStyle(metadata.style);
           }
         }
 

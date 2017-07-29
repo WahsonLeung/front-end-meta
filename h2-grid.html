@@ -21,16 +21,20 @@
                 padding: 5px 10px;
             }
 
-            :host table {
+            :host .result-grid {
                 background: transparent;
                 border-spacing: 0;
                 border-collapse: collapse;
+                width: 100%;
             }
 
             :host td {
                 padding: 5px 10px;
             }
 
+            :host .grid-column {
+                min-width: 70px;
+            }
             :host tr:nth-of-type(even) {
                 background-color: lightgrey;
             }
@@ -54,10 +58,10 @@
 
         </style>
         <slot name="filter"></slot>
-        <table width="100%">
+        <table class="result-grid">
             <caption class="table-caption">[[ metadata.title ]]</caption>
             <thead>
-            <tr>
+            <tr class="grid-head">
                 <template is="dom-repeat" items="[[ metadata.grids ]]">
                     <th>[[item.label]]</th>
                 </template>
@@ -65,11 +69,12 @@
             </thead>
             <tbody>
             <template is="dom-repeat" items="[[ models ]]" as="model">
-                <tr>
+                <tr class="grid-row">
                     <template is="dom-repeat" items="[[ metadata.grids ]]" as="fieldMeta">
-                        <td>
+                        <td class="grid-column">
                             <template is="dom-if" if="[[ !isEqual(fieldMeta.datatype, 'action') ]]">
-                                <h2-widget metadata="[[ fieldMeta ]]"
+                                <h2-widget class="widget"
+                                           metadata="[[ fieldMeta ]]"
                                            editable="[[ fieldMeta.editable ]]"
                                            context="[[ model ]]"
                                            value="[[ getValueByKey(model,fieldMeta.name) ]]">
@@ -122,8 +127,15 @@
               type: Array
             },
             metadata: {
-              type: Object
+              type: Object,
+              observer: '__metadataChange'
             }
+          }
+        }
+
+        __metadataChange(metadata) {
+          if (metadata) {
+            return this.updateStyle(metadata.style);
           }
         }
 

@@ -70,6 +70,21 @@
       return this.getValueByKey(model, field.name);
     },
 
+    updateStyle(style) {
+      if (!style) return;
+
+      let styleEle = this.shadowRoot.querySelector('style#customStyle');
+
+      if (!styleEle) {
+        styleEle = document.createElement('style');
+        styleEle.id = 'customStyle';
+        styleEle.setAttribute('scope', this.constructor.is);
+        this.shadowRoot.appendChild(styleEle);
+      }
+
+      styleEle.appendChild(document.createTextNode(style));
+    },
+
     redefine(obj, path) {
       let pojo = this.__redefine(obj);
       pojo.__addObserver(path, this.notifyPath.bind(this));
