@@ -9,6 +9,17 @@
 
 <dom-module id="h2-crud">
     <template>
+        <style>
+            :host .crud-actions {
+                display: flex;
+                justify-content: flex-end;
+                border-top: 1px dashed;
+                padding: 10px;
+            }
+            :host .action-items {
+                margin-left: 10px;
+            }
+        </style>
         <div class="crud-query">
             <h2-crud-query id="query"
                            query-after-reset
@@ -22,7 +33,7 @@
 
         <div class="crud-actions">
             <template is="dom-repeat" items="[[ metadata.actions ]]" as="action">
-                    <span>
+                    <span class="action-items">
                         <h2-action metadata="[[ action ]]"></h2-action>
                     </span>
             </template>

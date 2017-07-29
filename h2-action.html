@@ -50,15 +50,21 @@
         }
 
         fetchContext() {
-          if (!this.metadata.modelSrc) return Promise.resolve();
+          if (!this.metadata.modelSrc) return;
+          // fetch model with modelSrc
+          const data = {};
 
-          return new Promise((resolve, reject) => {
-            // fetch model with modelSrc
-            this.query(this.metadata.modelSrc, (data) => {
-              this.context = data;
-              resolve();
-            }, reject);
-          });
+          if (this.metadata.modelQueryParams) {
+            this.metadata.modelQueryParams.forEach(param => (data[param] = this.context[param]));
+          }
+
+          this.query({
+            url: this.metadata.modelSrc,
+            data: data
+          }, (data) => {
+            this._refreshContext(data);
+          }, (err) => window.alert(JSON.stringify(err)));
+
         }
 
         submitOrOpenDialog() {
@@ -68,10 +74,14 @@
             this._form.submit();
 
           } else if (this.metadata.operType == 2) {
-            this.fetchContext()
-                .then(() => this._createDialog())
-                .catch(err => window.alert(JSON.stringify(err)));
+            this.fetchContext();
+            this._createDialog();
           }
+        }
+
+        _refreshContext(context) {
+          this.context = context;
+          this._form.set('context', context);
         }
 
         _createForm() {
@@ -89,11 +99,13 @@
 
           const form = this._createForm();
           form.slot = "container";
+          this._form = form;
           this._dialog.appendChild(form);
           this._dialog.addEventListener('dialog-closed', e => {
             this._dialog = undefined;
           });
 
+          return this._dialog;
         }
 
         _formSubmittedHandler(e) {
