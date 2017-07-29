@@ -54,7 +54,6 @@
             <template is="dom-if" if="[[ !metadata.isSubmitForbidden ]]">
                 <paper-button raised on-click="submit">保存</paper-button>
             </template>
-            <paper-button raised dialog-dismiss>关闭</paper-button>
         </div>
     </template>
     <script>
@@ -194,8 +193,11 @@
               .filter(fieldMeta => fieldMeta.visible && (fieldMeta.required || !!fieldMeta.validate))
               .every(fieldMeta => {
                 const editor = this._getEditor(fieldMeta.name);
+                if (!editor) {
+                  console.warn(`Editor for 【${fieldMeta.name}】 not found in <${this.constructor.is} />`);
+                }
                 // if the editor does not have a validator,return true
-                return editor.validate ? editor.validate() : true;
+                return editor && editor.validate ? editor.validate() : true;
               });
         }
 
