@@ -41,7 +41,7 @@
                         class="container__item"
                         id="[[ getEditorId(fieldMeta.name) ]]"
                         editable
-                        context="{{ context }}"
+                        context="{{ __context }}"
                         value="[[ getValueByKey(context,fieldMeta.name) ]]"
                         on-value-changed="onValueChange"
                         on-widget-attached="onWidgetAttached"
@@ -78,6 +78,11 @@
                 return {};
               }
             },
+            __context: {
+              type: Object,
+              computed: "redefine(context,'__context')"
+            },
+
             metadata: {
               type: Object,
               observer: '__metadataChange'
@@ -91,7 +96,7 @@
             onSuccess: {
               type: Object
             }
-          }
+          };
         }
 
         __updateStyle({style}) {
@@ -122,7 +127,7 @@
               this._subscriptionTable[field].push(callback);
             }
 
-            setTimeout(() => callback(this.context), 0);
+            setTimeout(() => callback(this.__context), 0);
 
           } else {
             console.warn(`Oops, ${callback} is not a function`);
@@ -142,7 +147,7 @@
           if (!this._subscriptionTable[myFieldName]) return;
 
           this._subscriptionTable[myFieldName].forEach(fn => {
-            fn(this.context);
+            fn(this.__context);
           });
         }
 
@@ -213,7 +218,7 @@
           let requestBody = {};
           this.metadata.fields
               .forEach(fieldMeta => {
-                requestBody[fieldMeta.alias || fieldMeta.name] = this.context[fieldMeta.name]
+                requestBody[fieldMeta.alias || fieldMeta.name] = this.__context[fieldMeta.name]
               });
 
           // Execute the hook before submit.
