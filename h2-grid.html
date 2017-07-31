@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="./behaviors/base-behavior.html">
+<link rel="import" href="h2-field.html">
 <link rel="import" href="h2-action.html">
 <link rel="import" href="h2-action-group.html">
 
@@ -80,12 +81,12 @@
                     <template is="dom-repeat" items="[[ metadata.grids ]]" as="fieldMeta">
                         <td class="grid-column">
                             <template is="dom-if" if="[[ !isEqual(fieldMeta.datatype, 'action') ]]">
-                                <h2-widget class="widget"
+                                <h2-field class="widget"
                                            metadata="[[ fieldMeta ]]"
                                            editable="[[ fieldMeta.editable ]]"
                                            context="[[ model ]]"
                                            value="[[ getValueByKey(model,fieldMeta.name) ]]">
-                                </h2-widget>
+                                </h2-field>
                             </template>
 
                             <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">

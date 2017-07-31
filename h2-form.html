@@ -1,7 +1,7 @@
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="./behaviors/ajax-behavior.html">
 <link rel="import" href="./behaviors/base-behavior.html">
-<link rel="import" href="h2-widget.html">
+<link rel="import" href="h2-field.html">
 
 <!--
 @group H2 Elements
@@ -44,7 +44,7 @@
 
         <div class="container">
             <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta" filter="filterVisible">
-                <h2-widget
+                <h2-field
                         class="container__item"
                         id="[[ getEditorId(fieldMeta.name) ]]"
                         editable
@@ -53,7 +53,7 @@
                         on-value-changed="onValueChange"
                         on-widget-attached="onWidgetAttached"
                         metadata="[[ fieldMeta ]]">
-                </h2-widget>
+                </h2-field>
             </template>
         </div>
 

@@ -5,17 +5,17 @@
 
 <!--
 @group H2 Elements
-@element h2-widget
-@demo demo/h2-widget/index.html
+@element h2-field
+@demo demo/h2-field/index.html
 -->
 
-<dom-module id="h2-widget">
+<dom-module id="h2-field">
     <template>
     </template>
     <script>
-      class H2Widget extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
+      class H2Field extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
         static get is() {
-          return "h2-widget";
+          return "h2-field";
         }
 
         static get properties() {
@@ -52,7 +52,7 @@
 
         __metadataChange() {
           if (this.editable) {
-            const tagName = this.metadata.element || H2Widget.defaultElements[this.metadata.datatype];
+            const tagName = this.metadata.element || H2Field.defaultElements[this.metadata.datatype];
             const eleDom = document.createElement(tagName);
 
             eleDom.addEventListener('value-changed', e => {
@@ -110,6 +110,6 @@
         }
       }
 
-      customElements.define(H2Widget.is, H2Widget);
+      customElements.define(H2Field.is, H2Field);
     </script>
 </dom-module>

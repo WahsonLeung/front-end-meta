@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../polymer/lib/utils/async.html">
 <link rel="import" href="h2-form.html">
-<link rel="import" href="h2-widget.html">
+<link rel="import" href="h2-field.html">
 
 <!--
 @group H2 Elements
@@ -40,14 +40,14 @@
         <div class="container">
             <div class="conditions">
                 <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta">
-                    <h2-widget
+                    <h2-field
                             id="{{ getEditorId(fieldMeta.name) }}"
                             class="conditions__item"
                             editable
                             context="{{ context }}"
                             value="[[ getValueByKey(context,fieldMeta.name) ]]"
                             metadata="{{ fieldMeta }}">
-                    </h2-widget>
+                    </h2-field>
                 </template>
             </div>
 
