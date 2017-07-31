@@ -11,11 +11,13 @@
     "front-end-meta"
   ],
   "main": [
-    "h2-domain.html",
-    "h2-domain-query.html",
+    "h2-crud.html",
+    "h2-crud-query.html",
     "h2-grid.html",
     "h2-form.html",
     "h2-action.html",
+    "h2-action-group",
+    "h2-dialog",
     "h2-crust.html",
     "h2-field.html",
     "h2-pagination.html"
@@ -29,9 +31,6 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.1",
     "webcomponentsjs": "webcomponents/webcomponentsjs#1.0.0",
-    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#1 - 2",
     "iron-input": "PolymerElements/iron-input#1 - 2",
     "iron-collapse": "PolymerElements/iron-collapse#1 - 2",
     "iron-icons": "PolymerElements/iron-icons#1 - 2",
@@ -46,6 +45,9 @@
     "web-animations-js": "web-animations/web-animations-js#^2.2.0"
   },
   "devDependencies": {
-    "web-component-tester": "^6.0.0"
+    "web-component-tester": "^6.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#1 - 2"
   }
 }
