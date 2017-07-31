@@ -1,6 +1,6 @@
 {
   "name": "front-end-meta",
-  "version": "0.0.1-beta",
+  "version": "0.1.0",
   "description": "front end meta",
   "authors": [
     "WahsonLeung"
@@ -17,7 +17,7 @@
     "h2-form.html",
     "h2-action.html",
     "h2-crust.html",
-    "h2-widget.html",
+    "h2-field.html",
     "h2-pagination.html"
   ],
   "repository": {
