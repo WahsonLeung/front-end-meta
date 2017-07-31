@@ -43,7 +43,6 @@
     "paper-radio-button": "PolymerElements/paper-radio-button#1 - 2",
     "paper-item": "PolymerElements/paper-item#1 - 2",
     "paper-listbox": "PolymerElements/paper-listbox#1 - 2",
-    "paper-textarea": "PolymerElements/paper-textarea#1 - 2",
     "web-animations-js": "web-animations/web-animations-js#^2.2.0"
   },
   "devDependencies": {
