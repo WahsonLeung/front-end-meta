@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>h2-widget test</title>
+    <title>h2-field test</title>
 
     <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../../web-component-tester/browser.js"></script>
@@ -14,15 +14,15 @@
   <body>
     <test-fixture id="basic">
       <template>
-        <h2-widget></h2-widget>
+        <h2-field></h2-field>
       </template>
     </test-fixture>
 
     <script>
-      suite('h2-widget', function() {
+      suite('h2-field', function() {
         test('instantiating the element works', function() {
           const element = fixture('basic');
-          assert.equal(element.is, 'h2-widget');
+          assert.equal(element.is, 'h2-field');
         });
       });
     </script>
