@@ -140,7 +140,7 @@
         connectedCallback() {
           super.connectedCallback();
           this.addEventListener('blur', e => {
-            this.close();
+            setTimeout(this.close.bind(this), 100);
           });
         }
 
