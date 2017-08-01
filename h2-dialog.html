@@ -16,11 +16,15 @@
         <style>
             :host {
                 position: absolute;
+                min-width: 80%;
+                min-height: 80%;
             }
 
             :host paper-dialog {
-                min-width: 85%;
-                min-height: 80%;
+                min-width: inherit;
+                min-height: inherit;
+                width: inherit;
+                height: inherit;
             }
 
             :host .close-dialog {
@@ -43,7 +47,7 @@
             }
 
             :host .scrollable-container {
-                min-height: 700px;
+                min-height: 1000px;
             }
 
         </style>

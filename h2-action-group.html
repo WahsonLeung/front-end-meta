@@ -140,6 +140,7 @@
         connectedCallback() {
           super.connectedCallback();
           this.addEventListener('blur', e => {
+            // make sure other event can happen on slotted element before the iron-collapse closed.
             setTimeout(this.close.bind(this), 100);
           });
         }
