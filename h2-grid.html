@@ -13,6 +13,11 @@
 <dom-module id="h2-grid">
     <template>
         <style>
+            :host {
+                font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+                font-size: 12px;
+            }
+
             dom-repeat, dom-if {
                 display: none;
             }
@@ -24,9 +29,7 @@
 
             :host th {
                 text-align: left;
-                height: 40px;
-                font-size: 1.1em;
-                padding: 5px 10px;
+                padding: 12px 10px;
             }
 
             :host .result-grid {
