@@ -79,7 +79,7 @@
             </tr>
             </thead>
             <tbody>
-            <template is="dom-repeat" items="[[ models ]]" as="model">
+            <template is="dom-repeat" items="[[ value ]]" as="model">
                 <tr class="grid-row">
                     <template is="dom-repeat" items="[[ metadata.grids ]]" as="fieldMeta">
                         <td class="grid-column">
@@ -134,7 +134,7 @@
               type: Boolean,
               value: false
             },
-            models: {
+            value: {
               type: Array
             },
             metadata: {
