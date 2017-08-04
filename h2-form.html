@@ -52,7 +52,7 @@
                         context="{{ __context }}"
                         value="[[ getValueByKey(context,fieldMeta.name) ]]"
                         on-value-changed="onValueChange"
-                        on-widget-attached="onWidgetAttached"
+                        on-field-attached="onFieldAttached"
                         metadata="[[ fieldMeta ]]">
                 </h2-field>
             </template>
@@ -126,7 +126,7 @@
           }
         }
 
-        onWidgetAttached(e) {
+        onFieldAttached(e) {
           const fieldMeta = e.model.fieldMeta;
           fieldMeta.onAttached && fieldMeta.onAttached.call(this, e.target, this);
         }

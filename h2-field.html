@@ -42,6 +42,11 @@
         }
 
         __contextChange(obj) {
+          // if context obj change, force to refresh
+          if(obj.path === "context") {
+            this.__valueChange();
+          }
+
           this.ref && this.ref.notifyPath(obj.path);
         }
 
@@ -81,7 +86,7 @@
 
         connectedCallback() {
           super.connectedCallback();
-          this.dispatchEvent(new CustomEvent('widget-attached', {
+          this.dispatchEvent(new CustomEvent('field-attached', {
             composed: true
           }));
         }
