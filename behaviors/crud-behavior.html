@@ -195,6 +195,7 @@
         }
 
       }).catch(err => {
+        Function.prototype.isPrototypeOf(failCallback) && failCallback(err.message);
         console.error(err);
       });
     },
