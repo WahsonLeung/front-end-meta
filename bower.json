@@ -10,18 +10,7 @@
     "polymer",
     "front-end-meta"
   ],
-  "main": [
-    "h2-crud.html",
-    "h2-crud-query.html",
-    "h2-grid.html",
-    "h2-form.html",
-    "h2-action.html",
-    "h2-action-group",
-    "h2-dialog",
-    "h2-crust.html",
-    "h2-field.html",
-    "h2-pagination.html"
-  ],
+  "main": "h2-crud.html",
   "repository": {
     "type": "git",
     "url": "git://github.com/mrLeung/front-end-meta.git"
