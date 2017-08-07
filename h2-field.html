@@ -1,18 +1,18 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="all-imports.html">
 <link rel="import" href="./widgets/widget-resources.html">
 <link rel="import" href="./widgets/h2-widget-base.html">
 <link rel="import" href="./behaviors/base-behavior.html">
-
-<!--
-@group H2 Elements
-@element h2-field
-@demo demo/h2-field/index.html
--->
 
 <dom-module id="h2-field">
     <template>
     </template>
     <script>
+      /**
+       * @customElement
+       * @polymer
+       * @demo demo/h2-field/index.html
+       */
       class H2Field extends Polymer.mixinBehaviors([BaseBehavior], H2WidgetBase) {
         static get is() {
           return "h2-field";
@@ -57,20 +57,17 @@
 
         __metadataChange() {
           if (this.editable) {
-            const tagName = this.metadata.element || H2Field.defaultElements[this.metadata.datatype];
+            const tagName = this.metadata.element || H2Field.defaultElements(this.metadata.metaType);
             const eleDom = document.createElement(tagName);
 
             eleDom.addEventListener('value-changed', e => {
               this.value = e.detail.value;
             });
+
             eleDom.context = this.context;
 
-            if (this.metadata.dataTypeExtra) {
-              // TODO
-              // fetch metadata with dataTypeExtra,
-              // but the metadata service doesn't work yet,
-              // so currently get metadata from this.metadata instead
-              eleDom.metadata = this.metadata.metadata;
+            if (this.metadata.metaType && this.metadata.metaType.metadata) {
+              eleDom.metadata = this.metadata.metaType.metadata;
             } else {
               eleDom.metadata = this.metadata;
             }
@@ -102,16 +99,13 @@
           }
         }
 
-        static get defaultElements() {
-          return {
-            'text': 'h2-text',
-            'textarea': 'h2-text-area',
-            'number': 'h2-number',
-            'date': 'h2-date',
-            'select-list': 'h2-select-list',
-            'select-tree': 'h2-select-tree',
-            'radio-group': 'h2-radio-group'
-          };
+        static defaultElements({type} = {}) {
+          switch (type) {
+            case "action":
+              return "h2-action";
+            default:
+              return "h2-text";
+          }
         }
       }
 

@@ -7,6 +7,11 @@
 <link rel="import" href="h2-action.html">
 <link rel="import" href="h2-pagination.html">
 
+<!--
+ #
+ `<h2-crud></h2-crud>`
+
+-->
 <dom-module id="h2-crud">
     <template>
         <style>
@@ -73,26 +78,54 @@
 
         static get properties() {
           return {
+            /**
+             * a closure ``(result) => result``, will be invoked before result is access to dom.
+             * @callback resultDescriptor {{(result) => result}}
+             */
             resultDescriptor: {
               type: Object
             },
+            /**
+             * The result response from server.
+             * @type  {{array}}
+             */
             rawResult: {
               type: Array,
             },
+            /**
+             * The result is described by ``resultDescriptor``
+             * @type  {{array}}
+             */
             finalResult: {
               type: Array,
               computed: '_resultDescriptor(rawResult)'
             },
+
+            /**
+             * The metadata of h2-crud
+             */
             metadata: {
               type: Object,
             },
+
+            /**
+             * The context of h2-crud
+             */
             context: {
               type: Object
             },
+
+            /**
+             * The field name of the items in the responsed result.
+             */
             keyForItems: {
               type: String,
               value: "rows"
             },
+
+            /**
+             * The field name of the page result in the responsed result.
+             */
             keyForPageResult: {
               type: String,
               value: "results"
@@ -105,6 +138,9 @@
               this.resultDescriptor(result) : result;
         }
 
+        /**
+         * 查询页面数据
+         */
         refresh() {
           this.$.query.submit();
         }
