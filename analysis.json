@@ -1,0 +1,4618 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "",
+      "summary": "",
+      "path": "widgets/h2-widget-base.html",
+      "properties": [
+        {
+          "name": "context",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 12
+            },
+            "end": {
+              "line": 17,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "{}"
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 18,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "__baseContextChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 8
+            },
+            "end": {
+              "line": 39,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "obj"
+            }
+          ]
+        },
+        {
+          "name": "__baseValueChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 41,
+              "column": 8
+            },
+            "end": {
+              "line": 43,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "val"
+            }
+          ]
+        },
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 45,
+              "column": 8
+            },
+            "end": {
+              "line": 47,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 3,
+          "column": 6
+        },
+        "end": {
+          "line": 48,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2WidgetBase",
+      "attributes": [
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 12
+            },
+            "end": {
+              "line": 17,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "value",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 18,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "context-changed",
+          "description": "Fired when the `context` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-widget-base"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "widgets/h2-text.html",
+      "properties": [],
+      "methods": [
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 12
+            },
+            "end": {
+              "line": 30,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 23,
+          "column": 8
+        },
+        "end": {
+          "line": 32,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Text",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-text"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "widgets/h2-text-area.html",
+      "properties": [],
+      "methods": [
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 8
+            },
+            "end": {
+              "line": 30,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 23,
+          "column": 6
+        },
+        "end": {
+          "line": 32,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2TextArea",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-text-area"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "widgets/h2-select-list.html",
+      "properties": [],
+      "methods": [
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 8
+            },
+            "end": {
+              "line": 33,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 26,
+          "column": 6
+        },
+        "end": {
+          "line": 35,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2SelectList",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-select-list"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "widgets/h2-radio-group.html",
+      "properties": [
+        {
+          "name": "noLabelFloat",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 12
+            },
+            "end": {
+              "line": 38,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 42,
+              "column": 8
+            },
+            "end": {
+              "line": 44,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "reset",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 46,
+              "column": 8
+            },
+            "end": {
+              "line": 48,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 28,
+          "column": 6
+        },
+        "end": {
+          "line": 50,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2RadioGroup",
+      "attributes": [
+        {
+          "name": "no-label-float",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 12
+            },
+            "end": {
+              "line": 38,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-radio-group"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-field.html",
+      "properties": [
+        {
+          "name": "editable",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 21,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "ref",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 25,
+              "column": 12
+            },
+            "end": {
+              "line": 27,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "context",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 12
+            },
+            "end": {
+              "line": 30,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "__contextChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 42,
+              "column": 8
+            },
+            "end": {
+              "line": 49,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "obj"
+            }
+          ]
+        },
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 51,
+              "column": 8
+            },
+            "end": {
+              "line": 54,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "__metadataChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 56,
+              "column": 8
+            },
+            "end": {
+              "line": 80,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 82,
+              "column": 8
+            },
+            "end": {
+              "line": 87,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "__valueChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 8
+            },
+            "end": {
+              "line": 98,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/h2-field/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 14,
+          "column": 6
+        },
+        "end": {
+          "line": 108,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Field",
+      "attributes": [
+        {
+          "name": "editable",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 21,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "ref",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 25,
+              "column": 12
+            },
+            "end": {
+              "line": 27,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 12
+            },
+            "end": {
+              "line": 30,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-field"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-dialog.html",
+      "properties": [
+        {
+          "name": "stopAutoDismiss",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 12
+            },
+            "end": {
+              "line": 71,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 8
+            },
+            "end": {
+              "line": 98,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "open",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 8
+            },
+            "end": {
+              "line": 102,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "close",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 104,
+              "column": 8
+            },
+            "end": {
+              "line": 106,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/h2-dialog/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 64,
+          "column": 6
+        },
+        "end": {
+          "line": 108,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Dialog",
+      "attributes": [
+        {
+          "name": "stop-auto-dismiss",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 12
+            },
+            "end": {
+              "line": 71,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "container",
+          "range": {
+            "file": "h2-dialog.html",
+            "start": {
+              "line": 52,
+              "column": 20
+            },
+            "end": {
+              "line": 52,
+              "column": 50
+            }
+          }
+        }
+      ],
+      "tagname": "h2-dialog"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-form.html",
+      "properties": [
+        {
+          "name": "_subscriptionTable",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 74,
+              "column": 12
+            },
+            "end": {
+              "line": 79,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "{}"
+        },
+        {
+          "name": "context",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 12
+            },
+            "end": {
+              "line": 85,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "{}"
+        },
+        {
+          "name": "__context",
+          "type": "Object",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 86,
+              "column": 12
+            },
+            "end": {
+              "line": 89,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 91,
+              "column": 12
+            },
+            "end": {
+              "line": 94,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"__metadataChange\""
+            }
+          }
+        },
+        {
+          "name": "onSubmit",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 12
+            },
+            "end": {
+              "line": 97,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "onError",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 98,
+              "column": 12
+            },
+            "end": {
+              "line": 100,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "onSuccess",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 101,
+              "column": 12
+            },
+            "end": {
+              "line": 103,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "__metadataChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 8
+            },
+            "end": {
+              "line": 111,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "metadata"
+            }
+          ]
+        },
+        {
+          "name": "watch",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 113,
+              "column": 8
+            },
+            "end": {
+              "line": 125,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "watchFields"
+            },
+            {
+              "name": "callback"
+            }
+          ]
+        },
+        {
+          "name": "onFieldAttached",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "onValueChange",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 132,
+              "column": 8
+            },
+            "end": {
+              "line": 142,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "getEditorId",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 144,
+              "column": 8
+            },
+            "end": {
+              "line": 146,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "fieldName"
+            }
+          ]
+        },
+        {
+          "name": "submit",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 148,
+              "column": 8
+            },
+            "end": {
+              "line": 184,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "filterVisible",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 186,
+              "column": 8
+            },
+            "end": {
+              "line": 188,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            }
+          ]
+        },
+        {
+          "name": "_getEditor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 190,
+              "column": 8
+            },
+            "end": {
+              "line": 192,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "fieldName"
+            }
+          ]
+        },
+        {
+          "name": "_validate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 194,
+              "column": 8
+            },
+            "end": {
+              "line": 208,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_requestBody",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 210,
+              "column": 8
+            },
+            "end": {
+              "line": 223,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/h2-form/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 66,
+          "column": 6
+        },
+        "end": {
+          "line": 224,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Form",
+      "attributes": [
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 12
+            },
+            "end": {
+              "line": 85,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 91,
+              "column": 12
+            },
+            "end": {
+              "line": 94,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "on-submit",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 12
+            },
+            "end": {
+              "line": 97,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "on-error",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 98,
+              "column": 12
+            },
+            "end": {
+              "line": 100,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "on-success",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 101,
+              "column": 12
+            },
+            "end": {
+              "line": 103,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-form"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-action.html",
+      "properties": [
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 41,
+              "column": 12
+            },
+            "end": {
+              "line": 43,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "context",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 12
+            },
+            "end": {
+              "line": 46,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "_dialog",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 48,
+              "column": 12
+            },
+            "end": {
+              "line": 50,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "_form",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 51,
+              "column": 12
+            },
+            "end": {
+              "line": 53,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "fetchContext",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 57,
+              "column": 8
+            },
+            "end": {
+              "line": 73,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "submitOrOpenDialog",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 75,
+              "column": 8
+            },
+            "end": {
+              "line": 87,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_refreshContext",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 8
+            },
+            "end": {
+              "line": 92,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context"
+            }
+          ]
+        },
+        {
+          "name": "_createForm",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 94,
+              "column": 8
+            },
+            "end": {
+              "line": 100,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_createDialog",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 8
+            },
+            "end": {
+              "line": 119,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_formSubmittedHandler",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 121,
+              "column": 8
+            },
+            "end": {
+              "line": 134,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/h2-action/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 30,
+          "column": 6
+        },
+        "end": {
+          "line": 136,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Action",
+      "attributes": [
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 41,
+              "column": 12
+            },
+            "end": {
+              "line": 43,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 12
+            },
+            "end": {
+              "line": 46,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-action"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-action-group.html",
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 12
+            },
+            "end": {
+              "line": 109,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "horizontal",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 12
+            },
+            "end": {
+              "line": 113,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 114,
+              "column": 12
+            },
+            "end": {
+              "line": 117,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "expandIcon",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 118,
+              "column": 12
+            },
+            "end": {
+              "line": 121,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"arrow-drop-up\""
+        },
+        {
+          "name": "collapseIcon",
+          "type": "string",
+          "description": "The icon when expanded.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 125,
+              "column": 12
+            },
+            "end": {
+              "line": 128,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"arrow-drop-down\""
+        },
+        {
+          "name": "noIcons",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 129,
+              "column": 12
+            },
+            "end": {
+              "line": 132,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 140,
+              "column": 8
+            },
+            "end": {
+              "line": 146,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "open",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 148,
+              "column": 8
+            },
+            "end": {
+              "line": 150,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "close",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 152,
+              "column": 8
+            },
+            "end": {
+              "line": 154,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "toggle",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 156,
+              "column": 8
+            },
+            "end": {
+              "line": 158,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_getIcon",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 160,
+              "column": 8
+            },
+            "end": {
+              "line": 162,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "opened"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/h2-action-group/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 100,
+          "column": 6
+        },
+        "end": {
+          "line": 163,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2ActionGroup",
+      "attributes": [
+        {
+          "name": "name",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 12
+            },
+            "end": {
+              "line": 109,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "horizontal",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 12
+            },
+            "end": {
+              "line": 113,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "opened",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 114,
+              "column": 12
+            },
+            "end": {
+              "line": 117,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "expand-icon",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 118,
+              "column": 12
+            },
+            "end": {
+              "line": 121,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "collapse-icon",
+          "description": "The icon when expanded.",
+          "sourceRange": {
+            "start": {
+              "line": 125,
+              "column": 12
+            },
+            "end": {
+              "line": 128,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "no-icons",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 129,
+              "column": 12
+            },
+            "end": {
+              "line": 132,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "",
+          "range": {
+            "file": "h2-action-group.html",
+            "start": {
+              "line": 90,
+              "column": 12
+            },
+            "end": {
+              "line": 90,
+              "column": 25
+            }
+          }
+        }
+      ],
+      "tagname": "h2-action-group"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-crud-query.html",
+      "properties": [
+        {
+          "name": "_subscriptionTable",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 74,
+              "column": 12
+            },
+            "end": {
+              "line": 79,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "context",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 80,
+              "column": 12
+            },
+            "end": {
+              "line": 85,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "__context",
+          "type": "Object",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 86,
+              "column": 12
+            },
+            "end": {
+              "line": 89,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 77,
+              "column": 12
+            },
+            "end": {
+              "line": 79,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "onSubmit",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 95,
+              "column": 12
+            },
+            "end": {
+              "line": 97,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "onError",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 98,
+              "column": 12
+            },
+            "end": {
+              "line": 100,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "onSuccess",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 101,
+              "column": 12
+            },
+            "end": {
+              "line": 103,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "result",
+          "type": "Array",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 73,
+              "column": 12
+            },
+            "end": {
+              "line": 76,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "paging",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 12
+            },
+            "end": {
+              "line": 82,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "extQueryCondition",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 83,
+              "column": 12
+            },
+            "end": {
+              "line": 88,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "{}"
+        },
+        {
+          "name": "queryAfterReset",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 12
+            },
+            "end": {
+              "line": 92,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "__metadataChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 107,
+              "column": 8
+            },
+            "end": {
+              "line": 111,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "metadata"
+            }
+          ],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "watch",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 113,
+              "column": 8
+            },
+            "end": {
+              "line": 125,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "watchFields"
+            },
+            {
+              "name": "callback"
+            }
+          ],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "onFieldAttached",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 127,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "onValueChange",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 132,
+              "column": 8
+            },
+            "end": {
+              "line": 142,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "getEditorId",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 144,
+              "column": 8
+            },
+            "end": {
+              "line": 146,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "fieldName"
+            }
+          ],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "submit",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 116,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "filterVisible",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 186,
+              "column": 8
+            },
+            "end": {
+              "line": 188,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            }
+          ],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "_getEditor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 190,
+              "column": 8
+            },
+            "end": {
+              "line": 192,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "fieldName"
+            }
+          ],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "_validate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 194,
+              "column": 8
+            },
+            "end": {
+              "line": 208,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "_requestBody",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 210,
+              "column": 8
+            },
+            "end": {
+              "line": 223,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "pagingChange",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 8
+            },
+            "end": {
+              "line": 106,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 108,
+              "column": 8
+            },
+            "end": {
+              "line": 114,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "reset",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 132,
+              "column": 8
+            },
+            "end": {
+              "line": 141,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/h2-crud-query/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 62,
+          "column": 6
+        },
+        "end": {
+          "line": 142,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2CrudQuery",
+      "attributes": [
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 80,
+              "column": 12
+            },
+            "end": {
+              "line": 85,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 77,
+              "column": 12
+            },
+            "end": {
+              "line": 79,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "on-submit",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 95,
+              "column": 12
+            },
+            "end": {
+              "line": 97,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "on-error",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 98,
+              "column": 12
+            },
+            "end": {
+              "line": 100,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "on-success",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 101,
+              "column": 12
+            },
+            "end": {
+              "line": 103,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "result",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 73,
+              "column": 12
+            },
+            "end": {
+              "line": 76,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        },
+        {
+          "name": "paging",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 12
+            },
+            "end": {
+              "line": 82,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "ext-query-condition",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 83,
+              "column": 12
+            },
+            "end": {
+              "line": 88,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "query-after-reset",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 12
+            },
+            "end": {
+              "line": 92,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "result-changed",
+          "description": "Fired when the `result` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "ext-condition",
+          "range": {
+            "file": "h2-crud-query.html",
+            "start": {
+              "line": 53,
+              "column": 8
+            },
+            "end": {
+              "line": 53,
+              "column": 61
+            }
+          }
+        }
+      ],
+      "tagname": "h2-crud-query"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-grid.html",
+      "properties": [
+        {
+          "name": "editable",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 12
+            },
+            "end": {
+              "line": 134,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "value",
+          "type": "Array",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 135,
+              "column": 12
+            },
+            "end": {
+              "line": 137,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 138,
+              "column": 12
+            },
+            "end": {
+              "line": 141,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"__metadataChange\""
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "__metadataChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 145,
+              "column": 8
+            },
+            "end": {
+              "line": 149,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "metadata"
+            }
+          ]
+        },
+        {
+          "name": "groupedActions",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 8
+            },
+            "end": {
+              "line": 166,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "actions"
+            }
+          ]
+        },
+        {
+          "name": "noGroupActions",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 168,
+              "column": 8
+            },
+            "end": {
+              "line": 174,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "actions"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/h2-grid/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 120,
+          "column": 6
+        },
+        "end": {
+          "line": 175,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Grid",
+      "attributes": [
+        {
+          "name": "editable",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 12
+            },
+            "end": {
+              "line": 134,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 135,
+              "column": 12
+            },
+            "end": {
+              "line": 137,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        },
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 138,
+              "column": 12
+            },
+            "end": {
+              "line": 141,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "filter",
+          "range": {
+            "file": "h2-grid.html",
+            "start": {
+              "line": 64,
+              "column": 8
+            },
+            "end": {
+              "line": 64,
+              "column": 35
+            }
+          }
+        }
+      ],
+      "tagname": "h2-grid"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-pagination.html",
+      "properties": [
+        {
+          "name": "paging",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 12
+            },
+            "end": {
+              "line": 183,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "total",
+          "type": "number",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 184,
+              "column": 12
+            },
+            "end": {
+              "line": 188,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "pagingChanged",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 198,
+              "column": 8
+            },
+            "end": {
+              "line": 207,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "pageIndex"
+            }
+          ]
+        },
+        {
+          "name": "_pageSize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 209,
+              "column": 8
+            },
+            "end": {
+              "line": 211,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "results"
+            }
+          ]
+        },
+        {
+          "name": "first",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 213,
+              "column": 8
+            },
+            "end": {
+              "line": 218,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "prev",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 220,
+              "column": 8
+            },
+            "end": {
+              "line": 225,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "next",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 227,
+              "column": 8
+            },
+            "end": {
+              "line": 232,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "last",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 234,
+              "column": 8
+            },
+            "end": {
+              "line": 239,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 164,
+          "column": 6
+        },
+        "end": {
+          "line": 240,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Pagination",
+      "attributes": [
+        {
+          "name": "paging",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 12
+            },
+            "end": {
+              "line": 183,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "total",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 184,
+              "column": 12
+            },
+            "end": {
+              "line": 188,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "paging-changed",
+          "description": "Fired when the `paging` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-pagination"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-crud.html",
+      "properties": [
+        {
+          "name": "resultDescriptor",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 75,
+              "column": 12
+            },
+            "end": {
+              "line": 77,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "rawResult",
+          "type": "Array",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 12
+            },
+            "end": {
+              "line": 80,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "finalResult",
+          "type": "Array",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 81,
+              "column": 12
+            },
+            "end": {
+              "line": 84,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 12
+            },
+            "end": {
+              "line": 87,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "context",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 88,
+              "column": 12
+            },
+            "end": {
+              "line": 90,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "keyForItems",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 91,
+              "column": 12
+            },
+            "end": {
+              "line": 94,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"rows\""
+        },
+        {
+          "name": "keyForPageResult",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 12
+            },
+            "end": {
+              "line": 98,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"results\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "_resultDescriptor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 8
+            },
+            "end": {
+              "line": 105,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "name": "refresh",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 8
+            },
+            "end": {
+              "line": 109,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/h2-crud/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 64,
+          "column": 6
+        },
+        "end": {
+          "line": 110,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Crud",
+      "attributes": [
+        {
+          "name": "result-descriptor",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 75,
+              "column": 12
+            },
+            "end": {
+              "line": 77,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "raw-result",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 12
+            },
+            "end": {
+              "line": 80,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        },
+        {
+          "name": "final-result",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 81,
+              "column": 12
+            },
+            "end": {
+              "line": 84,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        },
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 12
+            },
+            "end": {
+              "line": 87,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 88,
+              "column": 12
+            },
+            "end": {
+              "line": 90,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "key-for-items",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 91,
+              "column": 12
+            },
+            "end": {
+              "line": 94,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "key-for-page-result",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 12
+            },
+            "end": {
+              "line": 98,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "ext-condition",
+          "range": {
+            "file": "h2-crud.html",
+            "start": {
+              "line": 29,
+              "column": 16
+            },
+            "end": {
+              "line": 29,
+              "column": 71
+            }
+          }
+        }
+      ],
+      "tagname": "h2-crud"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-struct.html",
+      "properties": [
+        {
+          "name": "context",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 11,
+              "column": 12
+            },
+            "end": {
+              "line": 17,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 18,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
+      "methods": [
+        {
+          "name": "__baseContextChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 35,
+              "column": 8
+            },
+            "end": {
+              "line": 39,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "obj"
+            }
+          ],
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "__baseValueChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 41,
+              "column": 8
+            },
+            "end": {
+              "line": 43,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "val"
+            }
+          ],
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 45,
+              "column": 8
+            },
+            "end": {
+              "line": 47,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 16,
+          "column": 8
+        },
+        "end": {
+          "line": 20,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Struct",
+      "attributes": [
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 11,
+              "column": 12
+            },
+            "end": {
+              "line": 17,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "value",
+          "description": "",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 18,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "file": "widgets/h2-widget-base.html",
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "context-changed",
+          "description": "Fired when the `context` property changes.",
+          "metadata": {},
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {},
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-struct"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-tip-dialog.html",
+      "properties": [
+        {
+          "name": "message",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 112,
+              "column": 16
+            },
+            "end": {
+              "line": 116,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_watcherMessage\""
+            }
+          },
+          "defaultValue": "\"hello\""
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 117,
+              "column": 16
+            },
+            "end": {
+              "line": 121,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"alert\""
+        },
+        {
+          "name": "remark",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 122,
+              "column": 16
+            },
+            "end": {
+              "line": 126,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "yesBtn",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 16
+            },
+            "end": {
+              "line": 132,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"确定\""
+        },
+        {
+          "name": "noBtn",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 133,
+              "column": 16
+            },
+            "end": {
+              "line": 138,
+              "column": 17
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"取消\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "_watcherMessage",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 141,
+              "column": 8
+            },
+            "end": {
+              "line": 145,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "message"
+            }
+          ]
+        },
+        {
+          "name": "cancelFn",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 146,
+              "column": 8
+            },
+            "end": {
+              "line": 150,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_isConfirm",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 8
+            },
+            "end": {
+              "line": 153,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "type"
+            }
+          ]
+        },
+        {
+          "name": "_isPrompt",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 154,
+              "column": 8
+            },
+            "end": {
+              "line": 156,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "type"
+            }
+          ]
+        },
+        {
+          "name": "confirmFn",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 157,
+              "column": 8
+            },
+            "end": {
+              "line": 169,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 105,
+          "column": 4
+        },
+        "end": {
+          "line": 171,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2TipDialog",
+      "attributes": [
+        {
+          "name": "message",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 112,
+              "column": 16
+            },
+            "end": {
+              "line": 116,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 117,
+              "column": 16
+            },
+            "end": {
+              "line": 121,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "remark",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 122,
+              "column": 16
+            },
+            "end": {
+              "line": 126,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "yes-btn",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 16
+            },
+            "end": {
+              "line": 132,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "no-btn",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 133,
+              "column": 16
+            },
+            "end": {
+              "line": 138,
+              "column": 17
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "remark-changed",
+          "description": "Fired when the `remark` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-tip-dialog"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "h2-crust.html",
+      "properties": [
+        {
+          "name": "element",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 12,
+              "column": 14
+            },
+            "end": {
+              "line": 14,
+              "column": 15
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "__elementChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 22,
+              "column": 10
+            },
+            "end": {
+              "line": 24,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "element"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 5,
+          "column": 8
+        },
+        "end": {
+          "line": 25,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Crust",
+      "attributes": [
+        {
+          "name": "element",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 12,
+              "column": 14
+            },
+            "end": {
+              "line": 14,
+              "column": 15
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-crust"
+    }
+  ],
+  "metadata": {
+    "polymer": {
+      "behaviors": [
+        {
+          "description": "",
+          "summary": "",
+          "path": "behaviors/base-behavior.html",
+          "properties": [],
+          "methods": [
+            {
+              "name": "isOneOf",
+              "description": "判断第一个参数是否与后面的某个参数相等， 使用Object.is() 进行判断",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 10,
+                  "column": 4
+                },
+                "end": {
+                  "line": 17,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "...args"
+                }
+              ],
+              "return": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "isEqual",
+              "description": "",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 19,
+                  "column": 4
+                },
+                "end": {
+                  "line": 21,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "left"
+                },
+                {
+                  "name": "right"
+                }
+              ]
+            },
+            {
+              "name": "isFunction",
+              "description": "",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 24,
+                  "column": 4
+                },
+                "end": {
+                  "line": 26,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "fn"
+                }
+              ]
+            },
+            {
+              "name": "getValueByKey",
+              "description": "",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 35,
+                  "column": 4
+                },
+                "end": {
+                  "line": 37,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "model"
+                },
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "defVal = JSON.stringify('')"
+                }
+              ],
+              "return": {
+                "type": "*"
+              }
+            },
+            {
+              "name": "getValueByPath",
+              "description": "通过路径获取对象字段值",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 47,
+                  "column": 4
+                },
+                "end": {
+                  "line": 59,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "model",
+                  "description": "如： { foo: { bar: 1} }"
+                },
+                {
+                  "name": "path",
+                  "description": "如 \"foo.bar\""
+                },
+                {
+                  "name": "defVal",
+                  "description": "支持任何符合json格式的字符串"
+                }
+              ],
+              "return": {
+                "type": "*"
+              }
+            },
+            {
+              "name": "elementRender",
+              "description": "",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 67,
+                  "column": 4
+                },
+                "end": {
+                  "line": 73,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "model"
+                },
+                {
+                  "name": "field"
+                }
+              ],
+              "return": {
+                "type": "*"
+              }
+            },
+            {
+              "name": "updateStyle",
+              "description": "",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 75,
+                  "column": 4
+                },
+                "end": {
+                  "line": 88,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "style"
+                }
+              ]
+            },
+            {
+              "name": "redefine",
+              "description": "",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 90,
+                  "column": 4
+                },
+                "end": {
+                  "line": 94,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "obj"
+                },
+                {
+                  "name": "path"
+                }
+              ]
+            },
+            {
+              "name": "__redefine",
+              "description": "",
+              "privacy": "private",
+              "sourceRange": {
+                "start": {
+                  "line": 96,
+                  "column": 4
+                },
+                "end": {
+                  "line": 221,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "obj"
+                }
+              ]
+            },
+            {
+              "name": "suite",
+              "description": "",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 223,
+                  "column": 4
+                },
+                "end": {
+                  "line": 226,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "obj"
+                }
+              ]
+            },
+            {
+              "name": "__suite1",
+              "description": "",
+              "privacy": "private",
+              "sourceRange": {
+                "start": {
+                  "line": 228,
+                  "column": 4
+                },
+                "end": {
+                  "line": 269,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "root"
+                }
+              ]
+            },
+            {
+              "name": "__suite",
+              "description": "",
+              "privacy": "private",
+              "sourceRange": {
+                "start": {
+                  "line": 271,
+                  "column": 4
+                },
+                "end": {
+                  "line": 312,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "target"
+                },
+                {
+                  "name": "parent"
+                }
+              ]
+            }
+          ],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 4,
+              "column": 2
+            },
+            "end": {
+              "line": 314,
+              "column": 3
+            }
+          },
+          "privacy": "public",
+          "name": "BaseBehavior",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        },
+        {
+          "description": "",
+          "summary": "",
+          "path": "behaviors/ajax-behavior.html",
+          "properties": [],
+          "methods": [
+            {
+              "name": "query",
+              "description": "GET 请求\n\n例子：\n\n1. 直接传递一个Request 实例\n const req = new Request('/test?foo=1&bar=2', {method: 'GET'});\n this.query(req, console.log );\n\n2. 直接传递一个url\n this.query('/test', console.log);\n\n3. 直接传递一个包含url、data内容的对象\n this.query({\n      url: '/test',\n      data: { foo:1, bar:2 }\n      handleAs: 'json'\n  }, console.log, console.log );\n\n******************************************************",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 38,
+                  "column": 4
+                },
+                "end": {
+                  "line": 61,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "input",
+                  "description": "支持3种类型： Request|String|Object\n     1. Request实例\n     2. String：请求url\n     3: Object： 对象结构要求 { url , data, handleAs}\n         url：必填项\n         data：可选\n         handleAs：string, 可选，默认值是\"json\"， 取值范围: text|json|blob|formData|arrayBuffers"
+                },
+                {
+                  "name": "succCallback"
+                },
+                {
+                  "name": "failCallback"
+                }
+              ]
+            },
+            {
+              "name": "post",
+              "description": "POST 请求\n\n1. 直接传递一个Request 实例\n const req = new Request('/test?foo=1&bar=2', {method: 'POST'});\n this.post(req, console.log );\n\n2. 直接传递一个url\n this.post('/test', console.log);\n\n3. 直接传递一个包含url、data内容的对象\n this.post({\n      url: '/test',\n      data: { foo:1, bar:2 }\n  }, console.log, console.log );\n\n 4. 上传文件\n const formData = new FormData();\n formData.append('file1', new File([], 'filename'));\n this.post({\n     url: '/upload',\n     data: formData\n }, console.log, console.log );\n\n 5. 发送json格式的数据\n this.post({\n     url: '/upload',\n     data: {foo:1,bar:2}\n     sendAsJson: true\n }, console.log, console.log );\n\n******************************************************",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 110,
+                  "column": 4
+                },
+                "end": {
+                  "line": 135,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "input"
+                },
+                {
+                  "name": "succCallback"
+                },
+                {
+                  "name": "failCallback"
+                }
+              ],
+              "return": {
+                "type": "*"
+              }
+            },
+            {
+              "name": "__get",
+              "description": "",
+              "privacy": "private",
+              "sourceRange": {
+                "start": {
+                  "line": 138,
+                  "column": 4
+                },
+                "end": {
+                  "line": 149,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "handleAs"
+                },
+                {
+                  "name": "{url, data}"
+                },
+                {
+                  "name": "succCallback"
+                },
+                {
+                  "name": "failCallback"
+                }
+              ]
+            },
+            {
+              "name": "__post",
+              "description": "",
+              "privacy": "private",
+              "sourceRange": {
+                "start": {
+                  "line": 151,
+                  "column": 4
+                },
+                "end": {
+                  "line": 174,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "handleAs"
+                },
+                {
+                  "name": "{url, data, sendAsJson}"
+                },
+                {
+                  "name": "succCallback"
+                },
+                {
+                  "name": "failCallback"
+                }
+              ]
+            },
+            {
+              "name": "__fetch",
+              "description": "",
+              "privacy": "private",
+              "sourceRange": {
+                "start": {
+                  "line": 176,
+                  "column": 4
+                },
+                "end": {
+                  "line": 200,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "handleAs"
+                },
+                {
+                  "name": "request"
+                },
+                {
+                  "name": "succCallback"
+                },
+                {
+                  "name": "failCallback"
+                }
+              ]
+            },
+            {
+              "name": "__consume",
+              "description": "",
+              "privacy": "private",
+              "sourceRange": {
+                "start": {
+                  "line": 202,
+                  "column": 4
+                },
+                "end": {
+                  "line": 215,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "reader"
+                }
+              ]
+            },
+            {
+              "name": "__throwUrlNotFoundError",
+              "description": "",
+              "privacy": "private",
+              "sourceRange": {
+                "start": {
+                  "line": 216,
+                  "column": 4
+                },
+                "end": {
+                  "line": 218,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": []
+            }
+          ],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 4,
+              "column": 2
+            },
+            "end": {
+              "line": 220,
+              "column": 3
+            }
+          },
+          "privacy": "public",
+          "name": "AjaxBehavior",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        }
+      ]
+    }
+  }
+}
