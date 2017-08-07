@@ -7,12 +7,6 @@
 <link rel="import" href="h2-action.html">
 <link rel="import" href="h2-pagination.html">
 
-<!--
-@group H2 Elements
-@element h2-crud
-@demo demo/h2-crud/index.html
--->
-
 <dom-module id="h2-crud">
     <template>
         <style>
@@ -63,6 +57,11 @@
 
     </template>
     <script>
+      /**
+       * @customElement
+       * @polymer
+       * @demo demo/h2-crud/index.html
+       */
       class H2Crud extends Polymer.mixinBehaviors([BaseBehavior, AjaxBehavior], Polymer.Element) {
         constructor() {
           super();
