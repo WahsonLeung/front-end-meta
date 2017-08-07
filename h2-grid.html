@@ -4,12 +4,6 @@
 <link rel="import" href="h2-action.html">
 <link rel="import" href="h2-action-group.html">
 
-<!--
-@group H2 Elements
-@element h2-grid
-@demo demo/h2-grid/index.html
--->
-
 <dom-module id="h2-grid">
     <template>
         <style>
@@ -119,6 +113,11 @@
         </table>
     </template>
     <script>
+      /**
+       * @customElement
+       * @polymer
+       * @demo demo/h2-grid/index.html
+       */
       class H2Grid extends Polymer.mixinBehaviors([BaseBehavior], Polymer.Element) {
         constructor() {
           super();

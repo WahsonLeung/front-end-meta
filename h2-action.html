@@ -4,12 +4,6 @@
 <link rel="import" href="./h2-dialog.html">
 <link rel="import" href="./h2-form.html">
 
-<!--
-@group H2 Elements
-@element h2-action
-@demo demo/h2-action/index.html
--->
-
 <dom-module id="h2-action">
     <template>
         <style>
@@ -29,6 +23,11 @@
         <div id="form" hidden></div>
     </template>
     <script>
+      /**
+       * @customElement
+       * @polymer
+       * @demo demo/h2-action/index.html
+       */
       class H2Action extends Polymer.mixinBehaviors([AjaxBehavior], Polymer.Element) {
         constructor() {
           super();
