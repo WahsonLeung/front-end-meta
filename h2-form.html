@@ -45,8 +45,8 @@
                         editable
                         context="{{ __context }}"
                         value="[[ getValueByKey(context,fieldMeta.name) ]]"
-                        on-value-changed="onValueChange"
-                        on-field-attached="onFieldAttached"
+                        on-value-changed="_onValueChange"
+                        on-field-attached="_onFieldAttached"
                         metadata="[[ fieldMeta ]]">
                 </h2-field>
             </template>
@@ -112,7 +112,7 @@
         }
 
         watch(watchFields, callback) {
-          if (Function.prototype.isPrototypeOf(callback)) {
+          if (this.isFunction(callback)) {
             for (let field of watchFields) {
               this._subscriptionTable[field] = this._subscriptionTable[field] || [];
               this._subscriptionTable[field].push(callback);
@@ -125,12 +125,12 @@
           }
         }
 
-        onFieldAttached(e) {
+        _onFieldAttached(e) {
           const fieldMeta = e.model.fieldMeta;
           fieldMeta.onAttached && fieldMeta.onAttached.call(this, e.target, this);
         }
 
-        onValueChange(e) {
+        _onValueChange(e) {
 
           const {name: myFieldName} = e.model.fieldMeta;
 
@@ -216,7 +216,7 @@
               });
 
           // Execute the hook before submit.
-          if (this.metadata.beforeSubmit) {
+          if (this.isFunction(this.metadata.beforeSubmit)) {
             requestBody = this.metadata.beforeSubmit(requestBody);
           }
 

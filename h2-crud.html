@@ -8,8 +8,32 @@
 <link rel="import" href="h2-pagination.html">
 
 <!--
- #
- `<h2-crud></h2-crud>`
+ # 由元数据驱动的增删改查组件
+```
+<h2-crud metadata="{{ metadata }}"
+         key-for-items="rows"
+         key-for-page-result="pageResponse.results"
+         result-descriptor="[[ _desc() ]]">
+</h2-crud>
+```
+```
+_desc() {
+    return (result) => {
+        result.rows[0].name = 'foo';
+        return result;
+    };
+}
+
+metadata = {
+    query: {
+        FormMeta & {
+            noPaging: Boolean     //  是否禁止分页
+        }
+    },
+    actions: {{Array<Action>}},
+    result: {{GridMeta}}
+}
+```
 
 -->
 <dom-module id="h2-crud">
@@ -52,7 +76,7 @@
         </div>
 
         <div class="crud-pagination">
-            <template is="dom-if" if="{{metadata.query.paging}}">
+            <template is="dom-if" if="{{ !metadata.query.noPaging }}">
                 <h2-pagination paging="{{ paging }}"
                                total="[[ getValueByPath(finalResult, keyForPageResult) ]]">
 

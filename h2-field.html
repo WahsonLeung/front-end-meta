@@ -4,9 +4,56 @@
 <link rel="import" href="./widgets/h2-widget-base.html">
 <link rel="import" href="./behaviors/base-behavior.html">
 
+<!--
+
+```
+<h2-field editable metadata="{{ metadata }}"></h2-field>
+```
+```
+metadata = {
+  element: "h2-text",
+  name: "name",
+  label: "Please input your name here: ",
+  required: true,
+  editable: true,
+  prompt: "Please input your name!"
+}
+```
+### metadata字段定义：
+|字段名|类型|Required|描述|
+|:--|:--|:--|:--|
+|name|string|是|字段名，如“orderNo”
+|label|string|是|字段名，如“订单号”
+|require|boolean|是|是否必填
+|mutil|boolean|是|是否多选
+|editable|boolean|是 | 是否可编辑
+|validate| boolean|是| 是否需要校验
+|visible| boolean|是| 界面是否可见，仅对表单中的字段有效
+|element|string|否|ui元素，缺省时，提供默认ui：h2-text
+|format|string|否| 显示格式，用于日期显示，如“yyyy-MM-dd”
+|length|number|否 | 字符长度
+|maxLength|number|否| string允许的最大长度
+|minLength|number|否 | string允许的最小长度
+|regexp|string|否|正则匹配
+|prompt|string|否|校验失败时的提示语，如“请输入备注”
+|min|number|否|数字最小值
+|max|number|否|数字最大值
+|placeholder|string|否| placeholder
+|candidates|string|否| 候选值，下拉选项中的值，json串，如 "[{value: 1,label: '男'}, {value: 2,label: '女'}]"
+|candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”
+|candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”
+|alias|string|否|别名，如果配置了此字段，提交表单时已这个字段作为key保存
+|metaType|MetaType|否||
+
+### MetaType
+|字段名|类型|Required|描述|
+|:--|:--|:--|:--|
+|type|string|是|idl 数据类型， <primitive>|LIST|MAP|SET|STRUCT|ACTION|
+|metadata|object|是|如果type是list，map，set中的一种，则metadata是这些嵌套类型的元数据|
+
+-->
 <dom-module id="h2-field">
-    <template>
-    </template>
+    <template></template>
     <script>
       /**
        * @customElement
@@ -24,7 +71,7 @@
               type: Boolean,
               value: false
             },
-            ref: {
+            _ref: {
               type: Object
             },
             context: {
@@ -47,11 +94,17 @@
             this.__valueChange();
           }
 
-          this.ref && this.ref.notifyPath(obj.path);
+          if(this._ref && this.isFunction(this._ref.notifyPath)) {
+            this._ref.notifyPath(obj.path);
+          }
         }
 
+        /**
+         * Validate the editor.
+         * @returns {Boolean}
+         */
         validate() {
-          const ele = this.ref;
+          const ele = this._ref;
           return ele && ele.validate && ele.validate();
         }
 
@@ -72,7 +125,7 @@
               eleDom.metadata = this.metadata;
             }
 
-            this.ref = this.shadowRoot.appendChild(eleDom);
+            this._ref = this.shadowRoot.appendChild(eleDom);
           } else {
 
             const element = this.elementRender(this.context, this.metadata);
@@ -89,7 +142,7 @@
         }
 
         __valueChange() {
-          const target = this.ref;
+          const target = this._ref;
 
           target && (target.value = this.value);
 
@@ -101,7 +154,7 @@
 
         static defaultElements({type} = {}) {
           switch (type) {
-            case "action":
+            case "ACTION":
               return "h2-action";
             default:
               return "h2-text";

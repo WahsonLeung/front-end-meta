@@ -77,7 +77,7 @@
                 <tr class="grid-row">
                     <template is="dom-repeat" items="[[ metadata.grids ]]" as="fieldMeta">
                         <td class="grid-column">
-                            <template is="dom-if" if="[[ !isEqual(fieldMeta.datatype, 'action') ]]">
+                            <template is="dom-if" if="[[ !isEqual(fieldMeta.metaType, 'ACTION') ]]">
                                 <h2-field class="field"
                                            metadata="[[ fieldMeta ]]"
                                            editable="[[ fieldMeta.editable ]]"
@@ -86,7 +86,7 @@
                                 </h2-field>
                             </template>
 
-                            <template is="dom-if" if="[[ isEqual(fieldMeta.datatype,'action') ]]">
+                            <template is="dom-if" if="[[ isEqual(fieldMeta.metaType,'ACTION') ]]">
                                 <template is="dom-repeat" items="[[ noGroupActions(model.actions) ]]" as="actionMeta">
                                     <h2-action class="action"
                                                metadata="[[ actionMeta ]]"

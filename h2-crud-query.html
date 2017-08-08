@@ -71,22 +71,37 @@
 
         static get properties() {
           return {
+            /**
+             * The result of the query.
+             */
             result: {
               type: Array,
               notify: true
             },
+
             metadata: {
               type: Object
             },
+
+            /**
+             * The paging condition.
+             * `start`: the number of the first page.
+             * `limit`: the maximum number of a page.
+             * @type {{start:{Number}, limit: {Number}}}
+             */
             paging: {
               type: Object
             },
-            extQueryCondition: {
+
+            _extQueryCondition: {
               type: Object,
               value: function () {
                 return {};
               }
             },
+            /**
+             * If true, a new query form will be submitted after reset() is called.
+             */
             queryAfterReset: {
               type: Boolean,
               value: false
@@ -96,12 +111,12 @@
 
         static get observers() {
           return [
-            'pagingChange(paging.start)'
+            '_pagingChange(paging.start)'
           ];
         }
 
-        pagingChange() {
-          if (this.metadata.paging && this.paging) {
+        _pagingChange() {
+          if (this.paging) {
             this.async(this.submit.bind(this), 0);
           }
         }
@@ -109,14 +124,18 @@
         ready() {
           super.ready();
           this.addEventListener('query-domain', e => {
-            Object.assign(this.extQueryCondition, e.detail);
+            Object.assign(this._extQueryCondition, e.detail);
             this.submit();
           });
         }
 
+        /**
+         * Submit the form.
+         * @override
+         */
         submit() {
           const param = this._requestBody();
-          Object.assign(param, this.extQueryCondition);
+          Object.assign(param, this._extQueryCondition);
 
           if (this.metadata.paging && this.paging) {
             const {start, limit} = this.paging;
@@ -130,12 +149,15 @@
           }, data => this.result = data);
         }
 
+        /**
+         * Reset the query conditions and submit a new query form.
+         */
         reset() {
           this.metadata.fields.forEach(field => {
             this.root.querySelector(`#${this.getEditorId(field.name)}`).value = undefined;
           });
 
-          this.extQueryCondition = {};
+          this._extQueryCondition = {};
           if (this.queryAfterReset) {
             this.submit();
           }
