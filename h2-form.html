@@ -38,7 +38,7 @@
         <h2>[[metadata.title]]</h2>
 
         <div class="container">
-            <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta" filter="filterVisible">
+            <template is="dom-repeat" items="[[ metadata.fields ]]" as="fieldMeta" filter="_filterVisible">
                 <h2-field
                         class="container__item"
                         id="[[ getEditorId(fieldMeta.name) ]]"
@@ -93,12 +93,21 @@
               type: Object,
               observer: '__metadataChange'
             },
+            /**
+             * @type {Function}
+             */
             onSubmit: {
               type: Object
             },
+            /**
+             * @type {Function}
+             */
             onError: {
               type: Object
             },
+            /**
+             * @type {Function}
+             */
             onSuccess: {
               type: Object
             }
@@ -111,6 +120,11 @@
           }
         }
 
+        /**
+         *
+         * @param {Array.<String>} watchFields
+         * @param {Function} callback
+         */
         watch(watchFields, callback) {
           if (this.isFunction(callback)) {
             for (let field of watchFields) {
@@ -142,10 +156,17 @@
           });
         }
 
+        /**
+         * Generate editor id by fieldName.
+         * @param {!String} fieldName
+         */
         getEditorId(fieldName) {
           return `${this.constructor.is}-${fieldName}-editor`;
         }
 
+        /**
+         * Submit the form.
+         */
         submit() {
 
           if (!this._validate()) return;
@@ -184,7 +205,7 @@
           }
         }
 
-        filterVisible(item) {
+        _filterVisible(item) {
           return !!item.visible;
         }
 

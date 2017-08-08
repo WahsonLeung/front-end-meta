@@ -99,21 +99,28 @@ metadata1 = {
             metadata: {
               type: Object
             },
+
             context: {
-              type: Object
+              type: Object,
+              observer: "__contextChange"
             },
 
             _dialog: {
               type: Object
             },
+
             _form: {
               type: Object
             }
           }
         }
 
+        __contextChange() {
+          this._dialog = null;
+          this._form = null;
+        }
         /**
-         * When this.metadata.modelSrc is not undefined, fetch the new context.
+         * When this.metadata.modelSrc is defined, fetch the new context.
          */
         fetchContext() {
           if (!this.metadata.modelSrc) return;
@@ -176,7 +183,8 @@ metadata1 = {
             this._form = form;
             this._dialog.appendChild(form);
             this._dialog.addEventListener('h2-dialog-closed', e => {
-              this._dialog = undefined;
+              this._form = null;
+              this._dialog = null;
             });
           }, 0);
 

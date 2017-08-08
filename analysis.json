@@ -417,28 +417,7 @@
         },
         {
           "name": "onSubmit",
-          "type": "Object",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "h2-form.html",
-            "start": {
-              "line": 95,
-              "column": 12
-            },
-            "end": {
-              "line": 97,
-              "column": 13
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "H2Form"
-        },
-        {
-          "name": "onError",
-          "type": "Object",
+          "type": "Function",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -458,18 +437,39 @@
           "inheritedFrom": "H2Form"
         },
         {
-          "name": "onSuccess",
-          "type": "Object",
+          "name": "onError",
+          "type": "Function",
           "description": "",
           "privacy": "public",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 101,
+              "line": 104,
               "column": 12
             },
             "end": {
-              "line": 103,
+              "line": 106,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "onSuccess",
+          "type": "Function",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 110,
+              "column": 12
+            },
+            "end": {
+              "line": 112,
               "column": 13
             }
           },
@@ -567,11 +567,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 107,
+              "line": 116,
               "column": 8
             },
             "end": {
-              "line": 111,
+              "line": 120,
               "column": 9
             }
           },
@@ -590,21 +590,23 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 113,
+              "line": 127,
               "column": 8
             },
             "end": {
-              "line": 125,
+              "line": 139,
               "column": 9
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "watchFields"
+              "name": "watchFields",
+              "type": "Array.<String>"
             },
             {
-              "name": "callback"
+              "name": "callback",
+              "type": "Function"
             }
           ],
           "inheritedFrom": "H2Form"
@@ -616,11 +618,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 127,
+              "line": 141,
               "column": 8
             },
             "end": {
-              "line": 130,
+              "line": 144,
               "column": 9
             }
           },
@@ -639,11 +641,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 132,
+              "line": 146,
               "column": 8
             },
             "end": {
-              "line": 142,
+              "line": 156,
               "column": 9
             }
           },
@@ -657,23 +659,24 @@
         },
         {
           "name": "getEditorId",
-          "description": "",
+          "description": "Generate editor id by fieldName.",
           "privacy": "public",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 144,
+              "line": 162,
               "column": 8
             },
             "end": {
-              "line": 146,
+              "line": 164,
               "column": 9
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "fieldName"
+              "name": "fieldName",
+              "type": "!String"
             }
           ],
           "inheritedFrom": "H2Form"
@@ -696,17 +699,17 @@
           "params": []
         },
         {
-          "name": "filterVisible",
+          "name": "_filterVisible",
           "description": "",
-          "privacy": "public",
+          "privacy": "protected",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 186,
+              "line": 207,
               "column": 8
             },
             "end": {
-              "line": 188,
+              "line": 209,
               "column": 9
             }
           },
@@ -725,11 +728,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 190,
+              "line": 211,
               "column": 8
             },
             "end": {
-              "line": 192,
+              "line": 213,
               "column": 9
             }
           },
@@ -748,11 +751,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 194,
+              "line": 215,
               "column": 8
             },
             "end": {
-              "line": 208,
+              "line": 229,
               "column": 9
             }
           },
@@ -767,11 +770,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 210,
+              "line": 231,
               "column": 8
             },
             "end": {
-              "line": 223,
+              "line": 244,
               "column": 9
             }
           },
@@ -893,24 +896,6 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 95,
-              "column": 12
-            },
-            "end": {
-              "line": 97,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "type": "Object",
-          "inheritedFrom": "H2Form"
-        },
-        {
-          "name": "on-error",
-          "description": "",
-          "sourceRange": {
-            "file": "h2-form.html",
-            "start": {
               "line": 98,
               "column": 12
             },
@@ -920,7 +905,25 @@
             }
           },
           "metadata": {},
-          "type": "Object",
+          "type": "Function",
+          "inheritedFrom": "H2Form"
+        },
+        {
+          "name": "on-error",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-form.html",
+            "start": {
+              "line": 104,
+              "column": 12
+            },
+            "end": {
+              "line": 106,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Function",
           "inheritedFrom": "H2Form"
         },
         {
@@ -929,16 +932,16 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 101,
+              "line": 110,
               "column": 12
             },
             "end": {
-              "line": 103,
+              "line": 112,
               "column": 13
             }
           },
           "metadata": {},
-          "type": "Object",
+          "type": "Function",
           "inheritedFrom": "H2Form"
         },
         {
@@ -2430,7 +2433,7 @@
       "tagname": "h2-dialog"
     },
     {
-      "description": "```\n<h2-field editable metadata=\"{{ metadata }}\"></h2-field>\n```\n```\nmetadata = {\n  element: \"h2-text\",\n  name: \"name\",\n  label: \"Please input your name here: \",\n  required: true,\n  editable: true,\n  prompt: \"Please input your name!\"\n}\n```\n### metadata字段定义：\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|name|string|是|字段名，如“orderNo”\n|label|string|是|字段名，如“订单号”\n|require|boolean|是|是否必填\n|mutil|boolean|是|是否多选\n|editable|boolean|是 | 是否可编辑\n|validate| boolean|是| 是否需要校验\n|visible| boolean|是| 界面是否可见，仅对表单中的字段有效\n|element|string|否|ui元素，缺省时，提供默认ui：h2-text\n|format|string|否| 显示格式，用于日期显示，如“yyyy-MM-dd”\n|length|number|否 | 字符长度\n|maxLength|number|否| string允许的最大长度\n|minLength|number|否 | string允许的最小长度\n|regexp|string|否|正则匹配\n|prompt|string|否|校验失败时的提示语，如“请输入备注”\n|min|number|否|数字最小值\n|max|number|否|数字最大值\n|placeholder|string|否| placeholder\n|candidates|string|否| 候选值，下拉选项中的值，json串，如 \"[{value: 1,label: '男'}, {value: 2,label: '女'}]\"\n|candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”\n|candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”\n|alias|string|否|别名，如果配置了此字段，提交表单时已这个字段作为key保存\n|metaType|MetaType|否||\n\n### MetaType\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|type|string|是||\n|metadata|object|是||",
+      "description": "```\n<h2-field editable metadata=\"{{ metadata }}\"></h2-field>\n```\n```\nmetadata = {\n  element: \"h2-text\",\n  name: \"name\",\n  label: \"Please input your name here: \",\n  required: true,\n  editable: true,\n  prompt: \"Please input your name!\"\n}\n```\n### metadata字段定义：\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|name|string|是|字段名，如“orderNo”\n|label|string|是|字段名，如“订单号”\n|require|boolean|是|是否必填\n|mutil|boolean|是|是否多选\n|editable|boolean|是 | 是否可编辑\n|validate| boolean|是| 是否需要校验\n|visible| boolean|是| 界面是否可见，仅对表单中的字段有效\n|element|string|否|ui元素，缺省时，提供默认ui：h2-text\n|format|string|否| 显示格式，用于日期显示，如“yyyy-MM-dd”\n|length|number|否 | 字符长度\n|maxLength|number|否| string允许的最大长度\n|minLength|number|否 | string允许的最小长度\n|regexp|string|否|正则匹配\n|prompt|string|否|校验失败时的提示语，如“请输入备注”\n|min|number|否|数字最小值\n|max|number|否|数字最大值\n|placeholder|string|否| placeholder\n|candidates|string|否| 候选值，下拉选项中的值，json串，如 \"[{value: 1,label: '男'}, {value: 2,label: '女'}]\"\n|candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”\n|candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”\n|alias|string|否|别名，如果配置了此字段，提交表单时已这个字段作为key保存\n|metaType|MetaType|否||\n\n### MetaType\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|type|string|是|idl 数据类型：<primitive> 、LIST 、 MAP 、SET 、 STRUCT 、 ACTION|\n|metadata|object|是| 如果type是list，map，set中的一种，则metadata是这些嵌套类型的元数据|",
       "summary": "",
       "path": "h2-field.html",
       "properties": [
@@ -2739,26 +2742,7 @@
         },
         {
           "name": "onSubmit",
-          "type": "Object",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 95,
-              "column": 12
-            },
-            "end": {
-              "line": 97,
-              "column": 13
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "onError",
-          "type": "Object",
+          "type": "Function",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -2776,17 +2760,36 @@
           }
         },
         {
-          "name": "onSuccess",
-          "type": "Object",
+          "name": "onError",
+          "type": "Function",
           "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 104,
               "column": 12
             },
             "end": {
-              "line": 103,
+              "line": 106,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "onSuccess",
+          "type": "Function",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 12
+            },
+            "end": {
+              "line": 112,
               "column": 13
             }
           },
@@ -2802,11 +2805,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 116,
               "column": 8
             },
             "end": {
-              "line": 111,
+              "line": 120,
               "column": 9
             }
           },
@@ -2823,21 +2826,23 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 127,
               "column": 8
             },
             "end": {
-              "line": 125,
+              "line": 139,
               "column": 9
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "watchFields"
+              "name": "watchFields",
+              "type": "Array.<String>"
             },
             {
-              "name": "callback"
+              "name": "callback",
+              "type": "Function"
             }
           ]
         },
@@ -2847,11 +2852,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 141,
               "column": 8
             },
             "end": {
-              "line": 130,
+              "line": 144,
               "column": 9
             }
           },
@@ -2868,11 +2873,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 146,
               "column": 8
             },
             "end": {
-              "line": 142,
+              "line": 156,
               "column": 9
             }
           },
@@ -2885,36 +2890,37 @@
         },
         {
           "name": "getEditorId",
-          "description": "",
+          "description": "Generate editor id by fieldName.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 162,
               "column": 8
             },
             "end": {
-              "line": 146,
+              "line": 164,
               "column": 9
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "fieldName"
+              "name": "fieldName",
+              "type": "!String"
             }
           ]
         },
         {
           "name": "submit",
-          "description": "",
+          "description": "Submit the form.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 169,
               "column": 8
             },
             "end": {
-              "line": 184,
+              "line": 205,
               "column": 9
             }
           },
@@ -2922,16 +2928,16 @@
           "params": []
         },
         {
-          "name": "filterVisible",
+          "name": "_filterVisible",
           "description": "",
-          "privacy": "public",
+          "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 207,
               "column": 8
             },
             "end": {
-              "line": 188,
+              "line": 209,
               "column": 9
             }
           },
@@ -2948,11 +2954,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 211,
               "column": 8
             },
             "end": {
-              "line": 192,
+              "line": 213,
               "column": 9
             }
           },
@@ -2969,11 +2975,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 194,
+              "line": 215,
               "column": 8
             },
             "end": {
-              "line": 208,
+              "line": 229,
               "column": 9
             }
           },
@@ -2986,11 +2992,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 231,
               "column": 8
             },
             "end": {
-              "line": 223,
+              "line": 244,
               "column": 9
             }
           },
@@ -3012,7 +3018,7 @@
           "column": 6
         },
         "end": {
-          "line": 224,
+          "line": 245,
           "column": 7
         }
       },
@@ -3057,22 +3063,6 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 95,
-              "column": 12
-            },
-            "end": {
-              "line": 97,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "type": "Object"
-        },
-        {
-          "name": "on-error",
-          "description": "",
-          "sourceRange": {
-            "start": {
               "line": 98,
               "column": 12
             },
@@ -3082,23 +3072,39 @@
             }
           },
           "metadata": {},
-          "type": "Object"
+          "type": "Function"
+        },
+        {
+          "name": "on-error",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 104,
+              "column": 12
+            },
+            "end": {
+              "line": 106,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Function"
         },
         {
           "name": "on-success",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 110,
               "column": 12
             },
             "end": {
-              "line": 103,
+              "line": 112,
               "column": 13
             }
           },
           "metadata": {},
-          "type": "Object"
+          "type": "Function"
         }
       ],
       "events": [],
@@ -3389,11 +3395,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 42,
+                  "line": 39,
                   "column": 4
                 },
                 "end": {
-                  "line": 65,
+                  "line": 62,
                   "column": 5
                 }
               },
@@ -3401,7 +3407,7 @@
               "params": [
                 {
                   "name": "input",
-                  "type": "(String|Request|ReqObj)",
+                  "type": "(String|Request|Object)",
                   "description": "     支持3种类型： String|Request|Object\n     1. Request实例\n     2. String：请求url\n     3: Object： 对象结构要求 { url , data, handleAs}\n         url：必填项\n         data：可选\n         handleAs：string, 可选，默认值是\"json\"， 取值范围: text|json|blob|formData|arrayBuffers"
                 },
                 {
@@ -3422,11 +3428,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 115,
+                  "line": 112,
                   "column": 4
                 },
                 "end": {
-                  "line": 140,
+                  "line": 137,
                   "column": 5
                 }
               },
@@ -3458,11 +3464,11 @@
               "privacy": "private",
               "sourceRange": {
                 "start": {
-                  "line": 143,
+                  "line": 140,
                   "column": 4
                 },
                 "end": {
-                  "line": 154,
+                  "line": 151,
                   "column": 5
                 }
               },
@@ -3488,11 +3494,11 @@
               "privacy": "private",
               "sourceRange": {
                 "start": {
-                  "line": 156,
+                  "line": 153,
                   "column": 4
                 },
                 "end": {
-                  "line": 179,
+                  "line": 176,
                   "column": 5
                 }
               },
@@ -3518,11 +3524,11 @@
               "privacy": "private",
               "sourceRange": {
                 "start": {
-                  "line": 181,
+                  "line": 178,
                   "column": 4
                 },
                 "end": {
-                  "line": 205,
+                  "line": 202,
                   "column": 5
                 }
               },
@@ -3548,11 +3554,11 @@
               "privacy": "private",
               "sourceRange": {
                 "start": {
-                  "line": 207,
+                  "line": 204,
                   "column": 4
                 },
                 "end": {
-                  "line": 220,
+                  "line": 217,
                   "column": 5
                 }
               },
@@ -3569,11 +3575,11 @@
               "privacy": "private",
               "sourceRange": {
                 "start": {
-                  "line": 221,
+                  "line": 218,
                   "column": 4
                 },
                 "end": {
-                  "line": 223,
+                  "line": 220,
                   "column": 5
                 }
               },
@@ -3590,7 +3596,7 @@
               "column": 2
             },
             "end": {
-              "line": 225,
+              "line": 222,
               "column": 3
             }
           },
