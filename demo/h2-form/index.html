@@ -51,13 +51,11 @@
               {
                 name: "foo",
                 label: "foo",
-                element: "h2-text",
                 required: true,
                 editable: true,
                 visible: true
               },
               {
-                datatype: "text",
                 name: "bar",
                 label: "bar",
                 required: true,
@@ -191,9 +189,10 @@
                 required: true,
                 editable: true,
                 visible: true,
-                onAttached: function (element, root) {
-                  root.watch(['bar'], ({bar}) => {
-                    element.style = bar.length > 4 ?
+                onAttached: (fieldEle, formEle) => {
+                  formEle.watch(['bar'], ({bar}, whoChange) => {
+                    console.log(whoChange);
+                    fieldEle.style = bar.length > 4 ?
                            'background:red;' : 'background:green;'
 
                   });

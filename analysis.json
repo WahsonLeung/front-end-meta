@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "A component works like a dropdown menu.\n\n```\n<h2-action-group name=\"GroupName\">\n    <h2-action metadata=\"{{metadata}}\"></h2-action>\n    <h2-action metadata=\"{{metadata1}}\"></h2-action>\n</h2-action-group>\n\n```\n```\nmetadata = {\n  actionId: \"action-0\",\n  actionName: \"Action0\",\n  operType: 1,\n  formMeta: {\n    formUrl: \"/url-to-send-form\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        element: \"h2-text\",\n        name: \"name\",\n        label:\"Name\"\n      },\n      {\n        element: \"h2-text\",\n        name: \"phone\",\n        label:\"Phone\"\n      },\n    ],\n  }\n}\nmetadata1 = {\n  actionId: \"action-1\",\n  actionName: \"Action1\",\n  operType: 1,\n  formMeta: {\n    formUrl: \"/url-to-send-form\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        element: \"h2-text\",\n        name: \"name\",\n        label:\"Name\"\n      },\n      {\n        element: \"h2-text\",\n        name: \"phone\",\n        label:\"Phone\"\n      },\n    ],\n  }\n};\n```",
+      "description": "A component works like a dropdown menu.\n\n```\n<h2-action-group name=\"GroupName\">\n    <h2-action metadata=\"{{ metadata }}\"></h2-action>\n    <h2-action metadata=\"{{ metadata1 }}\"></h2-action>\n</h2-action-group>\n\n```\n```\nmetadata = {\n  actionId: \"action-0\",\n  actionName: \"Action0\",\n  operType: 1,\n  formMeta: {\n    formUrl: \"/url-to-send-form\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        element: \"h2-text\",\n        name: \"name\",\n        label:\"Name\"\n      },\n      {\n        element: \"h2-text\",\n        name: \"phone\",\n        label:\"Phone\"\n      },\n    ],\n  }\n}\nmetadata1 = {\n  actionId: \"action-1\",\n  actionName: \"Action1\",\n  operType: 1,\n  formMeta: {\n    formUrl: \"/url-to-send-form\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        element: \"h2-text\",\n        name: \"name\",\n        label:\"Name\"\n      },\n      {\n        element: \"h2-text\",\n        name: \"phone\",\n        label:\"Phone\"\n      },\n    ],\n  }\n};\n\n```\n### [See <h2-action>](#/elements/h2-action)",
       "summary": "",
       "path": "h2-action-group.html",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 166,
               "column": 12
             },
             "end": {
-              "line": 166,
+              "line": 168,
               "column": 13
             }
           },
@@ -32,11 +32,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 172,
               "column": 12
             },
             "end": {
-              "line": 173,
+              "line": 175,
               "column": 13
             }
           },
@@ -52,11 +52,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 179,
               "column": 12
             },
             "end": {
-              "line": 180,
+              "line": 182,
               "column": 13
             }
           },
@@ -72,11 +72,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 186,
               "column": 12
             },
             "end": {
-              "line": 187,
+              "line": 189,
               "column": 13
             }
           },
@@ -92,11 +92,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 191,
+              "line": 193,
               "column": 12
             },
             "end": {
-              "line": 194,
+              "line": 196,
               "column": 13
             }
           },
@@ -113,11 +113,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 202,
+              "line": 204,
               "column": 8
             },
             "end": {
-              "line": 208,
+              "line": 210,
               "column": 9
             }
           },
@@ -130,11 +130,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 215,
               "column": 8
             },
             "end": {
-              "line": 215,
+              "line": 217,
               "column": 9
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 222,
               "column": 8
             },
             "end": {
-              "line": 222,
+              "line": 224,
               "column": 9
             }
           },
@@ -164,11 +164,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 227,
+              "line": 229,
               "column": 8
             },
             "end": {
-              "line": 229,
+              "line": 231,
               "column": 9
             }
           },
@@ -181,11 +181,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 233,
               "column": 8
             },
             "end": {
-              "line": 233,
+              "line": 235,
               "column": 9
             }
           },
@@ -207,11 +207,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 154,
+          "line": 156,
           "column": 6
         },
         "end": {
-          "line": 234,
+          "line": 236,
           "column": 7
         }
       },
@@ -224,11 +224,11 @@
           "description": "Name of the action group.",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 166,
               "column": 12
             },
             "end": {
-              "line": 166,
+              "line": 168,
               "column": 13
             }
           },
@@ -240,11 +240,11 @@
           "description": "If true, the orientation is horizontal; otherwise is vertical.",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 172,
               "column": 12
             },
             "end": {
-              "line": 173,
+              "line": 175,
               "column": 13
             }
           },
@@ -256,11 +256,11 @@
           "description": "True if the action group is expanded.",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 179,
               "column": 12
             },
             "end": {
-              "line": 180,
+              "line": 182,
               "column": 13
             }
           },
@@ -272,11 +272,11 @@
           "description": "The icon when expanded.",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 186,
               "column": 12
             },
             "end": {
-              "line": 187,
+              "line": 189,
               "column": 13
             }
           },
@@ -288,11 +288,11 @@
           "description": "The icon when collapsed.",
           "sourceRange": {
             "start": {
-              "line": 191,
+              "line": 193,
               "column": 12
             },
             "end": {
-              "line": 194,
+              "line": 196,
               "column": 13
             }
           },
@@ -312,11 +312,11 @@
           "range": {
             "file": "h2-action-group.html",
             "start": {
-              "line": 144,
+              "line": 146,
               "column": 12
             },
             "end": {
-              "line": 144,
+              "line": 146,
               "column": 25
             }
           }
@@ -337,11 +337,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 74,
+              "line": 120,
               "column": 12
             },
             "end": {
-              "line": 79,
+              "line": 125,
               "column": 13
             }
           },
@@ -359,11 +359,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 81,
+              "line": 127,
               "column": 12
             },
             "end": {
-              "line": 86,
+              "line": 132,
               "column": 13
             }
           },
@@ -381,11 +381,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 88,
+              "line": 134,
               "column": 12
             },
             "end": {
-              "line": 91,
+              "line": 137,
               "column": 13
             }
           },
@@ -418,16 +418,16 @@
         {
           "name": "onSubmit",
           "type": "Function",
-          "description": "",
+          "description": "A function or closure to replace the default submit action, it will be invoked after the  _validate() return true.\n\nWhen it was called, the request param will be accessed as argument.",
           "privacy": "public",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 101,
+              "line": 151,
               "column": 12
             },
             "end": {
-              "line": 103,
+              "line": 153,
               "column": 13
             }
           },
@@ -439,16 +439,16 @@
         {
           "name": "onError",
           "type": "Function",
-          "description": "",
+          "description": "The callback called when form post error occurs.",
           "privacy": "public",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 108,
+              "line": 159,
               "column": 12
             },
             "end": {
-              "line": 110,
+              "line": 161,
               "column": 13
             }
           },
@@ -460,16 +460,16 @@
         {
           "name": "onSuccess",
           "type": "Function",
-          "description": "",
+          "description": "The callback called when form post success.",
           "privacy": "public",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 115,
+              "line": 167,
               "column": 12
             },
             "end": {
-              "line": 117,
+              "line": 169,
               "column": 13
             }
           },
@@ -567,11 +567,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 121,
+              "line": 173,
               "column": 8
             },
             "end": {
-              "line": 125,
+              "line": 177,
               "column": 9
             }
           },
@@ -585,16 +585,16 @@
         },
         {
           "name": "watch",
-          "description": "",
+          "description": "Listen the value change of all watchFields in context.\n\n```javascript\nwatch(['foo','bar'], (context, whoChange) => {\n    console.log(`${whoChange} changed, newValue = ${context[whoChange]}`);\n})\n```\nWhen watch() execute, the callback will be invoked to refresh the initial state,\nnotice that the `whoChange` will be undefined at this invoke.",
           "privacy": "public",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 132,
+              "line": 193,
               "column": 8
             },
             "end": {
-              "line": 144,
+              "line": 205,
               "column": 9
             }
           },
@@ -602,11 +602,13 @@
           "params": [
             {
               "name": "watchFields",
-              "type": "Array.<String>"
+              "type": "Array.<String>",
+              "description": "fields in context you want to listen when their value changes."
             },
             {
               "name": "callback",
-              "type": "Function"
+              "type": "Function",
+              "description": "callback executed when the value of watchFields in context changes."
             }
           ],
           "inheritedFrom": "H2Form"
@@ -618,11 +620,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 146,
+              "line": 207,
               "column": 8
             },
             "end": {
-              "line": 149,
+              "line": 210,
               "column": 9
             }
           },
@@ -641,11 +643,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 151,
+              "line": 212,
               "column": 8
             },
             "end": {
-              "line": 161,
+              "line": 222,
               "column": 9
             }
           },
@@ -664,11 +666,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 167,
+              "line": 228,
               "column": 8
             },
             "end": {
-              "line": 169,
+              "line": 230,
               "column": 9
             }
           },
@@ -705,11 +707,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 212,
+              "line": 273,
               "column": 8
             },
             "end": {
-              "line": 214,
+              "line": 275,
               "column": 9
             }
           },
@@ -728,11 +730,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 216,
+              "line": 277,
               "column": 8
             },
             "end": {
-              "line": 218,
+              "line": 279,
               "column": 9
             }
           },
@@ -751,11 +753,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 220,
+              "line": 281,
               "column": 8
             },
             "end": {
-              "line": 234,
+              "line": 295,
               "column": 9
             }
           },
@@ -770,11 +772,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 236,
+              "line": 297,
               "column": 8
             },
             "end": {
-              "line": 249,
+              "line": 310,
               "column": 9
             }
           },
@@ -862,11 +864,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 81,
+              "line": 127,
               "column": 12
             },
             "end": {
-              "line": 86,
+              "line": 132,
               "column": 13
             }
           },
@@ -892,15 +894,15 @@
         },
         {
           "name": "on-submit",
-          "description": "",
+          "description": "A function or closure to replace the default submit action, it will be invoked after the  _validate() return true.\n\nWhen it was called, the request param will be accessed as argument.",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 101,
+              "line": 151,
               "column": 12
             },
             "end": {
-              "line": 103,
+              "line": 153,
               "column": 13
             }
           },
@@ -910,15 +912,15 @@
         },
         {
           "name": "on-error",
-          "description": "",
+          "description": "The callback called when form post error occurs.",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 108,
+              "line": 159,
               "column": 12
             },
             "end": {
-              "line": 110,
+              "line": 161,
               "column": 13
             }
           },
@@ -928,15 +930,15 @@
         },
         {
           "name": "on-success",
-          "description": "",
+          "description": "The callback called when form post success.",
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 115,
+              "line": 167,
               "column": 12
             },
             "end": {
-              "line": 117,
+              "line": 169,
               "column": 13
             }
           },
@@ -1492,7 +1494,7 @@
       "tagname": "h2-radio-group"
     },
     {
-      "description": "## A component for table.\n\n```\n<custom-element-demo>\n  <template>\n    <link rel=\"import\" href=\"my-element.html\">\n    <link rel=\"import\" href=\"../other-element/other-element.html\">\n    <next-code-block></next-code-block>\n  </template>\n</custom-element-demo>\n```\n\n```html\n<h2-grid metadata=\"{{ metadata }}\" value=\"{{ value }}\"></h2-grid>\n```\n```\nmetadata = {\n  title: \"I am the title!\",\n  grids: [\n    {\n      name: \"col1\",\n      label: \"Col1\"\n    },\n    {\n      name: \"col2\",\n      label: \"Col2\"\n    },\n    {\n      name: \"col3\",\n      label: \"Col3\"\n    },\n    {\n      metaType:\"ACTION\",\n      name: \"actions\",\n      label: \"Actions\",\n    }\n  ],\n  actions: {\n    \"action-1\": {\n      actionId: \"action-1\",\n      actionName: \"Action1\",\n      operType: 1,\n      formMeta: {\n        formUrl: \"/url-to-send-form\",\n        confirm: \"Sure to submit?\",\n        fields: [\n          {\n            element: \"h2-text\",\n            name: \"name\",\n            label:\"Name\"\n          },\n          {\n            element: \"h2-text\",\n            name: \"phone\",\n            label:\"Phone\"\n          },\n        ],\n      }\n    },\n    \"action-2\": {\n      actionId: \"action-2\",\n      actionName: \"Action2\",\n      operType: 2,\n      formMeta: {\n        title: \"Dialog Title\",\n        formUrl: \"/url-to-send-form\",\n        confirm: \"Sure to submit?\",\n        fields: [\n          {\n            element: \"h2-text\",\n            name: \"name\",\n            label:\"Name\",\n            visible:true,\n            editable:true\n          },\n          {\n            element: \"h2-text\",\n            name: \"phone\",\n            label:\"Phone\",\n            visible:true,\n            editable:true\n          },\n        ],\n      }\n    }\n  }\n}\n\nvalue = [\n  {\n    col1: \"foo\",\n    col2: \"bar\",\n    col3: \"foobar\",\n    actions:[\"action-1\",\"action-2\"]\n  },\n  {\n    col1: \"foo\",\n    col2: \"bar\",\n    col3: \"foobar\",\n    actions:[\"action-1\"]\n  },\n  {\n    col1: \"foo\",\n    col2: \"bar\",\n    col3: \"foobar\",\n    actions:[\"action-2\"]\n  },\n  {\n    col1: \"foo\",\n    col2: \"bar\",\n    col3: \"foobar\",\n    actions:[\"action-1\",\"action-2\"]\n  }\n]\n```",
+      "description": "## A component for table.\n\n```html\n<h2-grid metadata=\"{{ metadata }}\" value=\"{{ value }}\"></h2-grid>\n```\n```\nmetadata = {\n  title: \"I am the title!\",\n  grids: [\n    {\n      name: \"col1\",\n      label: \"Col1\"\n    },\n    {\n      name: \"col2\",\n      label: \"Col2\"\n    },\n    {\n      name: \"col3\",\n      label: \"Col3\"\n    },\n    {\n      metaType:\"ACTION\",\n      name: \"actions\",\n      label: \"Actions\",\n    }\n  ],\n  actions: {\n    \"action-1\": {\n      actionId: \"action-1\",\n      actionName: \"Action1\",\n      operType: 1,\n      formMeta: {\n        formUrl: \"/url-to-send-form\",\n        confirm: \"Sure to submit?\",\n        fields: [\n          {\n            element: \"h2-text\",\n            name: \"name\",\n            label:\"Name\"\n          },\n          {\n            element: \"h2-text\",\n            name: \"phone\",\n            label:\"Phone\"\n          },\n        ],\n      }\n    },\n    \"action-2\": {\n      actionId: \"action-2\",\n      actionName: \"Action2\",\n      operType: 2,\n      formMeta: {\n        title: \"Dialog Title\",\n        formUrl: \"/url-to-send-form\",\n        confirm: \"Sure to submit?\",\n        fields: [\n          {\n            element: \"h2-text\",\n            name: \"name\",\n            label:\"Name\",\n            visible:true,\n            editable:true\n          },\n          {\n            element: \"h2-text\",\n            name: \"phone\",\n            label:\"Phone\",\n            visible:true,\n            editable:true\n          },\n        ],\n      }\n    }\n  }\n}\n\nvalue = [\n  {\n    col1: \"foo\",\n    col2: \"bar\",\n    col3: \"foobar\",\n    actions:[\"action-1\",\"action-2\"]\n  },\n  {\n    col1: \"foo\",\n    col2: \"bar\",\n    col3: \"foobar\",\n    actions:[\"action-1\"]\n  },\n  {\n    col1: \"foo\",\n    col2: \"bar\",\n    col3: \"foobar\",\n    actions:[\"action-2\"]\n  },\n  {\n    col1: \"foo\",\n    col2: \"bar\",\n    col3: \"foobar\",\n    actions:[\"action-1\",\"action-2\"]\n  }\n]\n```\n### metadata定义 (GridMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|grids|array.<FieldMeta>|是|表格单元格元数据|\n|actions|map.<string, ActionMeta>|是|操作集|\n|title|string|否|表格标题|\n|editable|boolean|否|是否可编辑|\n\n### [See FieldMeta](#/elements/h2-field)\n### [See ActionMeta](#/elements/h2-action)",
       "summary": "",
       "path": "h2-grid.html",
       "properties": [
@@ -1503,11 +1505,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 252,
               "column": 12
             },
             "end": {
-              "line": 250,
+              "line": 255,
               "column": 13
             }
           },
@@ -1519,15 +1521,15 @@
         {
           "name": "value",
           "type": "Array",
-          "description": "",
+          "description": "Data for the grid.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 251,
+              "line": 257,
               "column": 12
             },
             "end": {
-              "line": 253,
+              "line": 259,
               "column": 13
             }
           },
@@ -1542,11 +1544,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 260,
               "column": 12
             },
             "end": {
-              "line": 257,
+              "line": 263,
               "column": 13
             }
           },
@@ -1564,11 +1566,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 261,
+              "line": 267,
               "column": 8
             },
             "end": {
-              "line": 265,
+              "line": 271,
               "column": 9
             }
           },
@@ -1585,11 +1587,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 267,
+              "line": 273,
               "column": 8
             },
             "end": {
-              "line": 282,
+              "line": 288,
               "column": 9
             }
           },
@@ -1606,11 +1608,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 284,
+              "line": 290,
               "column": 8
             },
             "end": {
-              "line": 290,
+              "line": 296,
               "column": 9
             }
           },
@@ -1632,11 +1634,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 236,
+          "line": 241,
           "column": 6
         },
         "end": {
-          "line": 291,
+          "line": 297,
           "column": 7
         }
       },
@@ -1649,11 +1651,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 252,
               "column": 12
             },
             "end": {
-              "line": 250,
+              "line": 255,
               "column": 13
             }
           },
@@ -1662,14 +1664,14 @@
         },
         {
           "name": "value",
-          "description": "",
+          "description": "Data for the grid.",
           "sourceRange": {
             "start": {
-              "line": 251,
+              "line": 257,
               "column": 12
             },
             "end": {
-              "line": 253,
+              "line": 259,
               "column": 13
             }
           },
@@ -1681,11 +1683,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 260,
               "column": 12
             },
             "end": {
-              "line": 257,
+              "line": 263,
               "column": 13
             }
           },
@@ -1705,11 +1707,11 @@
           "range": {
             "file": "h2-grid.html",
             "start": {
-              "line": 180,
+              "line": 181,
               "column": 8
             },
             "end": {
-              "line": 180,
+              "line": 181,
               "column": 35
             }
           }
@@ -1942,7 +1944,7 @@
       "tagname": "h2-pagination"
     },
     {
-      "description": "# 由元数据驱动的增删改查组件\n```\n<h2-crud metadata=\"{{ metadata }}\"\n         key-for-items=\"rows\"\n         key-for-page-result=\"pageResponse.results\"\n         result-descriptor=\"[[ _desc() ]]\">\n</h2-crud>\n```\n```\n_desc() {\n    return (result) => {\n        result.rows[0].name = 'foo';\n        return result;\n    };\n}\n\nmetadata = {\n    query: {\n        FormMeta & {\n            noPaging: Boolean     //  是否禁止分页\n        }\n    },\n    actions: {{Array<Action>}},\n    result: {{GridMeta}}\n}\n```",
+      "description": "# 由元数据驱动的增删改查组件\n```\n<h2-crud metadata=\"{{ metadata }}\"\n         key-for-items=\"rows\"\n         key-for-page-result=\"pageResponse.results\"\n         result-descriptor=\"[[ _desc() ]]\">\n</h2-crud>\n```\n```\n_desc() {\n    return (result) => {\n        result.rows[0].name = 'foo';\n        return result;\n    };\n}\n\nmetadata = {\n    query: {\n        FormMeta & {\n            noPaging: Boolean     //  是否禁止分页\n        }\n    },\n    actions: {{Array<Action>}},\n    result: {{GridMeta}}\n}\n```\n### metadata定义 (DomainMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|query|FormMeta|是|表格数据请求表单的元数据|\n|actions|array.<ActionMeta>|是|针对domain上的操作元数据\n|result|GridMeta|是|表格的元数据|\n\n### [See FormMeta](#/elements/h2-form)\n### [See ActionMeta](#/elements/h2-action)\n### [See GridMeta](#/elements/h2-grid)",
       "summary": "",
       "path": "h2-crud.html",
       "properties": [
@@ -1953,11 +1955,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 117,
               "column": 12
             },
             "end": {
-              "line": 110,
+              "line": 119,
               "column": 13
             }
           },
@@ -1972,11 +1974,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 124,
               "column": 12
             },
             "end": {
-              "line": 117,
+              "line": 126,
               "column": 13
             }
           },
@@ -1991,11 +1993,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 131,
               "column": 12
             },
             "end": {
-              "line": 125,
+              "line": 134,
               "column": 13
             }
           },
@@ -2012,11 +2014,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 139,
               "column": 12
             },
             "end": {
-              "line": 132,
+              "line": 141,
               "column": 13
             }
           },
@@ -2031,11 +2033,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 137,
+              "line": 146,
               "column": 12
             },
             "end": {
-              "line": 139,
+              "line": 148,
               "column": 13
             }
           },
@@ -2050,11 +2052,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 153,
               "column": 12
             },
             "end": {
-              "line": 147,
+              "line": 156,
               "column": 13
             }
           },
@@ -2070,11 +2072,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 161,
               "column": 12
             },
             "end": {
-              "line": 155,
+              "line": 164,
               "column": 13
             }
           },
@@ -2091,11 +2093,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 168,
               "column": 8
             },
             "end": {
-              "line": 162,
+              "line": 171,
               "column": 9
             }
           },
@@ -2112,11 +2114,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 176,
               "column": 8
             },
             "end": {
-              "line": 169,
+              "line": 178,
               "column": 9
             }
           },
@@ -2134,11 +2136,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 93,
+          "line": 102,
           "column": 6
         },
         "end": {
-          "line": 170,
+          "line": 179,
           "column": 7
         }
       },
@@ -2151,11 +2153,11 @@
           "description": "a closure ``(result) => result``, will be invoked before result is access to dom.",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 117,
               "column": 12
             },
             "end": {
-              "line": 110,
+              "line": 119,
               "column": 13
             }
           },
@@ -2167,11 +2169,11 @@
           "description": "The result response from server.",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 124,
               "column": 12
             },
             "end": {
-              "line": 117,
+              "line": 126,
               "column": 13
             }
           },
@@ -2183,11 +2185,11 @@
           "description": "The result is described by ``resultDescriptor``",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 131,
               "column": 12
             },
             "end": {
-              "line": 125,
+              "line": 134,
               "column": 13
             }
           },
@@ -2199,11 +2201,11 @@
           "description": "The metadata of h2-crud",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 139,
               "column": 12
             },
             "end": {
-              "line": 132,
+              "line": 141,
               "column": 13
             }
           },
@@ -2215,11 +2217,11 @@
           "description": "The context of h2-crud",
           "sourceRange": {
             "start": {
-              "line": 137,
+              "line": 146,
               "column": 12
             },
             "end": {
-              "line": 139,
+              "line": 148,
               "column": 13
             }
           },
@@ -2231,11 +2233,11 @@
           "description": "The field name of the items in the responsed result.",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 153,
               "column": 12
             },
             "end": {
-              "line": 147,
+              "line": 156,
               "column": 13
             }
           },
@@ -2247,11 +2249,11 @@
           "description": "The field name of the page result in the responsed result.",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 161,
               "column": 12
             },
             "end": {
-              "line": 155,
+              "line": 164,
               "column": 13
             }
           },
@@ -2271,11 +2273,11 @@
           "range": {
             "file": "h2-crud.html",
             "start": {
-              "line": 58,
+              "line": 67,
               "column": 16
             },
             "end": {
-              "line": 58,
+              "line": 67,
               "column": 71
             }
           }
@@ -2284,7 +2286,7 @@
       "tagname": "h2-crud"
     },
     {
-      "description": "A dialog component.\n```javascript\n<h2-dialog>\n    <div slot=\"container\">\n        Put your Content here inside an element which with [slot=container]\n    </div>\n</h2-dialog>\n```",
+      "description": "A component for dialog.\n```javascript\n<h2-dialog>\n    <div slot=\"container\">\n        Put your Content here inside an element which with [slot=container]\n    </div>\n</h2-dialog>\n```",
       "summary": "",
       "path": "h2-dialog.html",
       "properties": [
@@ -2433,7 +2435,7 @@
       "tagname": "h2-dialog"
     },
     {
-      "description": "```\n<h2-field editable metadata=\"{{ metadata }}\"></h2-field>\n```\n```\nmetadata = {\n  element: \"h2-text\",\n  name: \"name\",\n  label: \"Please input your name here: \",\n  required: true,\n  editable: true,\n  prompt: \"Please input your name!\"\n}\n```\n### metadata字段定义：\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|name|string|是|字段名，如“orderNo”\n|label|string|是|字段名，如“订单号”\n|require|boolean|是|是否必填\n|mutil|boolean|是|是否多选\n|editable|boolean|是 | 是否可编辑\n|validate| boolean|是| 是否需要校验\n|visible| boolean|是| 界面是否可见，仅对表单中的字段有效\n|element|string|否|ui元素，缺省时，提供默认ui：h2-text\n|format|string|否| 显示格式，用于日期显示，如“yyyy-MM-dd”\n|length|number|否 | 字符长度\n|maxLength|number|否| string允许的最大长度\n|minLength|number|否 | string允许的最小长度\n|regexp|string|否|正则匹配\n|prompt|string|否|校验失败时的提示语，如“请输入备注”\n|min|number|否|数字最小值\n|max|number|否|数字最大值\n|placeholder|string|否| placeholder\n|candidates|string|否| 候选值，下拉选项中的值，json串，如 \"[{value: 1,label: '男'}, {value: 2,label: '女'}]\"\n|candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”\n|candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”\n|alias|string|否|别名，如果配置了此字段，提交表单时已这个字段作为key保存\n|metaType|MetaType或string|否|元数据类型，如果缺少metaType，|\n\n### MetaType定义\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|type|string|是|idl 数据类型：<primitive> 、LIST 、 MAP 、SET 、 STRUCT 、 ACTION|\n|metadata|object|是| 如果type是list，map，set中的一种，则metadata是这些嵌套类型的元数据|",
+      "description": "```\n<h2-field editable metadata=\"{{ metadata }}\"></h2-field>\n```\n```\nmetadata = {\n  element: \"h2-text\",\n  name: \"name\",\n  label: \"Please input your name here: \",\n  required: true,\n  editable: true,\n  prompt: \"Please input your name!\"\n}\n```\n### metadata定义 (FieldMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|name|string|是|字段名，如“orderNo”\n|label|string|是|字段名，如“订单号”\n|require|boolean|是|是否必填\n|mutil|boolean|是|是否多选\n|editable|boolean|是 | 是否可编辑\n|validate| boolean|是| 是否需要校验\n|visible| boolean|是| 界面是否可见，仅对表单中的字段有效\n|element|string|否|ui元素，缺省时，提供默认ui：h2-text\n|format|string|否| 显示格式，用于日期显示，如“yyyy-MM-dd”\n|length|number|否 | 字符长度\n|maxLength|number|否| string允许的最大长度\n|minLength|number|否 | string允许的最小长度\n|regexp|string|否|正则匹配\n|prompt|string|否|校验失败时的提示语，如“请输入备注”\n|min|number|否|数字最小值\n|max|number|否|数字最大值\n|placeholder|string|否| placeholder\n|candidates|string|否| 候选值，下拉选项中的值，json串，如 \"[{value: 1,label: '男'}, {value: 2,label: '女'}]\"\n|candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”\n|candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”\n|alias|string|否|别名，如果配置了此字段，提交表单时已这个字段作为key保存\n|metaType|MetaType或string|否|元数据类型，如果缺少metaType，|\n\n### MetaType定义\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|type|string|是|idl 数据类型：<primitive> 、LIST 、 MAP 、SET 、 STRUCT 、 ACTION|\n|metadata|object|是| 如果type是list，map，set中的一种，则metadata是这些嵌套类型的元数据|",
       "summary": "",
       "path": "h2-field.html",
       "properties": [
@@ -2548,7 +2550,7 @@
               "column": 8
             },
             "end": {
-              "line": 134,
+              "line": 137,
               "column": 9
             }
           },
@@ -2561,11 +2563,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 136,
+              "line": 139,
               "column": 8
             },
             "end": {
-              "line": 141,
+              "line": 144,
               "column": 9
             }
           },
@@ -2578,11 +2580,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 146,
               "column": 8
             },
             "end": {
-              "line": 152,
+              "line": 155,
               "column": 9
             }
           },
@@ -2604,7 +2606,7 @@
           "column": 6
         },
         "end": {
-          "line": 162,
+          "line": 165,
           "column": 7
         }
       },
@@ -2654,7 +2656,7 @@
       "tagname": "h2-field"
     },
     {
-      "description": "",
+      "description": "A component for form.\n\n```\n<h2-form metadata=\"{{ metadata }}\"></h2-form>\n```\n```\ncontext = {\n    foo: \"foo\",\n    bar: \"bar\"\n}\nmetadata = {\n    formUrl: \"/url-to-send-form\",\n    title: \"Form Title\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        name: \"foo\",\n        label: \"foo\",\n        element: \"h2-text\",\n        required: true,\n        editable: true,\n        visible: true\n      },\n      {\n        name: \"bar\",\n        label: \"bar\",\n        required: true,\n        editable: true,\n        visible: true\n      },\n    ],\n}\n```\n### metadata定义 (FormMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|title|string|是|表单头|\n|formUrl|string|是|表单提交的url|\n|fields|array.<FieldMeta>|是|字段元数据|\n|confirm|string|否|表单提交前确认提示|\n|isSubmitForbidden|boolean|否|是否禁用提交按钮|\n|style|string|否|组件自定义样式|\n\n### [See FieldMeta](#/elements/h2-field)",
       "summary": "",
       "path": "h2-form.html",
       "properties": [
@@ -2665,11 +2667,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 120,
               "column": 12
             },
             "end": {
-              "line": 79,
+              "line": 125,
               "column": 13
             }
           },
@@ -2685,11 +2687,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 127,
               "column": 12
             },
             "end": {
-              "line": 86,
+              "line": 132,
               "column": 13
             }
           },
@@ -2705,11 +2707,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 134,
               "column": 12
             },
             "end": {
-              "line": 91,
+              "line": 137,
               "column": 13
             }
           },
@@ -2726,11 +2728,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 139,
               "column": 12
             },
             "end": {
-              "line": 96,
+              "line": 142,
               "column": 13
             }
           },
@@ -2743,15 +2745,15 @@
         {
           "name": "onSubmit",
           "type": "Function",
-          "description": "",
+          "description": "A function or closure to replace the default submit action, it will be invoked after the  _validate() return true.\n\nWhen it was called, the request param will be accessed as argument.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 151,
               "column": 12
             },
             "end": {
-              "line": 103,
+              "line": 153,
               "column": 13
             }
           },
@@ -2762,15 +2764,15 @@
         {
           "name": "onError",
           "type": "Function",
-          "description": "",
+          "description": "The callback called when form post error occurs.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 159,
               "column": 12
             },
             "end": {
-              "line": 110,
+              "line": 161,
               "column": 13
             }
           },
@@ -2781,15 +2783,15 @@
         {
           "name": "onSuccess",
           "type": "Function",
-          "description": "",
+          "description": "The callback called when form post success.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 167,
               "column": 12
             },
             "end": {
-              "line": 117,
+              "line": 169,
               "column": 13
             }
           },
@@ -2805,11 +2807,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 173,
               "column": 8
             },
             "end": {
-              "line": 125,
+              "line": 177,
               "column": 9
             }
           },
@@ -2822,15 +2824,15 @@
         },
         {
           "name": "watch",
-          "description": "",
+          "description": "Listen the value change of all watchFields in context.\n\n```javascript\nwatch(['foo','bar'], (context, whoChange) => {\n    console.log(`${whoChange} changed, newValue = ${context[whoChange]}`);\n})\n```\nWhen watch() execute, the callback will be invoked to refresh the initial state,\nnotice that the `whoChange` will be undefined at this invoke.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 193,
               "column": 8
             },
             "end": {
-              "line": 144,
+              "line": 205,
               "column": 9
             }
           },
@@ -2838,11 +2840,13 @@
           "params": [
             {
               "name": "watchFields",
-              "type": "Array.<String>"
+              "type": "Array.<String>",
+              "description": "fields in context you want to listen when their value changes."
             },
             {
               "name": "callback",
-              "type": "Function"
+              "type": "Function",
+              "description": "callback executed when the value of watchFields in context changes."
             }
           ]
         },
@@ -2852,11 +2856,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 207,
               "column": 8
             },
             "end": {
-              "line": 149,
+              "line": 210,
               "column": 9
             }
           },
@@ -2873,11 +2877,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 212,
               "column": 8
             },
             "end": {
-              "line": 161,
+              "line": 222,
               "column": 9
             }
           },
@@ -2894,11 +2898,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 228,
               "column": 8
             },
             "end": {
-              "line": 169,
+              "line": 230,
               "column": 9
             }
           },
@@ -2916,11 +2920,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 235,
               "column": 8
             },
             "end": {
-              "line": 210,
+              "line": 271,
               "column": 9
             }
           },
@@ -2933,11 +2937,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 212,
+              "line": 273,
               "column": 8
             },
             "end": {
-              "line": 214,
+              "line": 275,
               "column": 9
             }
           },
@@ -2954,11 +2958,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 277,
               "column": 8
             },
             "end": {
-              "line": 218,
+              "line": 279,
               "column": 9
             }
           },
@@ -2975,11 +2979,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 281,
               "column": 8
             },
             "end": {
-              "line": 234,
+              "line": 295,
               "column": 9
             }
           },
@@ -2992,11 +2996,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 297,
               "column": 8
             },
             "end": {
-              "line": 249,
+              "line": 310,
               "column": 9
             }
           },
@@ -3014,11 +3018,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 66,
+          "line": 112,
           "column": 6
         },
         "end": {
-          "line": 250,
+          "line": 311,
           "column": 7
         }
       },
@@ -3031,11 +3035,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 127,
               "column": 12
             },
             "end": {
-              "line": 86,
+              "line": 132,
               "column": 13
             }
           },
@@ -3047,11 +3051,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 139,
               "column": 12
             },
             "end": {
-              "line": 96,
+              "line": 142,
               "column": 13
             }
           },
@@ -3060,14 +3064,14 @@
         },
         {
           "name": "on-submit",
-          "description": "",
+          "description": "A function or closure to replace the default submit action, it will be invoked after the  _validate() return true.\n\nWhen it was called, the request param will be accessed as argument.",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 151,
               "column": 12
             },
             "end": {
-              "line": 103,
+              "line": 153,
               "column": 13
             }
           },
@@ -3076,14 +3080,14 @@
         },
         {
           "name": "on-error",
-          "description": "",
+          "description": "The callback called when form post error occurs.",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 159,
               "column": 12
             },
             "end": {
-              "line": 110,
+              "line": 161,
               "column": 13
             }
           },
@@ -3092,14 +3096,14 @@
         },
         {
           "name": "on-success",
-          "description": "",
+          "description": "The callback called when form post success.",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 167,
               "column": 12
             },
             "end": {
-              "line": 117,
+              "line": 169,
               "column": 13
             }
           },
@@ -3116,7 +3120,7 @@
       "tagname": "h2-form"
     },
     {
-      "description": "A magic component, which you can post a form or open a dialog.\n\n```\n// Immediately submit a form.\n<h2-action context=\"{{ context }}\" metadata=\"{{ metadata }}\"></h2-action>\n\n// Open a h2-dialog\n<h2-action context=\"{{ context }}\" metadata=\"{{ metadata1 }}\"></h2-action>\n\n```\n```\ncontext = {\n  name: \"WahsonLeung\",\n  phone: \"15900000000\"\n}\n\nmetadata = {\n    actionId: \"record-add\",\n    actionName: \"Add Record\",\n    operType: 1,\n    formMeta: {\n    formUrl: \"/url-to-send-form\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        name: \"name\",\n        label:\"Name\"\n      },\n      {\n        name: \"phone\",\n        label:\"Phone\"\n      },\n    ],\n}\n\nmetadata1 = {\n    actionId: \"record-add\",\n    actionName: \"Add Record\",\n    operType: 2,\n    formMeta: {\n    formUrl: \"/url-to-send-form\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        name: \"name\",\n        label:\"Name\"\n      },\n      {\n        name: \"phone\",\n        label:\"Phone\"\n      },\n    ],\n}\n```",
+      "description": "A magic component, which you can post a form or open a dialog.\n\n```\n// Immediately submit a form.\n<h2-action context=\"{{ context }}\" metadata=\"{{ metadata }}\"></h2-action>\n\n// Open a h2-dialog\n<h2-action context=\"{{ context }}\" metadata=\"{{ metadata1 }}\"></h2-action>\n\n```\n```\ncontext = {\n  name: \"WahsonLeung\",\n  phone: \"15900000000\"\n}\n\nmetadata = {\n    actionId: \"record-add\",\n    actionName: \"Add Record\",\n    operType: 1,\n    formMeta: {\n    formUrl: \"/url-to-send-form\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        name: \"name\",\n        label:\"Name\"\n      },\n      {\n        name: \"phone\",\n        label:\"Phone\"\n      },\n    ],\n}\n\nmetadata1 = {\n    actionId: \"record-add\",\n    actionName: \"Add Record\",\n    operType: 2,\n    formMeta: {\n    formUrl: \"/url-to-send-form\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        name: \"name\",\n        label:\"Name\"\n      },\n      {\n        name: \"phone\",\n        label:\"Phone\"\n      },\n    ],\n}\n```\n### metadata定义 (ActionMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|actionId|string|是|操作的唯一标识|\n|actionName|string|是|操作名，如 “收货”\n|group|string|否|操作组，如 “更多”\n|operType|number|是|操作类型，1：表单，2.弹窗\n|formMeta|FormMeta|是|表单meta\n|modelSrc|string|否|弹窗的model请求url\n|modelQueryParams|array.<string>|否|弹窗的model请求参数\n\n### [See FormMeta](#/elements/h2-form)",
       "summary": "",
       "path": "h2-action.html",
       "properties": [
@@ -3127,11 +3131,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 110,
               "column": 12
             },
             "end": {
-              "line": 100,
+              "line": 112,
               "column": 13
             }
           },
@@ -3146,11 +3150,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 114,
               "column": 12
             },
             "end": {
-              "line": 105,
+              "line": 117,
               "column": 13
             }
           },
@@ -3167,11 +3171,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 119,
               "column": 12
             },
             "end": {
-              "line": 109,
+              "line": 121,
               "column": 13
             }
           },
@@ -3186,11 +3190,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 123,
               "column": 12
             },
             "end": {
-              "line": 113,
+              "line": 125,
               "column": 13
             }
           },
@@ -3206,11 +3210,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 129,
               "column": 8
             },
             "end": {
-              "line": 120,
+              "line": 132,
               "column": 9
             }
           },
@@ -3219,15 +3223,15 @@
         },
         {
           "name": "fetchContext",
-          "description": "When this.metadata.modelSrc is defined, fetch the new context.",
+          "description": "When metadata.modelSrc is defined, fetch the new context.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 136,
               "column": 8
             },
             "end": {
-              "line": 140,
+              "line": 152,
               "column": 9
             }
           },
@@ -3236,15 +3240,15 @@
         },
         {
           "name": "submitOrOpenDialog",
-          "description": "If this.metadata.operType == 1 submit a form\nelse if this.metadata.operType == 2  open a dialog.",
+          "description": "If metadata.operType == 1 submit a form\nelse if metadata.operType == 2  open a dialog.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 158,
               "column": 8
             },
             "end": {
-              "line": 158,
+              "line": 170,
               "column": 9
             }
           },
@@ -3257,11 +3261,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 160,
+              "line": 172,
               "column": 8
             },
             "end": {
-              "line": 163,
+              "line": 175,
               "column": 9
             }
           },
@@ -3278,11 +3282,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 177,
               "column": 8
             },
             "end": {
-              "line": 171,
+              "line": 183,
               "column": 9
             }
           },
@@ -3295,11 +3299,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 173,
+              "line": 185,
               "column": 8
             },
             "end": {
-              "line": 191,
+              "line": 203,
               "column": 9
             }
           },
@@ -3312,11 +3316,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 193,
+              "line": 205,
               "column": 8
             },
             "end": {
-              "line": 208,
+              "line": 220,
               "column": 9
             }
           },
@@ -3338,11 +3342,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 87,
+          "line": 99,
           "column": 6
         },
         "end": {
-          "line": 210,
+          "line": 222,
           "column": 7
         }
       },
@@ -3355,11 +3359,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 110,
               "column": 12
             },
             "end": {
-              "line": 100,
+              "line": 112,
               "column": 13
             }
           },
@@ -3371,11 +3375,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 114,
               "column": 12
             },
             "end": {
-              "line": 105,
+              "line": 117,
               "column": 13
             }
           },
@@ -3715,7 +3719,7 @@
             },
             {
               "name": "orElse",
-              "description": "Return the first giving arg which is not ``undefined``, ``null``, ``NaN`` or ``0``.\n\neg.\n```\norElse(undefined, null, \"foo\")  // \"foo\"\norElse(0, 1)  // 1\norElse(\"bar\", \"foo\")  // \"bar\"\n```",
+              "description": "Return the first giving arg which is not ``undefined``, ``null``, ``NaN`` , ``false`` ,``0`` or ``''``.\n\neg.\n```\norElse(undefined, null, \"foo\")  // \"foo\"\norElse(0, 1)  // 1\norElse(\"bar\", \"foo\")  // \"bar\"\n```",
               "privacy": "public",
               "sourceRange": {
                 "start": {

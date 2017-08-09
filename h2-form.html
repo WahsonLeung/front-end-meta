@@ -1,8 +1,54 @@
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="./behaviors/ajax-behavior.html">
 <link rel="import" href="./behaviors/base-behavior.html">
-<link rel="import" href="h2-field.html">
+<link rel="import" href="./behaviors/ajax-behavior.html">
+<link rel="import" href="./h2-field.html">
 
+<!--
+A component for form.
+
+```
+<h2-form metadata="{{ metadata }}"></h2-form>
+```
+```
+context = {
+    foo: "foo",
+    bar: "bar"
+}
+metadata = {
+    formUrl: "/url-to-send-form",
+    title: "Form Title",
+    confirm: "Sure to submit?",
+    fields: [
+      {
+        name: "foo",
+        label: "foo",
+        element: "h2-text",
+        required: true,
+        editable: true,
+        visible: true
+      },
+      {
+        name: "bar",
+        label: "bar",
+        required: true,
+        editable: true,
+        visible: true
+      },
+    ],
+}
+```
+### metadata定义 (FormMeta)
+|字段名|类型|Required|描述|
+|:--|:--|:--|:--|
+|title|string|是|表单头|
+|formUrl|string|是|表单提交的url|
+|fields|array.<FieldMeta>|是|字段元数据|
+|confirm|string|否|表单提交前确认提示|
+|isSubmitForbidden|boolean|否|是否禁用提交按钮|
+|style|string|否|组件自定义样式|
+
+### [See FieldMeta](#/elements/h2-field)
+-->
 <dom-module id="h2-form">
     <template>
         <style id="localStyle">
@@ -78,12 +124,14 @@
                 return {};
               }
             },
+
             context: {
               type: Object,
               value: function () {
                 return {};
               }
             },
+
             __context: {
               type: Object,
               computed: "redefine(context,'__context')"
@@ -93,19 +141,28 @@
               type: Object,
               observer: '__metadataChange'
             },
+
             /**
+             * A function or closure to replace the default submit action, it will be invoked after the  _validate() return true.
+             *
+             * When it was called, the request param will be accessed as argument.
+             *
              * @type {Function}
              */
             onSubmit: {
               type: Object
             },
+
             /**
+             * The callback called when form post error occurs.
              * @type {Function}
              */
             onError: {
               type: Object
             },
+
             /**
+             * The callback called when form post success.
              * @type {Function}
              */
             onSuccess: {
@@ -121,9 +178,18 @@
         }
 
         /**
+         * Listen the value change of all watchFields in context.
          *
-         * @param {Array.<String>} watchFields
-         * @param {Function} callback
+         * ```javascript
+         * watch(['foo','bar'], (context, whoChange) => {
+         *     console.log(`${whoChange} changed, newValue = ${context[whoChange]}`);
+         * })
+         * ```
+         * When watch() execute, the callback will be invoked to refresh the initial state,
+         * notice that the `whoChange` will be undefined at this invoke.
+         *
+         * @param {Array.<String>} watchFields - fields in context you want to listen when their value changes.
+         * @param {Function} callback - callback executed when the value of watchFields in context changes.
          */
         watch(watchFields, callback) {
           if (this.isFunction(callback)) {
@@ -152,7 +218,7 @@
           if (!this._subscriptionTable[myFieldName]) return;
 
           this._subscriptionTable[myFieldName].forEach(fn => {
-            fn(this.__context);
+            fn(this.__context, myFieldName);
           });
         }
 

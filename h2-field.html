@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="all-imports.html">
+<link rel="import" href="./all-imports.html">
 <link rel="import" href="./widgets/widget-resources.html">
 <link rel="import" href="./widgets/h2-widget-base.html">
 <link rel="import" href="./behaviors/base-behavior.html">
@@ -19,7 +19,7 @@ metadata = {
   prompt: "Please input your name!"
 }
 ```
-### metadata字段定义：
+### metadata定义 (FieldMeta)
 |字段名|类型|Required|描述|
 |:--|:--|:--|:--|
 |name|string|是|字段名，如“orderNo”
@@ -43,9 +43,9 @@ metadata = {
 |candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”
 |candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”
 |alias|string|否|别名，如果配置了此字段，提交表单时已这个字段作为key保存
-|metaType|MetaType|否||
+|metaType|MetaType或string|否|元数据类型，如果缺少metaType，|
 
-### MetaType
+### MetaType定义
 |字段名|类型|Required|描述|
 |:--|:--|:--|:--|
 |type|string|是|idl 数据类型：<primitive> 、LIST 、 MAP 、SET 、 STRUCT 、 ACTION|
@@ -90,11 +90,11 @@ metadata = {
 
         __contextChange(obj) {
           // if context obj change, force to refresh
-          if(obj.path === "context") {
+          if (obj.path === "context") {
             this.__valueChange();
           }
 
-          if(this._ref && this.isFunction(this._ref.notifyPath)) {
+          if (this._ref && this.isFunction(this._ref.notifyPath)) {
             this._ref.notifyPath(obj.path);
           }
         }
@@ -125,6 +125,9 @@ metadata = {
               eleDom.metadata = this.metadata;
             }
 
+            if (eleDom.metadata.editable == undefined) {
+              eleDom.metadata.editable = this.editable;
+            }
             this._ref = this.shadowRoot.appendChild(eleDom);
           } else {
 

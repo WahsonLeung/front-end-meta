@@ -1,9 +1,125 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="./behaviors/base-behavior.html">
-<link rel="import" href="h2-field.html">
-<link rel="import" href="h2-action.html">
-<link rel="import" href="h2-action-group.html">
+<link rel="import" href="./h2-field.html">
+<link rel="import" href="./h2-action.html">
+<link rel="import" href="./h2-action-group.html">
+<!--
+## A component for table.
 
+```html
+<h2-grid metadata="{{ metadata }}" value="{{ value }}"></h2-grid>
+```
+```
+metadata = {
+  title: "I am the title!",
+  grids: [
+    {
+      name: "col1",
+      label: "Col1"
+    },
+    {
+      name: "col2",
+      label: "Col2"
+    },
+    {
+      name: "col3",
+      label: "Col3"
+    },
+    {
+      metaType:"ACTION",
+      name: "actions",
+      label: "Actions",
+    }
+  ],
+  actions: {
+    "action-1": {
+      actionId: "action-1",
+      actionName: "Action1",
+      operType: 1,
+      formMeta: {
+        formUrl: "/url-to-send-form",
+        confirm: "Sure to submit?",
+        fields: [
+          {
+            element: "h2-text",
+            name: "name",
+            label:"Name"
+          },
+          {
+            element: "h2-text",
+            name: "phone",
+            label:"Phone"
+          },
+        ],
+      }
+    },
+    "action-2": {
+      actionId: "action-2",
+      actionName: "Action2",
+      operType: 2,
+      formMeta: {
+        title: "Dialog Title",
+        formUrl: "/url-to-send-form",
+        confirm: "Sure to submit?",
+        fields: [
+          {
+            element: "h2-text",
+            name: "name",
+            label:"Name",
+            visible:true,
+            editable:true
+          },
+          {
+            element: "h2-text",
+            name: "phone",
+            label:"Phone",
+            visible:true,
+            editable:true
+          },
+        ],
+      }
+    }
+  }
+}
+
+value = [
+  {
+    col1: "foo",
+    col2: "bar",
+    col3: "foobar",
+    actions:["action-1","action-2"]
+  },
+  {
+    col1: "foo",
+    col2: "bar",
+    col3: "foobar",
+    actions:["action-1"]
+  },
+  {
+    col1: "foo",
+    col2: "bar",
+    col3: "foobar",
+    actions:["action-2"]
+  },
+  {
+    col1: "foo",
+    col2: "bar",
+    col3: "foobar",
+    actions:["action-1","action-2"]
+  }
+]
+```
+### metadata定义 (GridMeta)
+|字段名|类型|Required|描述|
+|:--|:--|:--|:--|
+|grids|array.<FieldMeta>|是|表格单元格元数据|
+|actions|map.<string, ActionMeta>|是|操作集|
+|title|string|否|表格标题|
+|editable|boolean|否|是否可编辑|
+
+### [See FieldMeta](#/elements/h2-field)
+### [See ActionMeta](#/elements/h2-action)
+-->
 <dom-module id="h2-grid">
     <template>
         <style>
@@ -40,11 +156,12 @@
             :host .grid-column {
                 min-width: 70px;
             }
+
             :host tr:nth-of-type(even) {
                 background-color: lightgrey;
             }
 
-            :host td:nth-last-of-type(1) {
+            :host .grid-actions {
                 display: inline;
                 width: 200px;
             }
@@ -79,32 +196,36 @@
                         <td class="grid-column">
                             <template is="dom-if" if="[[ !isEqual(fieldMeta.metaType, 'ACTION') ]]">
                                 <h2-field class="field"
-                                           metadata="[[ fieldMeta ]]"
-                                           editable="[[ fieldMeta.editable ]]"
-                                           context="[[ model ]]"
-                                           value="[[ getValueByKey(model,fieldMeta.name) ]]">
+                                          metadata="[[ fieldMeta ]]"
+                                          editable="[[ orElse(editable, metadata.editable, fieldMeta.editable) ]]"
+                                          context="[[ model ]]"
+                                          value="[[ getValueByKey(model,fieldMeta.name) ]]">
                                 </h2-field>
                             </template>
 
                             <template is="dom-if" if="[[ isEqual(fieldMeta.metaType,'ACTION') ]]">
-                                <template is="dom-repeat" items="[[ noGroupActions(model.actions) ]]" as="actionMeta">
-                                    <h2-action class="action"
-                                               metadata="[[ actionMeta ]]"
-                                               context="[[ model ]]">
-                                    </h2-action>
-                                </template>
-                                <template is="dom-repeat" items="[[ groupedActions(model.actions) ]]">
-                                    <h2-action-group
-                                            class="action-group"
-                                            name="[[ item.group ]]">
-                                        <template is="dom-repeat" items="[[ item.actions ]]" as="actionMeta">
-                                            <h2-action metadata="[[ actionMeta ]]"
-                                                       context="[[ model ]]">
-                                            </h2-action>
-                                        </template>
-                                    </h2-action-group>
-                                </template>
+                                <div class="grid-actions">
+                                    <template is="dom-repeat" items="[[ _noGroupActions(model.actions) ]]"
+                                              as="actionMeta">
+                                        <h2-action class="action"
+                                                   metadata="[[ actionMeta ]]"
+                                                   context="[[ model ]]">
+                                        </h2-action>
+                                    </template>
+                                    <template is="dom-repeat" items="[[ _groupedActions(model.actions) ]]">
+                                        <h2-action-group
+                                                class="action-group"
+                                                name="[[ item.group ]]">
+                                            <template is="dom-repeat" items="[[ item.actions ]]" as="actionMeta">
+                                                <h2-action metadata="[[ actionMeta ]]"
+                                                           context="[[ model ]]">
+                                                </h2-action>
+                                            </template>
+                                        </h2-action-group>
+                                    </template>
+                                </div>
                             </template>
+
                         </td>
                     </template>
                 </tr>
@@ -133,6 +254,7 @@
               type: Boolean,
               value: false
             },
+            /** Data for the grid.*/
             value: {
               type: Array
             },
@@ -149,7 +271,7 @@
           }
         }
 
-        groupedActions(actions) {
+        _groupedActions(actions) {
           const groupedActions = [];
           const groupMap = {};
           actions.map(actionId => {
@@ -166,7 +288,7 @@
           return groupedActions;
         }
 
-        noGroupActions(actions) {
+        _noGroupActions(actions) {
           return actions.filter(actionId => {
             const meta = this.getValueByKey(this.metadata.actions, actionId);
             const grp = meta.group;
