@@ -40,13 +40,10 @@
         <style is="custom-style">
         </style>
         <h2-crud id="action"></h2-crud>
-
         <script>
           action.metadata = {
             query: {
               formUrl: "/query.do",
-              httpMethod: "GET",
-              paging: true,
               fields: [
                 {
                   name: "username",
@@ -58,16 +55,16 @@
             result: {
               grids: [
                 {
-                  name: "用户名",
-                  label: "username"
+                  name: "username",
+                  label: "用户名"
                 },
                 {
-                  name: "联系电话",
-                  label: "phone"
+                  name: "phone",
+                  label: "联系电话"
                 },
                 {
-                  name: "联系地址",
-                  label: "address"
+                  name: "address",
+                  label: "联系地址"
                 },
                 {
                   name: "actions",
@@ -84,12 +81,10 @@
                     confirm: "Sure to submit?",
                     fields: [
                       {
-                        element: "h2-text",
                         name: "name",
                         label: "Name"
                       },
                       {
-                        element: "h2-text",
                         name: "phone",
                         label: "Phone"
                       },

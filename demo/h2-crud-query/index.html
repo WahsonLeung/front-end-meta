@@ -39,28 +39,24 @@
   <template>
     <style is="custom-style">
     </style>
-    <h2-crud-query id="action"></h2-crud-query>
+    <h2-crud-query id="action" query-after-reset></h2-crud-query>
 
     <script>
       action.metadata = {
         formUrl: "/query.do",
-        httpMethod: "GET",
         paging: true,
         fields: [
           {
-            datatype: "text",
             name: "username",
             label: "用户名",
             editable: true,
           },
           {
-            datatype: "text",
             name: "phone",
             label: "联系电话",
             editable: true,
           },
           {
-            datatype: "select",
             name: "sex",
             label: "性别",
             editable: true,
@@ -81,7 +77,6 @@
         ]
       };
       action.context = {
-
         username: "jack"
       };
     </script>
