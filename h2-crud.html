@@ -85,7 +85,7 @@ metadata = {
         </div>
 
         <div class="crud-pagination">
-            <template is="dom-if" if="{{ !metadata.query.noPaging }}">
+            <template is="dom-if" if="{{ !metadata.noPaging }}">
                 <h2-pagination paging="{{ paging }}"
                                total="[[ getValueByPath(finalResult, keyForPageResult) ]]">
 

@@ -137,7 +137,7 @@
           const param = this._requestBody();
           Object.assign(param, this._extQueryCondition);
 
-          if (this.metadata.paging && this.paging) {
+          if (this.paging) {
             const {start, limit} = this.paging;
             param.start = start;
             param.limit = limit;
