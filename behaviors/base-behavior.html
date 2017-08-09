@@ -38,6 +38,23 @@
     },
 
     /**
+     * Return the first giving arg which is not ``undefined``, ``null``, ``NaN`` , ``false`` or ``0``.
+     *
+     * eg.
+     * ```
+     * orElse(undefined, null, "foo")  // "foo"
+     * orElse(0, 1)  // 1
+     * orElse("bar", "foo")  // "bar"
+     * ```
+     * @param {...*} args
+     * @returns {*}
+     */
+    orElse(...args) {
+      const [first, ...rest] = args;
+      return rest.length === 0 ? first: (first || this.orElse(...rest));
+    },
+
+    /**
      * 通过key查询对象中的值
      * @param {Object} model
      * @param {String} key
