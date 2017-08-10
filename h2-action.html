@@ -69,7 +69,7 @@ metadata1 = {
 |operType|number|是|操作类型，1：表单，2.弹窗
 |formMeta|FormMeta|是|表单meta
 |modelSrc|string|否|弹窗的model请求url
-|modelQueryParams|array.<string>|否|弹窗的model请求参数
+|modelQueryParams|``array.<string>``|否|弹窗的model请求参数
 
 ### [See FormMeta](#/elements/h2-form)
 -->
@@ -134,7 +134,7 @@ metadata1 = {
         /**
          * When metadata.modelSrc is defined, fetch the new context.
          */
-        fetchContext() {
+        _fetchContext() {
           if (!this.metadata.modelSrc) return;
           // fetch model with modelSrc
           const data = {};
@@ -165,7 +165,7 @@ metadata1 = {
             },0);
 
           } else if (this.metadata.operType == 2) {
-            this.fetchContext();
+            this._fetchContext();
             this._createDialog();
           }
         }
@@ -213,7 +213,7 @@ metadata1 = {
 
           /**
            * @event form-submitted
-           * Fire when the form submitted.
+           * Fire when the form submitted, in fact the ``form-submitted`` transmits the event ``h2-form-submitted`` in h2-form.
            */
           this.dispatchEvent(new CustomEvent("form-submitted", {
             bubbles: true, composed: true, detail: e.detail

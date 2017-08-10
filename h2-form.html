@@ -249,6 +249,9 @@ metadata = {
               data: this._requestBody()
             }, (data) => {
 
+              /**
+               * @event h2-form-submitted fire when form submitted.
+               */
               this.dispatchEvent(new CustomEvent("h2-form-submitted", {
                 bubbles: true, composed: true, detail: data
               }));
