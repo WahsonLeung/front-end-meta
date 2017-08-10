@@ -43,12 +43,12 @@ metadata = {
 |candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”
 |candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”
 |alias|string|否|别名，如果配置了此字段，提交表单时已这个字段作为key保存
-|metaType|MetaType或string|否|元数据类型，如果缺少metaType，|
+|metaType|MetaType或string|否|元数据类型，如果缺少metaType，默认渲染的组件是<h2-text>；在表格元数据中定义操作列时，可以省略操作的元数据，如 metaType:"ACTION" [See <h2-grid>](#/elements/h2-grid)|
 
 ### MetaType定义
 |字段名|类型|Required|描述|
 |:--|:--|:--|:--|
-|type|string|是|idl 数据类型：<primitive> 、LIST 、 MAP 、SET 、 STRUCT 、 ACTION|
+|type|string|是|数据类型：BOOLEAN、BYTE、SHORT、INTEGER、LONG、DOUBLE、STRING、LIST、MAP、SET、STRUCT、ACTION|
 |metadata|object|是| 如果type是list，map，set中的一种，则metadata是这些嵌套类型的元数据|
 
 -->
@@ -156,6 +156,7 @@ metadata = {
         }
 
         static defaultElements({type} = {}) {
+          // more default elements will support in the future.
           switch (type) {
             case "ACTION":
               return "h2-action";
