@@ -1,17 +1,19 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/mrLeung/front-end-meta)
 
 ## Introduces
-> 设计理念，balabala......
+> 
 ## Tutorials
 ### Installation
 - [Install Polymer from Bower][1]
 
 - Install front-end-meta
 ```
-bower install git://github.com/mrLeung/front-end-meta.git
+bower install git://github.com/wahsonleung/front-end-meta.git
 ```
 
 ### Elements Usage
+[See Docs & Demos][2]
+
 - **`<h2-crud />`**
 
 - **`<h2-crud-query />`**
@@ -37,3 +39,4 @@ bower install git://github.com/mrLeung/front-end-meta.git
 ## Metadata Introduce
 
 [1]: https://www.polymer-project.org/2.0/start/install-2-0#use-bower
+[2]: 
