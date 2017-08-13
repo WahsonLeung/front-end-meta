@@ -1253,68 +1253,134 @@
       "description": "",
       "summary": "",
       "path": "widgets/h2-text.html",
-      "properties": [],
-      "methods": [
+      "properties": [
         {
-          "name": "validate",
+          "name": "context",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
+            "file": "h2-widget-base.html",
             "start": {
-              "line": 28,
+              "line": 11,
               "column": 12
             },
             "end": {
-              "line": 30,
+              "line": 17,
               "column": 13
             }
           },
-          "metadata": {},
-          "params": []
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 18,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "H2WidgetBase"
         }
       ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 23,
-          "column": 8
-        },
-        "end": {
-          "line": 32,
-          "column": 9
-        }
-      },
-      "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "H2Text",
-      "attributes": [],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "h2-text"
-    },
-    {
-      "description": "",
-      "summary": "",
-      "path": "widgets/h2-text-area.html",
-      "properties": [],
       "methods": [
+        {
+          "name": "__baseContextChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 35,
+              "column": 8
+            },
+            "end": {
+              "line": 39,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "obj"
+            }
+          ],
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "__baseValueChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 41,
+              "column": 8
+            },
+            "end": {
+              "line": 43,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "val"
+            }
+          ],
+          "inheritedFrom": "H2WidgetBase"
+        },
         {
           "name": "validate",
           "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 28,
+              "line": 27,
               "column": 8
             },
             "end": {
-              "line": 30,
+              "line": 29,
               "column": 9
             }
           },
@@ -1327,19 +1393,323 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 23,
+          "line": 22,
           "column": 6
         },
         "end": {
-          "line": 32,
+          "line": 31,
+          "column": 7
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "H2Text",
+      "attributes": [
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 11,
+              "column": 12
+            },
+            "end": {
+              "line": 17,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "value",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 18,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "context-changed",
+          "description": "Fired when the `context` property changes.",
+          "metadata": {},
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {},
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "h2-text"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "widgets/h2-text-area.html",
+      "properties": [
+        {
+          "name": "context",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 11,
+              "column": 12
+            },
+            "end": {
+              "line": 17,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 18,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "metadata",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
+      "methods": [
+        {
+          "name": "__baseContextChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 35,
+              "column": 8
+            },
+            "end": {
+              "line": 39,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "obj"
+            }
+          ],
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "__baseValueChange",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 41,
+              "column": 8
+            },
+            "end": {
+              "line": 43,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "val"
+            }
+          ],
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "validate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 27,
+              "column": 8
+            },
+            "end": {
+              "line": 29,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 22,
+          "column": 6
+        },
+        "end": {
+          "line": 31,
           "column": 7
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
       "name": "H2TextArea",
-      "attributes": [],
-      "events": [],
+      "attributes": [
+        {
+          "name": "context",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 11,
+              "column": 12
+            },
+            "end": {
+              "line": 17,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "value",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 18,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "name": "metadata",
+          "description": "",
+          "sourceRange": {
+            "file": "h2-widget-base.html",
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 24,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "context-changed",
+          "description": "Fired when the `context` property changes.",
+          "metadata": {},
+          "inheritedFrom": "H2WidgetBase"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {},
+          "inheritedFrom": "H2WidgetBase"
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []

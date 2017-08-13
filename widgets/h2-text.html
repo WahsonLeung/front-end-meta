@@ -1,6 +1,5 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../paper-input/paper-input.html">
-<link rel="import" href="../behaviors/base-behavior.html">
 <link rel="import" href="h2-widget-base.html">
 <dom-module id="h2-text">
     <template>
@@ -21,17 +20,17 @@
         </paper-input>
     </template>
     <script>
-        class H2Text extends Polymer.mixinBehaviors([BaseBehavior],H2WidgetBase) {
-            static get is() {
-              return "h2-text";
-            }
-
-            validate() {
-              return this.$.input.validate();
-            }
-
+      class H2Text extends H2WidgetBase {
+        static get is() {
+          return "h2-text";
         }
 
-        customElements.define(H2Text.is, H2Text);
+        validate() {
+          return this.$.input.validate();
+        }
+
+      }
+
+      customElements.define(H2Text.is, H2Text);
     </script>
 </dom-module>

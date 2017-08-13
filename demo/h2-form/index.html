@@ -122,8 +122,7 @@
           };
 
           form2.metadata = {
-            style:
-                `.container {
+            style: `.container {
                      grid-column-gap: 4%;
                      grid-template-columns: 48% 48%;
                  }
@@ -169,8 +168,7 @@
           };
 
           form3.metadata = {
-            style:
-              `.container {
+            style: `.container {
                     grid-column-gap: 4%;
                     grid-template-columns: 48% 48%;
                 }
@@ -193,7 +191,7 @@
                   formEle.watch(['bar'], ({bar}, whoChange) => {
                     console.log(whoChange);
                     fieldEle.style = bar.length > 4 ?
-                           'background:red;' : 'background:green;'
+                        'background:red;' : 'background:green;'
 
                   });
                 }
@@ -206,6 +204,74 @@
                 editable: true,
                 visible: true
               },
+            ],
+          }
+        </script>
+    </template>
+</demo-snippet>
+
+<h3>Nested Form</h3>
+<demo-snippet>
+    <template>
+        <h2-form id="form4"></h2-form>
+        <script>
+
+          form4.context = {
+            foo: "foo",
+            bar: "bar"
+          };
+
+          form4.metadata = {
+            style: `.container {
+                    grid-template-columns: auto;
+                }
+               .container__item {
+                    border-bottom: 1px dashed
+                }
+              `,
+            formUrl: "/url-to-send-form",
+            title: "Form Title",
+            confirm: "Sure to submit?",
+            fields: [
+              {
+                name: "bar",
+                label: "bar",
+                required: true,
+                editable: true,
+                visible: true
+              },
+              {
+                name: "foo",
+                label: "foo",
+                required: true,
+                editable: true,
+                visible: true,
+                element: "h2-form",
+                metaType: {
+                  type: "FORM",
+                  metadata: {
+                    formUrl: "/url-to-send-form",
+                    title: "Nested Form",
+                    confirm: "Sure to submit?",
+                    fields: [
+                      {
+                        name: "foo1",
+                        label: "foo1",
+                        required: true,
+                        editable: true,
+                        visible: true,
+                      },
+                      {
+                        name: "bar1",
+                        label: "bar1",
+                        required: true,
+                        editable: true,
+                        visible: true
+                      },
+                    ],
+                  }
+                }
+              }
             ],
           }
         </script>
