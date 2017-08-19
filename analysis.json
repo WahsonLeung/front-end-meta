@@ -359,11 +359,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 127,
+              "line": 130,
               "column": 12
             },
             "end": {
-              "line": 132,
+              "line": 135,
               "column": 13
             }
           },
@@ -381,11 +381,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 134,
+              "line": 137,
               "column": 12
             },
             "end": {
-              "line": 137,
+              "line": 140,
               "column": 13
             }
           },
@@ -423,11 +423,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 151,
+              "line": 154,
               "column": 12
             },
             "end": {
-              "line": 153,
+              "line": 156,
               "column": 13
             }
           },
@@ -444,11 +444,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 159,
+              "line": 162,
               "column": 12
             },
             "end": {
-              "line": 161,
+              "line": 164,
               "column": 13
             }
           },
@@ -465,11 +465,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 167,
+              "line": 170,
               "column": 12
             },
             "end": {
-              "line": 169,
+              "line": 172,
               "column": 13
             }
           },
@@ -567,11 +567,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 173,
+              "line": 176,
               "column": 8
             },
             "end": {
-              "line": 177,
+              "line": 180,
               "column": 9
             }
           },
@@ -590,11 +590,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 193,
+              "line": 196,
               "column": 8
             },
             "end": {
-              "line": 205,
+              "line": 208,
               "column": 9
             }
           },
@@ -620,11 +620,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 207,
+              "line": 210,
               "column": 8
             },
             "end": {
-              "line": 210,
+              "line": 213,
               "column": 9
             }
           },
@@ -643,11 +643,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 212,
+              "line": 215,
               "column": 8
             },
             "end": {
-              "line": 222,
+              "line": 225,
               "column": 9
             }
           },
@@ -666,11 +666,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 228,
+              "line": 231,
               "column": 8
             },
             "end": {
-              "line": 230,
+              "line": 233,
               "column": 9
             }
           },
@@ -707,11 +707,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 276,
+              "line": 279,
               "column": 8
             },
             "end": {
-              "line": 278,
+              "line": 281,
               "column": 9
             }
           },
@@ -730,11 +730,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 280,
+              "line": 283,
               "column": 8
             },
             "end": {
-              "line": 282,
+              "line": 285,
               "column": 9
             }
           },
@@ -753,11 +753,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 284,
+              "line": 287,
               "column": 8
             },
             "end": {
-              "line": 298,
+              "line": 301,
               "column": 9
             }
           },
@@ -772,11 +772,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 300,
+              "line": 303,
               "column": 8
             },
             "end": {
-              "line": 313,
+              "line": 317,
               "column": 9
             }
           },
@@ -864,11 +864,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 127,
+              "line": 130,
               "column": 12
             },
             "end": {
-              "line": 132,
+              "line": 135,
               "column": 13
             }
           },
@@ -898,11 +898,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 151,
+              "line": 154,
               "column": 12
             },
             "end": {
-              "line": 153,
+              "line": 156,
               "column": 13
             }
           },
@@ -916,11 +916,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 159,
+              "line": 162,
               "column": 12
             },
             "end": {
-              "line": 161,
+              "line": 164,
               "column": 13
             }
           },
@@ -934,11 +934,11 @@
           "sourceRange": {
             "file": "h2-form.html",
             "start": {
-              "line": 167,
+              "line": 170,
               "column": 12
             },
             "end": {
-              "line": 169,
+              "line": 172,
               "column": 13
             }
           },
@@ -2795,7 +2795,7 @@
       "tagname": "h2-dialog"
     },
     {
-      "description": "```\n<h2-field editable metadata=\"{{ metadata }}\"></h2-field>\n```\n```\nmetadata = {\n  element: \"h2-text\",\n  name: \"name\",\n  label: \"Please input your name here: \",\n  required: true,\n  editable: true,\n  prompt: \"Please input your name!\"\n}\n```\n### metadata定义 (FieldMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|name|string|是|字段名，如“orderNo”\n|label|string|是|字段名，如“订单号”\n|require|boolean|是|是否必填\n|mutil|boolean|是|是否多选\n|editable|boolean|是 | 是否可编辑\n|validate| boolean|是| 是否需要校验\n|visible| boolean|是| 界面是否可见，仅对表单中的字段有效\n|element|string|否|ui元素，缺省时，提供默认ui：h2-text\n|format|string|否| 显示格式，用于日期显示，如“yyyy-MM-dd”\n|length|number|否 | 字符长度\n|maxLength|number|否| string允许的最大长度\n|minLength|number|否 | string允许的最小长度\n|regexp|string|否|正则匹配\n|prompt|string|否|校验失败时的提示语，如“请输入备注”\n|min|number|否|数字最小值\n|max|number|否|数字最大值\n|placeholder|string|否| placeholder\n|candidates|string|否| 候选值，下拉选项中的值，json串，如 \"[{value: 1,label: '男'}, {value: 2,label: '女'}]\"\n|candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”\n|candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”\n|alias|string|否|别名，如果配置了此字段，提交表单时已这个字段作为key保存\n|metaType|MetaType或string|否|元数据类型，如果缺少metaType，默认渲染的组件是<h2-text>；在表格元数据中定义操作列时，可以省略操作的元数据，如 metaType:\"ACTION\" [See h2-grid](#/elements/h2-grid)|\n\n### MetaType定义\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|type|string|是|数据类型：BOOLEAN、BYTE、SHORT、INTEGER、LONG、DOUBLE、STRING、LIST、MAP、SET、STRUCT、ACTION|\n|metadata|object|是| 如果type是list，map，set中的一种，则metadata是这些嵌套类型的元数据|",
+      "description": "```\n<h2-field editable metadata=\"{{ metadata }}\"></h2-field>\n```\n```\nmetadata = {\n  element: \"h2-text\",\n  name: \"name\",\n  label: \"Please input your name here: \",\n  required: true,\n  editable: true,\n  prompt: \"Please input your name!\"\n}\n```\n### metadata定义 (FieldMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|name|string|是|字段名，如“orderNo”\n|label|string|是|字段名，如“订单号”，缺省值：name字段的值\n|require|boolean|否|是否必填，缺省值：false\n|mutil|boolean|否|是否多选，缺省值：false\n|editable|boolean|否| 是否可编辑，缺省值：false\n|validate| boolean|否| 是否需要校验，缺省值：false\n|visible| boolean|否| 界面是否可见，仅对表单中的字段有效，缺省值：false\n|element|string|否|ui元素，缺省时，提供默认ui：h2-text\n|format|string|否| 显示格式，用于日期显示，如“yyyy-MM-dd”\n|length|number|否 | 字符长度\n|maxLength|number|否| string允许的最大长度\n|minLength|number|否 | string允许的最小长度\n|regexp|string|否|正则匹配\n|prompt|string|否|校验失败时的提示语，如“请输入备注”\n|min|number|否|数字最小值\n|max|number|否|数字最大值\n|placeholder|string|否| placeholder\n|candidates|string|否| 候选值，下拉选项中的值，json串，如 \"[{value: 1,label: '男'}, {value: 2,label: '女'}]\"\n|candidateLabel|string|否|组件显示字段名，针对下拉组件、radio-group组件等，“label”\n|candidateValue|string|否| 组件值字段名，针对下拉组件、radio-group组件等，“value”\n|srcKey|string|否|当一个字段的值是来源于另外一个字段，则通过srcKey配置值来源字段的字段名，如 \"id\"\n|metaType|MetaType或string|否|元数据类型，如果缺少metaType，默认渲染的组件是<h2-text>；在表格元数据中定义操作列时，可以省略操作的元数据，如 metaType:\"ACTION\" [See h2-grid](#/elements/h2-grid)|\n\n### MetaType定义\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|type|string|是|数据类型：BOOLEAN、BYTE、SHORT、INTEGER、LONG、DOUBLE、STRING、LIST、MAP、SET、STRUCT、ACTION|\n|metadata|object|是| 如果type是list，map，set中的一种，则metadata是这些嵌套类型的元数据|",
       "summary": "",
       "path": "h2-field.html",
       "properties": [
@@ -2966,7 +2966,7 @@
           "column": 6
         },
         "end": {
-          "line": 171,
+          "line": 170,
           "column": 7
         }
       },
@@ -3016,7 +3016,7 @@
       "tagname": "h2-field"
     },
     {
-      "description": "A component for form.\n\n```\n<h2-form metadata=\"{{ metadata }}\"></h2-form>\n```\n```\ncontext = {\n    foo: \"foo\",\n    bar: \"bar\"\n}\nmetadata = {\n    formUrl: \"/url-to-send-form\",\n    title: \"Form Title\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        name: \"foo\",\n        label: \"foo\",\n        element: \"h2-text\",\n        required: true,\n        editable: true,\n        visible: true\n      },\n      {\n        name: \"bar\",\n        label: \"bar\",\n        required: true,\n        editable: true,\n        visible: true\n      },\n    ],\n}\n```\n### metadata定义 (FormMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|title|string|是|表单头|\n|formUrl|string|是|表单提交的url|\n|fields|array.<FieldMeta>|是|字段元数据|\n|confirm|string|否|表单提交前确认提示|\n|isSubmitForbidden|boolean|否|是否禁用提交按钮|\n|style|string|否|组件自定义样式|\n\n### [See FieldMeta](#/elements/h2-field)",
+      "description": "A component for form.\n\n```\n<h2-form metadata=\"{{ metadata }}\"></h2-form>\n```\n```\ncontext = {\n    foo: \"foo\",\n    bar: \"bar\"\n}\nmetadata = {\n    formUrl: \"/url-to-send-form\",\n    title: \"Form Title\",\n    confirm: \"Sure to submit?\",\n    fields: [\n      {\n        name: \"foo\",\n        label: \"foo\",\n        element: \"h2-text\",\n        required: true,\n        editable: true,\n        visible: true\n      },\n      {\n        name: \"bar\",\n        label: \"bar\",\n        required: true,\n        editable: true,\n        visible: true\n      },\n    ],\n}\n```\n### metadata定义 (FormMeta)\n|字段名|类型|Required|描述|\n|:--|:--|:--|:--|\n|title|string|是|表单头|\n|formUrl|string|是|表单提交的url|\n|fields|array.<FieldMeta>|是|字段元数据|\n|confirm|string|否|表单提交前确认提示|\n|hideSubmitBtn|boolean|否|是否禁用提交按钮|\n|style|string|否|组件自定义样式|\n\n### [See FieldMeta](#/elements/h2-field)",
       "summary": "",
       "path": "h2-form.html",
       "properties": [
@@ -3047,11 +3047,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 130,
               "column": 12
             },
             "end": {
-              "line": 132,
+              "line": 135,
               "column": 13
             }
           },
@@ -3067,11 +3067,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 137,
               "column": 12
             },
             "end": {
-              "line": 137,
+              "line": 140,
               "column": 13
             }
           },
@@ -3088,11 +3088,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 142,
               "column": 12
             },
             "end": {
-              "line": 142,
+              "line": 145,
               "column": 13
             }
           },
@@ -3109,11 +3109,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 154,
               "column": 12
             },
             "end": {
-              "line": 153,
+              "line": 156,
               "column": 13
             }
           },
@@ -3128,11 +3128,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 162,
               "column": 12
             },
             "end": {
-              "line": 161,
+              "line": 164,
               "column": 13
             }
           },
@@ -3147,11 +3147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 170,
               "column": 12
             },
             "end": {
-              "line": 169,
+              "line": 172,
               "column": 13
             }
           },
@@ -3167,11 +3167,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 173,
+              "line": 176,
               "column": 8
             },
             "end": {
-              "line": 177,
+              "line": 180,
               "column": 9
             }
           },
@@ -3188,11 +3188,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 193,
+              "line": 196,
               "column": 8
             },
             "end": {
-              "line": 205,
+              "line": 208,
               "column": 9
             }
           },
@@ -3216,11 +3216,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 207,
+              "line": 210,
               "column": 8
             },
             "end": {
-              "line": 210,
+              "line": 213,
               "column": 9
             }
           },
@@ -3237,11 +3237,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 212,
+              "line": 215,
               "column": 8
             },
             "end": {
-              "line": 222,
+              "line": 225,
               "column": 9
             }
           },
@@ -3258,11 +3258,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 228,
+              "line": 231,
               "column": 8
             },
             "end": {
-              "line": 230,
+              "line": 233,
               "column": 9
             }
           },
@@ -3280,11 +3280,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 235,
+              "line": 238,
               "column": 8
             },
             "end": {
-              "line": 274,
+              "line": 277,
               "column": 9
             }
           },
@@ -3297,11 +3297,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 276,
+              "line": 279,
               "column": 8
             },
             "end": {
-              "line": 278,
+              "line": 281,
               "column": 9
             }
           },
@@ -3318,11 +3318,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 280,
+              "line": 283,
               "column": 8
             },
             "end": {
-              "line": 282,
+              "line": 285,
               "column": 9
             }
           },
@@ -3339,11 +3339,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 284,
+              "line": 287,
               "column": 8
             },
             "end": {
-              "line": 298,
+              "line": 301,
               "column": 9
             }
           },
@@ -3356,11 +3356,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 300,
+              "line": 303,
               "column": 8
             },
             "end": {
-              "line": 313,
+              "line": 317,
               "column": 9
             }
           },
@@ -3382,7 +3382,7 @@
           "column": 6
         },
         "end": {
-          "line": 314,
+          "line": 318,
           "column": 7
         }
       },
@@ -3395,11 +3395,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 130,
               "column": 12
             },
             "end": {
-              "line": 132,
+              "line": 135,
               "column": 13
             }
           },
@@ -3411,11 +3411,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 142,
               "column": 12
             },
             "end": {
-              "line": 142,
+              "line": 145,
               "column": 13
             }
           },
@@ -3427,11 +3427,11 @@
           "description": "A function or closure to replace the default submit action, it will be invoked after the  _validate() return true.\n\nWhen it was called, the request param will be accessed as argument.",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 154,
               "column": 12
             },
             "end": {
-              "line": 153,
+              "line": 156,
               "column": 13
             }
           },
@@ -3443,11 +3443,11 @@
           "description": "The callback called when form post error occurs.",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 162,
               "column": 12
             },
             "end": {
-              "line": 161,
+              "line": 164,
               "column": 13
             }
           },
@@ -3459,11 +3459,11 @@
           "description": "The callback called when form post success.",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 170,
               "column": 12
             },
             "end": {
-              "line": 169,
+              "line": 172,
               "column": 13
             }
           },
@@ -4141,16 +4141,44 @@
               }
             },
             {
+              "name": "getValueOrElse",
+              "description": "等价于 model[key1 || key2 || ...]",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 73,
+                  "column": 4
+                },
+                "end": {
+                  "line": 76,
+                  "column": 5
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "model",
+                  "type": "Object"
+                },
+                {
+                  "name": "...keys"
+                }
+              ],
+              "return": {
+                "type": "*"
+              }
+            },
+            {
               "name": "getValueByPath",
               "description": "通过路径获取对象字段值",
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 75,
+                  "line": 85,
                   "column": 4
                 },
                 "end": {
-                  "line": 87,
+                  "line": 97,
                   "column": 5
                 }
               },
@@ -4182,11 +4210,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 102,
+                  "line": 112,
                   "column": 4
                 },
                 "end": {
-                  "line": 107,
+                  "line": 117,
                   "column": 5
                 }
               },
@@ -4197,7 +4225,7 @@
                   "type": "Object"
                 },
                 {
-                  "name": "{render, name} = {}"
+                  "name": "{render, name, srcKey} = {}"
                 }
               ]
             },
@@ -4207,11 +4235,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 113,
+                  "line": 123,
                   "column": 4
                 },
                 "end": {
-                  "line": 126,
+                  "line": 136,
                   "column": 5
                 }
               },
@@ -4229,11 +4257,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 134,
+                  "line": 144,
                   "column": 4
                 },
                 "end": {
-                  "line": 138,
+                  "line": 148,
                   "column": 5
                 }
               },
@@ -4258,11 +4286,11 @@
               "privacy": "private",
               "sourceRange": {
                 "start": {
-                  "line": 140,
+                  "line": 150,
                   "column": 4
                 },
                 "end": {
-                  "line": 265,
+                  "line": 275,
                   "column": 5
                 }
               },
@@ -4283,7 +4311,7 @@
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 277,
               "column": 3
             }
           },
